@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div data-id="1" data-spm="2"></div>
+</body>
+<!--
+自定义属性
+  定义属性：data-属性名="属性值"
+  获取属性：dataset.属性名
+-->
+<script>
+  const d = document.querySelector('div')
+  console.log(d.dataset)
+  console.log(d.dataset.id)
+</script>
+</html>

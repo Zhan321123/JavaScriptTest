@@ -1,0 +1,26 @@
+/*
+教学样式
+
+鼠标悬停边框
+*/
+*:hover {
+  border: 1px solid red;
+}
+
+body:hover,
+html:hover {
+  border: none;
+}
+
+#info-display {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(142, 142, 142, 0.2);
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 999;
+  width: 20em;
+  font-size: 15px;
+}

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transform 平面转换</title>
+<!--
+transform属性:
+  translate(x,y)、translate(x)、translateX(x)、translateY(y)、translateZ(z)
+    平移，当%时，以自己为基准的倍数
+  scale(x,y)：缩放，scale(x)：xy都缩放
+  rotate(a)
+    旋转，顺时针转动
+    单位deg为度°，rad为弧度
+  skew(x,y)：倾斜角度
+transform-origin：锚点，默认都为元素中心
+  left，right，top，bottom，center，%，px
+当有多个transform属性时，轴和锚点会以前一个为基准
+所以实现滚动效果要先translate再rotate
+-->
+  <style>
+    .box{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .box div{
+      width: 100px;
+      height: 100px;
+      background-color: #4cc5de;
+      transition: all 1s;
+      margin: 30px;
+      border: 1px solid #dc0b0b;
+      line-height: 100px;
+      text-align: center;
+    }
+    .box div:nth-child(1):hover{
+      transform: translate(50%,100px);
+    }
+    .box div:nth-child(2):hover{
+      transform: translateY(100px);
+    }
+    .box div:nth-child(3):hover{
+      transform: scale(2,2);
+    }
+    .box div:nth-child(4):hover{
+      transform: rotate(180deg);
+    }
+    .box div:nth-child(5):hover{
+      transform: rotate(180deg);
+      transform-origin: 0 0;
+    }
+    .box div:nth-child(6){
+      border-radius: 50%;
+    }
+    /*此处先旋转再平移，否则旋转后平移会错乱*/
+    .box div:nth-child(6):hover{
+      /*transform: rotate(360deg) translate(314px);*/
+      transform: translate(314px) rotate(360deg);
+    }
+    .box div:nth-child(7):hover{
+      transform: skew(30deg);
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div>translate(50%,100px)</div>
+  <div>translateY(100px)</div>
+  <div>scale(2,2)</div>
+  <div>rotate(180deg)</div>
+  <div>transform: rotate(180deg);
+    transform-origin: 0 0</div>
+  <div>translate(314px) rotate(360deg)</div>
+  <div>skew(30deg)</div>
+  <div>8</div>
+  <div>9</div>
+  <div>10</div>
+  <div>11</div>
+  <div>12</div>
+</div>
+</body>
+</html>

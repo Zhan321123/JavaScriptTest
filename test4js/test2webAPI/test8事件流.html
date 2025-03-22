@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .grandPa {
+      width: 500px;
+      height: 500px;
+      background-color: #4cc5de;
+    }
+
+    .father {
+      width: 300px;
+      height: 300px;
+      background-color: #00599f;
+    }
+
+    .son {
+      width: 200px;
+      height: 200px;
+      background-color: #68af3e;
+    }
+  </style>
+</head>
+<body>
+<div class="grandPa">
+  <div class="father">
+    <div class="son"></div>
+  </div>
+</div>
+<!--
+事件流，对于覆盖层，注册的事件执行顺序
+1 .addEventListener('click',fn,false)，由上到下执行，默认为false，事件冒泡
+2 .addEventListener('click',fn,true)，由下到上执行，事件捕获
+3 .addEventListener('click',function(e){e.stopPropagation()})，e.stopPropagation()，阻止事件冒泡
+-->
+<script>
+  const grandPa = document.querySelector('.grandPa')
+  const father = document.querySelector('.father')
+  const son = document.querySelector('.son')
+  grandPa.addEventListener('click', function () {
+    console.log('grandPa')
+  },true)
+  father.addEventListener('click', function (e) {
+    console.log('father')
+    e.stopPropagation()
+  },true)
+  son.addEventListener('click', function () {
+    console.log('son')
+  },true)
+</script>
+</body>
+</html>

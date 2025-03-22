@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!--
+抛出异常
+  throw new Error('错误信息')
+
+捕获异常
+  try{
+    ...
+  }catch(e){
+    try中报错执行
+  }finally{
+    无论否报错，都会执行
+  }
+
+debugger
+  暂停执行，打开浏览器直接跳转到debugger，然后可以查看属性值
+-->
+<script>
+  function fn(a,b){
+    if (!a || !b){
+      throw new Error('参数不能为空')
+    }else{
+      return a + b
+    }
+  }
+  try{
+    console.log(fn(1,2))
+    debugger
+    console.log(fn(1))
+  }catch (e){
+    console.log(e)
+  }finally {
+    console.log('finally')
+  }
+</script>
+</body>
+</html>

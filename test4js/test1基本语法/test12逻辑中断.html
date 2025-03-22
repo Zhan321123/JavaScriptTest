@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logical Interrupt</title>
+</head>
+<body>
+<script>
+  /*
+  逻辑中断
+    a || b 非a则b，a则a
+    a && b a则b，非a则a
+  应用场景
+    函数中赋值 x = || 默认值
+    简短if语句替代品，boolean || {}，boolean && {}
+
+
+   */
+  function fc(x, y) {
+    x = x || 0
+    y = y || 0
+    console.log(x, y)
+    return x + y
+  }
+
+  fc()
+  fc(3)
+  fc(3,)
+  fc(3, 4)
+
+  false || fc(100, 100)
+  true && fc(200, 200)
+
+  if (!false) {
+    fc(100, 100)
+  }
+  if (true) {
+    fc(200, 200)
+  }
+
+</script>
+</body>
+</html>

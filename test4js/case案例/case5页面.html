@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Synthesis</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .box-hd{
+      width: 1200px;
+      height: 60px;
+      background-color: #b4c7c1;
+      padding: 0 10px;
+      margin: 0 auto;
+      line-height: 60px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .box-bd{
+      width: 1200px;
+      margin: 0 auto;
+      background-color: #77a29e;
+    }
+    .clearfix{
+      text-decoration: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .clearfix li{
+      background-color: #39988f;
+      margin-top: 10px;
+      list-style: none;
+    }
+    .clearfix li a h4,
+    .clearfix li a div{
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-bottom: 10px;
+    }
+    .clearfix li{
+      transition: all 0.2s;
+    }
+    .clearfix li:hover{
+      transform: translateY(-10px);
+    }
+  </style>
+</head>
+<body>
+  <div class='box-hd'>
+    <h3>Recommend</h3>
+    <a href="#">See All</a>
+  </div>
+  <hr>
+<script>
+  let data = [
+    {src: '/file/1.png', num: 1000},
+    {src: '/file/2.png', num: 1230},
+    {src: '/file/3.png', num: 1435},
+    {src: '/file/4.png', num: 1115},
+    {src: '/file/5.png', num: 1405},
+    {src: '/file/6.png', num: 1405},
+    {src: '/file/7.png', num: 1405},
+    {src: '/file/8.png', num: 1405},
+  ]
+  document.write(`<div class='box-bd'>
+    <ul class='clearfix'>`)
+  for (let i = 0; i < data.length; i++) {
+    document.write(`<li>
+      <a href="#">
+        <img src=${data[i].src} height="256" width="256" alt="">
+        <h4>
+          what is this?
+        </h4>
+        <div class='info'>
+          <span>high</span> | <span>${data[i].num}</span>people is studying
+        </div>
+      </a>
+    </li>`)
+  }
+  document.write(`</ul>
+  </div>`)
+</script>
+</body>
+</html>

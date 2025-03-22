@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!--
+本地存储：
+  localStorage
+  sessionStorage
+用法：
+  setItem(key,value)，增、改
+  getItem(key),查
+  removeItem(key)，删
+  clear(),清空
+  key(index),获取key
+
+localStorage是硬盘存储，sessionStorage是运存存储，周期为浏览器关闭
+只能存储字符串类型
+-->
+<script>
+  localStorage.setItem('name','zhan')
+  name = localStorage.getItem('name')
+  console.log(name)
+  localStorage.removeItem('name')
+  localStorage.setItem('age','18')
+  localStorage.setItem('age',19)
+  console.log(localStorage.getItem('age'))
+  console.log(localStorage.key(0))
+
+  sessionStorage.setItem('name','zhan')
+  console.log(sessionStorage.getItem('name'));
+
+  // localStorage.clear()
+</script>
+<!--
+存储对象
+  JSON.stringify(obj)，将对象转为json字符串
+  JSON.parse(json)，将json字符串转为对象
+-->
+<script>
+  const obj = {
+    name:'zhan',
+    sex:'female',
+    hobby:'play',
+  }
+  sessionStorage.setItem('obj',obj)
+  sessionStorage.setItem('obj-json',JSON.stringify(obj))
+  console.log(sessionStorage.getItem('obj'))
+  console.log(sessionStorage.getItem('obj-json'))
+  const obj2 = JSON.parse(sessionStorage.getItem('obj-json'))
+  console.log(obj2)
+</script>
+</body>
+</html>

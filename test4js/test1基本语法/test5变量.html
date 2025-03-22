@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    console.log('--------number--------');
+    // 数字类型变量number
+    // let/var 变量=值
+    // let/var 变量
+    // var本身不合理
+    let a = null
+    let b = 100
+    console.log(a)
+    a = b + 1
+    console.log(b)
+    let c = 'zhan', d = 12.3, e = Math.E
+    console.log(e)
+  </script>
+
+  <script>
+    console.log('--------数组--------');
+    // 数组变量
+    // [], {}, ()
+    let arr2 = { 1: 'A', 2: "b" }
+    let arr3 = (1, 2)
+    let arr1 = []
+    let list = [1, 2, 3, 4]
+    for (let i = 0; i < list.length; i++) {
+      console.log(i + ': ' + list[i])
+    }
+
+    console.log('--------常量--------');
+    // 常量
+    // const 变量=值
+    const Pi = 3.14
+    const G = 9.8
+    console.log(Pi + G)
+
+    console.log('--------boolean--------');
+    // 布尔类型
+    // 0、""、undefined、null、false、NaN都为false，其余为true
+    // 判断运算符===, ==
+    // !相反，
+    let b1 = true
+    let b2 = false
+    let b3 = b1 === b2
+    console.log(b3)
+    console.log(1 == true)
+    console.log(0 == false)
+    console.log(!b1);
+    console.log(!!b1);
+    console.log(!100);//false
+    console.log(!0);//true
+    console.log(!'s');//false
+    console.log(!'0');//false
+
+    console.log('--------NaN--------');
+    // NaN类型
+    console.log(NaN === NaN) //false
+    console.log(isNaN(NaN)) //true
+    console.log(1 / 0) //infinity
+    console.log(NaN + 2) //NaN
+
+
+    console.log('--------undefined--------');
+    // undefined类型和null类型
+    // undefined是未定义，null是空对象
+    // null本身不合理
+    let dd
+    let n = null
+    console.log(dd)
+    console.log(n)
+    console.log(null == NaN) //false
+    console.log(null == undefined) //true
+    console.log(NaN == undefined) //false
+    console.log(null + 1); //1
+    console.log(undefined + 1); //NaN
+
+    console.log('--------typeof--------');
+    // typeof监测什么类型变量
+    // typeof x
+    // typeof(x)
+    console.log(typeof (1)); //number
+    console.log(typeof 1.1); //number
+    console.log(typeof 'a'); //string
+    console.log(typeof `b`) //string
+    console.log(typeof true) //boolean
+    console.log(typeof NaN) //number
+    console.log(typeof null) //object
+    console.log(typeof undefined) //undefined
+
+
+    console.log('--------类型转换--------');
+    // 类型转换
+    // +string -> number，或者-
+    // number+'' -> string
+    // Number(str) -> number/NaN
+    // parseInt(number+str) -> number/NaN
+    // parseFloat(number+str) -> number/NaN
+    console.log(typeof +'123');//number
+    console.log(+'123' + 123);//246
+    console.log(123 + '123');//123123
+    console.log(123 + + '123');//246
+    console.log(typeof - '123');//246
+    console.log(Number('123'))//123
+    console.log(Number('abc'))//NaN
+    console.log(Number('123abc'))//NaN
+    console.log(parseInt('123asd'));//123
+    console.log(parseInt('asd123'));//NaN
+    console.log(parseFloat('123.4asd'));//123.4
+
+
+  </script>
+</body>
+
+</html>

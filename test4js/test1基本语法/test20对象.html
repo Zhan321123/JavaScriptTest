@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!--
+创建对象
+  o = new Object({属性: 值,})
+  function 构造函数(形参,) {this.属性 = 形参,},o = new 构造函数(实参,)
+
+对象的方法
+  Obj.prototype.方法名 = function () {}
+-->
+<script>
+  function Obj1(name, age) {
+    this.name = name;
+    this.age = age;
+    console.log(this)
+  }
+  Obj1.prototype.say = function () {
+    console.log(`my name is ${this.name}`)
+  }
+
+  const o1 = new Obj1('zhan', 18)
+  const o2 = new Obj1('duo', 19)
+  console.log(o1.name, o2.age, new Obj1('xiao', 20))
+  o1.say()
+  console.log(Obj1.prototype)
+
+  console.log(Obj1.prototype.constructor === Obj1)
+  console.log(Obj1.prototype === o1.__proto__)
+
+  const o3 = Object({name: 'xuan', age: 21})
+  console.log(o3)
+
+</script>
+<!--
+Object中的类方法
+  .keys(对象), 返回对象所有的键名
+  .values(对象)，返回对象所有的键值
+  .assign(目标对象, 源对象1, 源对象2, ...), 将源对象的属性复制到目标对象中
+-->
+<script>
+  console.log('-----------------------------')
+
+  function Obj3(name, sex) {
+    this.name = name;
+    this.sex = sex;
+  }
+
+  o4 = new Obj3('zhan', 'female')
+  console.log(Obj3.length, Obj3.name);
+  console.log(Object.keys(o4), Object.values(o4))
+  o5 = Object({age: 22})
+  Object.assign(o5, o4)
+  console.log(o5)
+</script>
+<!--
+Array中的类方法[]
+  .forEach(回调函数), 遍历数组中的每个元素
+  .filter(条件), 过滤数组中的元素，返回符合条件的元素
+  .map(回调函数), 对数组中的每个元素进行操作，返回操作后的元素
+  .reduce(回调函数, 初始值), 对数组中的每个元素进行操作，返回操作后的元素
+-->
+<script>
+  // const arr = [1,2,3]
+  const arr = new Array(1, 2, 3, 4, 5, 6)
+  arr.forEach(item => console.log(item)) // 输出每个元素
+  arr2 = arr.filter(function (item) {
+    return item % 2 === 0;
+  })
+  console.log(arr2)
+  arr1 = arr.map(item => item * 2)
+  console.log(arr1)
+  const v = arr.reduce(function (pre, cur) {
+    return pre + cur;
+  },100)
+  console.log(v)
+</script>
+<script>
+  class Animal{}
+  class Dog extends Animal{}
+  class Cat extends Animal{}
+  class JinMao extends Dog{}
+
+  console.log(new Dog() instanceof Animal)
+</script>
+</body>
+</html>

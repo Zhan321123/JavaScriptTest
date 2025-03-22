@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Side bar</title>
+  <link href="lib/bootstrap5.3.0.css" rel="stylesheet">
+<!--  <link rel="stylesheet" href="/lib/study.css">-->
+  <link rel="stylesheet" href="/lib/origin.css">
+  <style>
+    .table th,
+    .table td {
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    .form-control::file-selector-button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.25rem;
+    }
+
+    .centered-progress {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50%;
+      height: 20px;
+      z-index: 1050;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="Equation1" viewBox="0 0 118 94">
+
+  </symbol>
+
+
+</svg>
+
+<!--进度条-->
+<div id="progressBarContainer" class="centered-progress progress border" style="display: none">
+  <div id="progressBar" class="progress-bar bg-success progress-bar-striped progress-bar-animated" role="progressbar"
+       aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0;">0%
+  </div>
+</div>
+
+
+<img src="back.png" alt="" class="position-fixed w-100" style="z-index: -1000;opacity: 50%">
+<!--完整布局-->
+<div class="row w-100">
+
+  <!--侧边栏-->
+  <div class="d-flex flex-column flex-shrink-0 p-4 overflow-auto vh-100 position-fixed col-md-2"
+       style="color: black;background-color: #a0b8d6">
+    <!--侧边栏标题-->
+    <a href="" class="d-flex align-items-center mb-3 mb-md-0 mb-md-0 me-md-auto text-decoration-none text-dark">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-cloud-drizzle"
+           viewBox="0 0 16 16">
+        <path
+          d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973zM8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 2z"/>
+      </svg>
+      <span class="fs-4 ms-4">
+        慧聚云泽</span>
+    </a>
+
+    <hr>
+    <!--    侧边栏项目-->
+    <ul class="nav nav-pills flex-column mb-auto nav-pills" id="navbar">
+      <li class="nav-item">
+        <a href="#introduce" class="nav-link text-dark active" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank2"
+               viewBox="0 0 16 16">
+            <path
+              d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"/>
+          </svg>
+          <span class="ms-2">项目介绍</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#function" class="nav-link text-dark" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-windows"
+               viewBox="0 0 16 16">
+            <path
+              d="M6.555 1.375 0 2.237v5.45h6.555V1.375zM0 13.795l6.555.933V8.313H0v5.482zm7.278-5.4.026 6.378L16 16V8.395H7.278zM16 0 7.33 1.244v6.414H16V0z"/>
+          </svg>
+          <span class="ms-2">智能优化算法检验</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#model" class="nav-link text-dark" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+               class="bi bi-airplane-engines-fill" viewBox="0 0 16 16">
+            <path
+              d="M8 0c-.787 0-1.292.592-1.572 1.151A4.347 4.347 0 0 0 6 3v3.691l-2 1V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.191l-1.17.585A1.5 1.5 0 0 0 0 10.618V12a.5.5 0 0 0 .582.493l1.631-.272.313.937a.5.5 0 0 0 .948 0l.405-1.214 2.21-.369.375 2.253-1.318 1.318A.5.5 0 0 0 5.5 16h5a.5.5 0 0 0 .354-.854l-1.318-1.318.375-2.253 2.21.369.405 1.214a.5.5 0 0 0 .948 0l.313-.937 1.63.272A.5.5 0 0 0 16 12v-1.382a1.5 1.5 0 0 0-.83-1.342L14 8.691V7.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v.191l-2-1V3c0-.568-.14-1.271-.428-1.849C9.292.591 8.787 0 8 0Z"/>
+          </svg>
+          <span class="ms-2">数据填补模型对比</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#fill" class="nav-link text-dark" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-battery-full"
+               viewBox="0 0 16 16">
+            <path d="M2 6h10v4H2V6z"/>
+            <path
+              d="M2 4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2zm10 1a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h10zm4 3a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z"/>
+          </svg>
+          <span class="ms-2">新型填补方法应用</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#foot" class="nav-link text-dark" aria-current="page">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-heart"
+               viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                  d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
+          </svg>
+          <span class="ms-2">版权说明</span>
+        </a>
+      </li>
+    </ul>
+
+    <hr>
+    <!-- 侧边栏底部-->
+    <div class="dropdown ">
+      <a href="" class="d-flex align-items-center text-dark text-decoration-none dropdown-toggle">
+        <img src="/file/image/ef.png" alt="" class="rounded-circle me-2"
+             style="width: 64px;height: 64px;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award-fill"
+             viewBox="0 0 16 16">
+          <path
+            d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
+          <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+        </svg>
+        <div class="ms-2 me-2 fs-6">
+          <strong>邱赫</strong>
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+  <!--空盒子抵消navbar的position-fixed-->
+  <div class="col-md-2"></div>
+
+  <!--内容-->
+  <div class="d-flex flex-column col-md-10">
+
+    <!--章节-->
+    <div id="introduce" class="section mb-3">
+      <div class="h2 mt-3 text-center">项目介绍</div>
+      <hr>
+      <div class="rounded px-5 border mx-5" style="background-color: rgb(255,255,255)">
+        <p class="lh-lg mb-3">
+          本项目通过划分“完全随机缺失（MCR）、随机缺失（MR）、非随机缺失（MNR）”三类场景，细分缺失率梯度（1%-30%），构建了更贴近真实水文气象数据的分类框架。
+        </p>
+        <p class="lh-lg mb-3">
+          系统在模型输入层增加缺失模式识别模块，自动分析缺失数据的分布规律，动态调整模型的输入特征权重，针对三种缺失类型分别训练子模型，通过加权集成策略进行结果融合，确保模型在不同场景下均能保持较高精度。
+        </p>
+        <p class="lh-lg mb-3">
+          并创新性地结合能量谷优化算法（EVO）解决了传统优化方法在跨模型（如BPNN、L STM等）适配中的效率瓶颈，为多算法协同优化提供了新思路。
+        </p>
+        <p class="lh-lg mb-3">
+          还结合了多元集成学习模型的构建（如结合AI模型与新型MLR方法），探索了不同算法优势互补的理论路径，丰富了数据填补领域的模型融合方法论。
+        </p>
+        <p class="lh-lg mb-3">
+          同时，项目提出的“事件—缺失”关联规则库和动态数据生成策略，突破了传统随机模拟的局限，为复杂环境下的数据建模提供了可复用的理论工具。
+        </p>
+        <p class="lh-lg mb-3">
+          且本项目采用“分阶段填补”方法，先利用低缺失率区域的数据训练模型，再逐步扩展到高缺失率区域，通过多次迭代优化填补结果。
+        </p>
+        <p class="lh-lg mb-3">
+          在水文数据高度缺失时，本项目引入邻近站点数据等外部信息，通过时空插值方法生成辅助特征。
+        </p>
+        <p class="lh-lg mb-3">
+          最后本项目对神经网络进行剪枝，移除冗余参数；对随机森林（RF）等模型限制树深度和数量，减少计算量；利用GPU并行计算能力加速模型推理，对轻量化后的模型进行硬件适配优化，以便实时性要求高的任务优先分配至高性能计算节点，历史数据填补任务分配至普通节点，通过动态资源分配提升整体效率。
+        </p>
+        <p class="lh-lg mb-3">
+          构建“模型研发—测试验证—工程部署”全链条架构，构建了一套覆盖数据分类、算法优化、集成建模、系统部署的水文气象缺失数据填补解决方案。
+        </p>
+        <p class="lh-lg mb-3">
+          水文气象数据，自古以来，民生所系，国脉所关。
+        </p>
+        <p class="lh-lg mb-3">
+          本团队深知，数据链的断裂即是风险研判的盲区，缺失值的迷雾不散，灾害预警便难溯其源。
+        </p>
+        <p class="lh-lg mb-3">
+          为此，我们以数字匠心浇筑“人工智能驱动的水文气象数据智能修复平台”，将机器学习技术与流域水循环机理深度融合，在破碎数据中重构天地呼吸的完整节律。
+        </p>
+        <p class="lh-lg mb-3">
+          平台不仅破解时空高维缺失的困局，更以“修复—校验—推演”三阶闭环打通预报模型的任督二脉，使散落的历史碎片重焕新生，让沉默的监测设备再度发声。
+        </p>
+        <p class="lh-lg mb-3">
+          我们笃信，每一字节的精准填补，都是筑牢智慧水利的基石；每一条时序的连贯重构，皆是架设防灾前哨的钢索。
+        </p>
+        <p class="lh-lg mb-3">
+          愿以此平台为钥，解天地无常之惑，织数字孪生之网，在数据洪流中守护万家灯火，于方寸屏幕间绘制海晏河清的盛世图景。
+        </p>
+      </div>
+
+      <div class="text-center h2 mt-3">智能优化算法介绍</div>
+      <div class="mx-5">
+        <table class="table table-primary">
+          <thead>
+          <tr style="border-top: 2px solid #000;">
+            <th scope="col">算法名称</th>
+            <th scope="col">提出时间</th>
+            <th scope="col">主要应用领域</th>
+            <th scope="col">算法特点</th>
+            <th scope="col">优点</th>
+            <th scope="col">缺点</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>星雀优化 <br>(NOA)</td>
+            <td>2023</td>
+            <td>连续优化、工程优化</td>
+            <td>模拟星雀群体觅食时的信息共享与协作</td>
+            <td>收敛快，全局搜索强</td>
+            <td>高维问题易陷入局部最优</td>
+          </tr>
+          <tr>
+            <td>光谱优化 <br>(LSO)</td>
+            <td>2022</td>
+            <td>高维优化、信号处理</td>
+            <td>通过光谱分布模拟解空间搜索，动态调整范围</td>
+            <td>适应高维</td>
+            <td>参数敏感，计算复杂</td>
+          </tr>
+          <tr>
+            <td>蜘蛛蜂优化 <br>(SWO)</td>
+            <td>2023</td>
+            <td>多目标优化、路径规划</td>
+            <td>结合蜘蛛个体捕猎策略和蜂群信息交互机制</td>
+            <td>多模态优化能力强</td>
+            <td>迭代效率较低</td>
+          </tr>
+          <tr>
+            <td>斑马优化 <br>(ZOA)</td>
+            <td>2023</td>
+            <td>动态优化、资源调度</td>
+            <td>模拟斑马群体动态调整迁徙路径的避险行为</td>
+            <td>动态适应性强</td>
+            <td>静态问题效果一般</td>
+          <tr>
+            <td>开普勒优化 <br>(KOA)</td>
+            <td>2023</td>
+            <td>大规模优化、航天设计</td>
+            <td>基于行星引力模型，平衡全局探索与局部开发</td>
+            <td>适合大规模问题</td>
+            <td>参数调节复杂</td>
+          </tr>
+          <tr>
+            <td>淘金优化 <br>(GRO)</td>
+            <td>2023</td>
+            <td>组合优化、资源分配</td>
+            <td>模拟淘金者从随机勘探到集中开采的阶段性策略</td>
+            <td>鲁棒性强</td>
+            <td>早期收敛风险较高</td>
+          </tr>
+          <tr class="fw-bolder" style="border-bottom: 2px solid #000;">
+            <td>能量谷优化 <br>(EVO)</td>
+            <td>2023</td>
+            <td>非凸优化、工程优化</td>
+            <td>模拟能量场中粒子向低能态迁移的过程进行优化</td>
+            <td>收敛快、稳定性高、准确性强</td>
+            <td>资源耗费量大</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <hr>
+    <div id="function" class="section mb-3">
+      <div class="h2 text-center mt-3">智能优化算法检验</div>
+      <hr>
+      <div class="col">
+        <div class="row">
+          <div class="col col-md-5">
+            <div class="ps-3">
+              <div class="h3 text-center">方程式</div>
+              <div class="btn-group-vertical" role="group" aria-label="Vertical radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio1" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio1" style="height:70px">
+                  <img src="./svgs/equation1.svg" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio2">
+                  <img src="./svgs/equation2.svg" style="height: 60px" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio3">
+                  <img src="./svgs/equation3.svg" style="height: 60px" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio4" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio4">
+                  <img src="./svgs/equation4.svg" style="height: 60px" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio5" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio5">
+                  <img src="./svgs/equation5.svg" style="height: 60px" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio6" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio6">
+                  <img src="./svgs/equation6.svg" style="height: 60px" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio7" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio7">
+                  <img src="./svgs/equation7.svg" style="height: 60px" alt="">
+                </label>
+                <input type="radio" class="btn-check" name="btnradio1" id="vbtn-radio8" autocomplete="off">
+                <label class="btn btn-outline-primary" for="vbtn-radio8">
+                  <img src="./svgs/equation8.svg" style="height: 60px" alt="">
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col col-md-7">
+            <div class="h3 text-center">函数图像</div>
+            <img id="funcImage" src="./images/blank.png" alt="">
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col col-md-5">
+            <div class="ps-3">
+              <div class="h3 text-center">方法功能</div>
+              <div>
+                <button type="button" class="btn btn-primary mb-2 btn-lg" id="calibrateButton">算法效用检验</button>
+                <button type="button" class="btn btn-primary mb-2 btn-lg" id="deviationButton">标准差验算</button>
+              </div>
+            </div>
+
+          </div>
+          <div class="col col-md-7">
+            <div class="h3 text-center">优化算法效用检验与比对</div>
+            <img id="lineImage" src="./images/blank.png" alt="">
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <hr>
+    <div id="model" class="section mb-3">
+      <div class="h2 text-center">数据填补模型对比</div>
+
+      <div class="row">
+        <!-- 左边区域 -->
+        <div class="col-md-5">
+          <!-- 左上区域 -->
+          <div>
+            <div>
+              <div class="h4 text-center">文件导入</div>
+              <div class="input-group mb-3">
+                <input type="file" class="form-control" accept=".xlsx" placeholder="文件路径" value="">
+              </div>
+            </div>
+            <div>
+              <div class="h4 text-center">缺失类型</div>
+              <div class="btn-group mb-3 d-flex" role="group" aria-label="缺失类型">
+                <input type="radio" class="btn-check" name="lack" id="btn-lack-1" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btn-lack-1"> 完全随机降水数据缺失 </label>
+                <input type="radio" class="btn-check" name="lack" id="btn-lack-2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btn-lack-2">集中年份完全随机降水数据缺失</label>
+                <input type="radio" class="btn-check" name="lack" id="btn-lack-3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btn-lack-3"> 随机降水数据缺失 </label>
+                <input type="radio" class="btn-check" name="lack" id="btn-lack-4" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btn-lack-4"> 非随机降水数据缺失 </label>
+              </div>
+            </div>
+            <div class="h4 text-center">缺失率</div>
+            <div class="btn-group mb-3 d-flex" role="group" aria-label="缺失率">
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio2-1" autocomplete="off" checked>
+              <label class="btn btn-outline-primary" for="btnradio2-1"> 1%</label>
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio2-2" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio2-2"> 5%</label>
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio2-3" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio2-3">10%</label>
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio2-4" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio2-4">20%</label>
+              <input type="radio" class="btn-check" name="btnradio2" id="btnradio2-5" autocomplete="off">
+              <label class="btn btn-outline-primary" for="btnradio2-5">30%</label>
+            </div>
+            <div>
+              <div class="h4 text-center">功能</div>
+              <hr>
+              <div class="d-flex justify-content-around mb-3">
+                <button class="btn btn-primary btn-lg" id="evaluateButton">指标评估计算</button>
+                <button class="btn btn-primary btn-lg" id="violinButton">稳定性评价</button>
+                <button class="btn btn-primary btn-lg" id="pointButton">与实际值比较</button>
+              </div>
+            </div>
+          </div>
+          <!-- 左下区域 -->
+          <div class="">
+            <div class="h4 text-center">计算结果</div>
+            <hr>
+            <div class="border overflow-auto" style="height: 160px">
+              <table class="w-100 border table-striped dataTable bg-white" id="resultTable">
+              </table>
+            </div>
+            <button class="btn btn-success btn-sm" id="copyButton">复制表格</button>
+          </div>
+        </div>
+        <!-- 右边区域 -->
+        <div class="col-md-7 border">
+          <div class="h3 text-center">图像</div>
+          <img src="./images/blank.png" alt="示例图片" class="img-fluid" id="violinAndPoint">
+        </div>
+      </div>
+
+
+    </div>
+    <hr>
+    <div id="fill" class="section mb-3">
+      <div class="h2">新型填补方法应用</div>
+      <div class="row">
+        <div class="col-md-6">
+          <div>
+            <div class="mb-3">
+              <div class="h4 text-center">流域选择</div>
+              <hr>
+              <div class="dropdown mb-2">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                  <text>选择流域</text>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="basin">
+                  <li><a class="dropdown-item">椒江流域</a></li>
+                  <li><a class="dropdown-item">钱塘江流域</a></li>
+                  <li><a class="dropdown-item">瓯江流域</a></li>
+                  <li><a class="dropdown-item">甬江流域</a></li>
+                  <li><a class="dropdown-item">苕溪流域</a></li>
+                  <li><a class="dropdown-item">运河流域</a></li>
+                  <li><a class="dropdown-item">飞云江流域</a></li>
+                  <li><a class="dropdown-item">鳌江流域</a></li>
+                </ul>
+              </div>
+              <img src="./images/blank.png" alt="示例图片" class="img-fluid border" id="basinImage">
+            </div>
+
+            <div class="h4 text-center">文件导入</div>
+            <div class="input-group mb-3">
+              <input type="file" id="tableInput" accept=".xlsx" class="form-control">
+            </div>
+            <div>
+              <div>
+                <div class="h4 text-center">功能</div>
+                <hr>
+                <div class="d-flex justify-content-around mb-3">
+                  <button class="btn btn-primary btn-lg" id="analysisButton">数据分析</button>
+                  <button class="btn btn-primary btn-lg" id="tableFill">数据填补</button>
+                  <button class="btn btn-primary btn-lg" id="saveButton">保存表格</button>
+                  <input type="file" id="saveInput" accept=".xlsx" style="display: none;">
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="h4 text-center">数据分析结果</div>
+              <hr>
+              <div class="row d-flex">
+                <div class="col-md-4">
+                  <label class="form-label">最大值
+                    <input type="text" class="form-control" id="analysisInput1"></label>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">最小值
+                    <input type="text" class="form-control" id="analysisInput2"></label>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">平均值
+                    <input type="text" class="form-control" id="analysisInput3"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 border overflow-auto" style="max-height: 800px">
+          <div class="h4 text-center mt-2">数据表格</div>
+          <table id="dataTable" class="w-100 border table-striped dataTable bg-white"></table>
+        </div>
+      </div>
+
+
+    </div>
+    <hr>
+    <div id="foot" class="section mb-3">
+      <footer class="footer bg-info-subtle py-5">
+        <div class="container">
+          <div class="col">
+            <div class="row">
+              <!-- 版权信息和备案号区域 -->
+              <div class="col-md-6">
+                <p><strong>版权说明</strong></p>
+                <ul>
+                  <li>京ICP备11019815号-4</li>
+                  <li>京ICP证040431号</li>
+                  <li>网络出版服务许可证网出证(京)字第976号出版物经营许可证</li>
+                  <li>京公网安备11210806020269号</li>
+                  <li>互联网水文信息服务许可证：京（2022）0000115</li>
+                  <li>气象预报社有限公司 KDN</li>
+                  <li>平台基础技术由 KBASE 11.0 提供</li>
+                </ul>
+              </div>
+
+              <!--链接区域 -->
+              <div class="col-md-6">
+                <h5>快速访问</h5>
+                <ul>
+                  <li><a href="https://www.zjweu.edu.cn/" class="">浙江水利水电学院</a></li>
+                  <li><a href="https://github.com/" class="">Github</a></li>
+                  <li><a href="https://blog.csdn.net/zhan12445?type=blog" class="">CSDN-zhan114514</a></li>
+                  <li><a href="https://www.cnki.net/" class="">中国知网</a></li>
+                </ul>
+              </div>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-between">
+              <p>&copy; 2024 版权所有 邱赫、刘高瞻、陈逸静、肖炅灵</p>
+              <div class="d-flex justify-content-between w-25">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     class="bi bi-cloud-drizzle" viewBox="0 0 16 16">
+                  <path
+                    d="M4.158 12.025a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm-3.5 1.5a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 0 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm6 0a.5.5 0 0 1 .316.633l-.5 1.5a.5.5 0 1 1-.948-.316l.5-1.5a.5.5 0 0 1 .632-.317zm.747-8.498a5.001 5.001 0 0 0-9.499-1.004A3.5 3.5 0 1 0 3.5 11H13a3 3 0 0 0 .405-5.973zM8.5 2a4 4 0 0 1 3.976 3.555.5.5 0 0 0 .5.445H13a2 2 0 0 1 0 4H3.5a2.5 2.5 0 1 1 .605-4.926.5.5 0 0 0 .596-.329A4.002 4.002 0 0 1 8.5 2z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-bell"
+                     viewBox="0 0 16 16">
+                  <path
+                    d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     class="bi bi-bookmark-star" viewBox="0 0 16 16">
+                  <path
+                    d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
+                  <path
+                    d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-box"
+                     viewBox="0 0 16 16">
+                  <path
+                    d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                     class="bi bi-briefcase" viewBox="0 0 16 16">
+                  <path
+                    d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5zm1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0zM1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+              </div>
+
+            </div>
+            <div style="height: 100px"></div>
+          </div>
+        </div>
+      </footer>
+
+
+    </div>
+
+
+  </div>
+</div>
+<!--nav item 变换-->
+<script>
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.section');
+  console.log(sections)
+  console.log(navLinks)
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollY >= sectionTop - sectionHeight / 3) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href').substring(1) === current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+<!--下拉框选项改变框内容-->
+<script>
+  const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+  const dropdownItems = document.querySelectorAll('.dropdown-item');
+
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', function (e) {
+      e.preventDefault();
+      dropdownMenuButton.textContent = this.textContent;
+    });
+  });
+</script>
+<!--数据分析按钮-->
+<script>
+  const analysisInput1 = document.getElementById('analysisInput1');
+  const analysisInput2 = document.getElementById('analysisInput2');
+  const analysisInput3 = document.getElementById('analysisInput3');
+  const analysisButton = document.getElementById('analysisButton');
+  analysisButton.addEventListener('click', function () {
+    analysisInput1.value = 69.6;
+    analysisInput2.value = 0.4;
+    analysisInput3.value = 13.152;
+  });
+</script>
+<script>
+
+  const progressBarContainer = document.getElementById('progressBarContainer');
+  const progressBar = document.getElementById('progressBar');
+  const func1 = document.getElementById('vbtn-radio1');
+  const func2 = document.getElementById('vbtn-radio2');
+  const func3 = document.getElementById('vbtn-radio3');
+  const calibrateButton = document.getElementById('calibrateButton');
+  const deviationButton = document.getElementById('deviationButton');
+  const funcImage = document.getElementById('funcImage');
+  const lineImage = document.getElementById('lineImage');
+  func1.addEventListener('click', () => {
+    setTimeout(() => {
+      funcImage.src = "./images/func3.png"
+    }, 1000)
+  })
+  func2.addEventListener('click', () => {
+    setTimeout(() => {
+      funcImage.src = "./images/func2.png"
+    }, 1000)
+  })
+  func3.addEventListener('click', () => {
+    setTimeout(() => {
+      funcImage.src = "./images/func1.png"
+    }, 1000)
+  })
+
+  let line = 1;
+
+  deviationButton.addEventListener('click', () => {
+    lineImage.src = "./images/taile.png"
+  });
+  calibrateButton.addEventListener('click', () => {
+    progressBarContainer.style.display = 'block';
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        progressBar.style.width = `0`;
+        progressBar.textContent = `0`;
+        progressBarContainer.style.display = 'none';
+        {
+          // 功能实现
+          if (line === 1) {
+            line = 2;
+            lineImage.src = "./images/line2.png"
+          } else if (line === 2) {
+            line = 3;
+            lineImage.src = "./images/line3.png"
+          } else if (line === 3) {
+            line = 1;
+            lineImage.src = "./images/line1.png"
+          }
+        }
+      } else {
+        width += 2;
+        progressBar.style.width = `${width}%`;
+        progressBar.textContent = `${width}%`;
+      }
+    }, 60);
+  });
+
+  const fileInput = document.getElementById('tableInput');
+  const tableFill = document.getElementById('tableFill');
+  const dataTable = document.getElementById('dataTable');
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    console.log(file)
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, {type: 'array'});
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const dataArray = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+        dataTable.innerHTML = '';
+        dataArray.forEach((rowData) => {
+          const row = document.createElement('tr');
+          rowData.forEach((cellData) => {
+            const cell = document.createElement('td');
+            cell.textContent = cellData;
+            row.appendChild(cell);
+          });
+          dataTable.appendChild(row);
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    }
+  });
+
+  const completeData = [
+    [2019, 6, 1, 1],
+    [2019, 6, 2, 1],
+    [2019, 6, 3, 1],
+    [2019, 6, 4, 1],
+    [2019, 6, 5, 1],
+    [2019, 6, 6, 18.6],
+    [2019, 6, 7, 18.6],
+    [2019, 6, 8, 19.1],
+    [2019, 6, 9, 19.2],
+    [2019, 6, 10, 18.7],
+    [2019, 6, 11, 18.8],
+    [2019, 6, 12, 18.9],
+    [2019, 6, 13, 18.7],
+    [2019, 6, 14, 18.3],
+    [2019, 6, 15, 18.7],
+    [2019, 6, 16, 18.3],
+    [2019, 6, 17, 18.3],
+    [2019, 6, 18, 16.4],
+    [2019, 6, 19, 0.4],
+    [2019, 6, 20, 1.06],
+    [2019, 6, 21, 18.8],
+    [2019, 6, 22, 18.7],
+    [2019, 6, 23, 18.7],
+    [2019, 6, 24, 1],
+    [2019, 6, 25, 18.4],
+    [2019, 6, 26, 13.8],
+    [2019, 6, 27, 18.2],
+    [2019, 6, 28, 17.9],
+    [2019, 6, 29, 17.9],
+    [2019, 6, 30, 18],
+    [2019, 7, 1, 20.6],
+    [2019, 7, 2, 23.1],
+    [2019, 7, 3, 22.8],
+    [2019, 7, 4, 30.4],
+    [2019, 7, 5, 35.3],
+    [2019, 7, 6, 44.3],
+    [2019, 7, 7, 69.6],
+    [2019, 7, 8, 60.7],
+    [2019, 7, 9, 48.8],
+    [2019, 7, 10, 57.6],
+    [2019, 7, 11, 56.5],
+    [2019, 7, 12, 63.9],
+    [2019, 7, 13, 47.9],
+    [2019, 7, 14, 35.3],
+    [2019, 7, 15, 33.2],
+    [2019, 7, 16, 36.4],
+    [2019, 7, 17, 34.2],
+    [2019, 7, 18, 36.1],
+    [2019, 7, 19, 34.9],
+    [2019, 7, 20, 30.7],
+    [2019, 7, 21, 31],
+    [2019, 7, 22, 30.9],
+    [2019, 7, 23, 24.1],
+    [2019, 7, 24, 24.4],
+    [2019, 7, 25, 19.9],
+    [2019, 7, 26, 11.5],
+    [2019, 7, 27, 18.8],
+    [2019, 7, 28, 18.9],
+    [2019, 7, 29, 1],
+    [2019, 7, 30, 1],
+    [2019, 7, 31, 18.7],
+    [2019, 8, 1, 19],
+    [2019, 8, 2, 18.7],
+    [2019, 8, 3, 18],
+    [2019, 8, 4, 18.2],
+    [2019, 8, 5, 17.7],
+    [2019, 8, 6, 17.9],
+    [2019, 8, 7, 18.4],
+    [2019, 8, 8, 30.6],
+    [2019, 8, 9, 30.4],
+    [2019, 8, 10, 29.9],
+    [2019, 8, 11, 28.8],
+    [2019, 8, 12, 28.7],
+    [2019, 8, 13, 31.9],
+    [2019, 8, 14, 34.9],
+    [2019, 8, 15, 34.8],
+    [2019, 8, 16, 35.1],
+    [2019, 8, 17, 35.2],
+    [2019, 8, 18, 35.6],
+    [2019, 8, 19, 32.4],
+    [2019, 8, 20, 30.5],
+    [2019, 8, 21, 31],
+    [2019, 8, 22, 31.1],
+    [2019, 8, 23, 28.7],
+    [2019, 8, 24, 19],
+    [2019, 8, 25, 18.6],
+    [2019, 8, 26, 18.8],
+    [2019, 8, 27, 15.2],
+    [2019, 8, 28, 9.14],
+    [2019, 8, 29, 10.2],
+    [2019, 8, 30, 10.2],
+    [2019, 8, 31, 10.1],
+    [2019, 9, 1, 9.49],
+    [2019, 9, 2, 17.4],
+    [2019, 9, 3, 26.8],
+    [2019, 9, 4, 36.3],
+    [2019, 9, 5, 36.5],
+    [2019, 9, 6, 33.8],
+    [2019, 9, 7, 31.1],
+    [2019, 9, 8, 31.4],
+    [2019, 9, 9, 31.2],
+    [2019, 9, 10, 18.8],
+    [2019, 9, 11, 18.5],
+    [2019, 9, 12, 18.5],
+    [2019, 9, 13, 18.4],
+    [2019, 9, 14, 16.8],
+    [2019, 9, 15, 17.8],
+    [2019, 9, 16, 17.7],
+    [2019, 9, 17, 1],
+    [2019, 9, 18, 1],
+    [2019, 9, 19, 1],
+    [2019, 9, 20, 1],
+    [2019, 9, 21, 1],
+    [2019, 9, 22, 1],
+    [2019, 9, 23, 1],
+    [2019, 9, 24, 1],
+    [2019, 9, 25, 1],
+    [2019, 9, 26, 8.23],
+    [2019, 9, 27, 1],
+    [2019, 9, 28, 1],
+    [2019, 9, 29, 1],
+    [2019, 9, 30, 16.5],
+    [2019, 10, 1, 18.6],
+    [2019, 10, 2, 8.75],
+    [2019, 10, 3, 9.08],
+    [2019, 10, 4, 9.99],
+    [2019, 10, 5, 10.5],
+    [2019, 10, 6, 10.6],
+    [2019, 10, 7, 1],
+    [2019, 10, 8, 1],
+    [2019, 10, 9, 1],
+    [2019, 10, 10, 1],
+    [2019, 10, 11, 1],
+    [2019, 10, 12, 1],
+    [2019, 10, 13, 1],
+    [2019, 10, 14, 1],
+    [2019, 10, 15, 1],
+    [2019, 10, 16, 1],
+    [2019, 10, 17, 1],
+    [2019, 10, 18, 1],
+    [2019, 10, 19, 1],
+    [2019, 10, 20, 1],
+    [2019, 10, 21, 1],
+    [2019, 10, 22, 8.38],
+    [2019, 10, 23, 1],
+    [2019, 10, 24, 5.27],
+    [2019, 10, 25, 11.9],
+    [2019, 10, 26, 1],
+    [2019, 10, 27, 1],
+    [2019, 10, 28, 1],
+    [2019, 10, 29, 1],
+    [2019, 10, 30, 1],
+    [2019, 10, 31, 1],
+    [2019, 11, 1, 1],
+    [2019, 11, 2, 1],
+    [2019, 11, 3, 1],
+    [2019, 11, 4, 1],
+    [2019, 11, 5, 1],
+    [2019, 11, 6, 1],
+    [2019, 11, 7, 1],
+    [2019, 11, 8, 1],
+    [2019, 11, 9, 1],
+    [2019, 11, 10, 12.1],
+    [2019, 11, 11, 1],
+    [2019, 11, 12, 1],
+    [2019, 11, 13, 1],
+    [2019, 11, 14, 1],
+    [2019, 11, 15, 2.18],
+    [2019, 11, 16, 1],
+    [2019, 11, 17, 1],
+    [2019, 11, 18, 1],
+    [2019, 11, 19, 1],
+    [2019, 11, 20, 1],
+    [2019, 11, 21, 1],
+    [2019, 11, 22, 1],
+    [2019, 11, 23, 1],
+    [2019, 11, 24, 1],
+    [2019, 11, 25, 1],
+    [2019, 11, 26, 4.41],
+    [2019, 11, 27, 1],
+    [2019, 11, 28, 1],
+    [2019, 11, 29, 1],
+    [2019, 11, 30, 1],
+    [2019, 12, 1, 1],
+    [2019, 12, 2, 1],
+    [2019, 12, 3, 1],
+    [2019, 12, 4, 1],
+    [2019, 12, 5, 1],
+    [2019, 12, 6, 1],
+    [2019, 12, 7, 1],
+    [2019, 12, 8, 1],
+    [2019, 12, 9, 1],
+    [2019, 12, 10, 1],
+    [2019, 12, 11, 1],
+    [2019, 12, 12, 9.57],
+    [2019, 12, 13, 1],
+    [2019, 12, 14, 1],
+    [2019, 12, 15, 1],
+    [2019, 12, 16, 1],
+    [2019, 12, 17, 1],
+    [2019, 12, 18, 1],
+    [2019, 12, 19, 1],
+    [2019, 12, 20, 7.54],
+    [2019, 12, 21, 6.62],
+    [2019, 12, 22, 1],
+    [2019, 12, 23, 1],
+    [2019, 12, 24, 1],
+    [2019, 12, 25, 1],
+    [2019, 12, 26, 1],
+    [2019, 12, 27, 1],
+    [2019, 12, 28, 1],
+    [2019, 12, 29, 1],
+    [2019, 12, 30, 1],
+    [2019, 12, 31, 1],
+
+  ]
+  tableFill.addEventListener('click', () => {
+    progressBarContainer.style.display = 'block';
+    let width = 0;
+    const interval = setInterval(() => {
+      if (width >= 100) {
+        clearInterval(interval);
+        progressBar.style.width = `0`;
+        progressBar.textContent = `0`;
+        progressBarContainer.style.display = 'none';
+        {
+
+          dataTable.innerHTML = '';
+          completeData.forEach((rowData) => {
+            const row = document.createElement('tr');
+            rowData.forEach((cellData) => {
+              const cell = document.createElement('td');
+              cell.textContent = cellData;
+              row.appendChild(cell);
+            });
+            dataTable.appendChild(row);
+
+
+          });
+        }
+      } else {
+        width += 2;
+        progressBar.style.width = `${width}%`;
+        progressBar.textContent = `${width}%`;
+      }
+    }, 100);
+  });
+</script>
+<!--指标评价计算按钮-->
+<script>
+
+  const data1 = [
+    ["评估指标", "BPNN", "RF", "SVR", "LSTM", "MLR"],
+    ["PCC", 0.9205, 0.9296, 0.8925, 0.9373, 0.9472],
+    ["NSE", 0.8837, 0.8924, 0.8568, 0.8998, 0.9093],
+    ["Pbias (%)", -7.4057, -7.7397, -11.4293, -10.3531, -5.6525],]
+
+  const data2 = [
+    ["评估指标", "BPNN", "RF", "SVR", "LSTM", "MLR"],
+    ["PCC", 0.8906, 0.8883, 0.8648, 0.9150, 0.9194,],
+    ["NSE", 0.8550, 0.8528, 0.8302, 0.8784, 0.8826,],
+    ["Pbias (%)", 11.4680, 12.8801, 12.5511, 12.4695, 11.1567,],]
+
+  const data3 = [
+    ["评估指标", "BPNN", "RF", "SVR", "LSTM", "MLR"],
+    ["PCC", 0.8466, 0.8629, 0.8449, 0.8607, 0.9329],
+    ["NSE", 0.8127, 0.8284, 0.8111, 0.8263, 0.8956],
+    ["Pbias (%)", -18.2202, -24.1533, -24.5757, -20.2649, -12.3834],]
+
+  const evaluateButton = document.getElementById('evaluateButton');
+  const resultTable = document.getElementById('resultTable');
+  const violinButton = document.getElementById('violinButton');
+  const pointButton = document.getElementById('pointButton');
+  const violinAndPoint = document.getElementById('violinAndPoint');
+
+  let dataN = 1
+  evaluateButton.addEventListener('click', () => {
+    if (dataN === 1) {
+      dataN = 2;
+      data = data1;
+    } else if (dataN === 2) {
+      dataN = 3;
+      data = data2;
+    } else if (dataN === 3) {
+      dataN = 1;
+      data = data3;
+    }
+    setTimeout(() => {
+      resultTable.innerHTML = '';
+      data.forEach((rowData) => {
+        const row = document.createElement('tr');
+        rowData.forEach((cellData) => {
+          const cell = document.createElement('td');
+          cell.textContent = cellData;
+          row.appendChild(cell);
+        });
+        resultTable.appendChild(row);
+      });
+    }, 1000)
+  });
+  let violin = 1;
+  violinButton.addEventListener('click', () => {
+    if (violin === 1) {
+      violin = 3;
+      violinAndPoint.src = "./images/violin1.jpg";
+    } else if (violin === 3) {
+      violin = 5;
+      violinAndPoint.src = "./images/violin3.jpg";
+    } else if (violin === 5) {
+      violin = 1;
+      violinAndPoint.src = "./images/violin5.jpg";
+    }
+  });
+  let point = 1
+  pointButton.addEventListener('click', () => {
+    if (point === 1) {
+      point = 3;
+      violinAndPoint.src = "./images/point1.jpg";
+    } else if (point === 3) {
+      point = 5;
+      violinAndPoint.src = "./images/point3.jpg";
+    } else if (point === 5) {
+      point = 1;
+      violinAndPoint.src = "./images/point5.jpg";
+    }
+  });
+</script>
+<!--保存按钮-->
+<script>
+  const saveButton = document.getElementById('saveButton');
+  const saveInput = document.getElementById('saveInput');
+  saveButton.addEventListener('click', () => {
+    saveInput.click();
+    saveInput.onchange = function () {
+      alert("保存成功")
+    }
+  });
+</script>
+<!--流域图展示-->
+<script>
+  const basin = document.getElementById('basin');
+  const basinImage = document.getElementById('basinImage');
+  basin.addEventListener('click', function () {
+    basinImage.src = "./images/jiaojiang.jpg";
+  });
+</script>
+<!--<script src="/lib/study.js"></script>-->
+<script src="./lib/bootstrap.bundle.min.js"></script>
+<script src="lib/xlsx_0.18.5.js"></script>
+</body>
+</html>

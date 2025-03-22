@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mouse Points Tracking, Drawing and Sending</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Microsoft YaHei", serif;
+      font-size: 14px;
+      text-decoration: none;
+      box-sizing: border-box;
+      color: black;
+    }
+
+    body {
+      width: 1280px;
+      margin: 20px auto;
+      background-color: #c1d8dd;
+    }
+
+    .top {
+      height: 500px;
+      margin: 20px auto;
+      align-items: stretch;
+      display: flex;
+      background-color: #c9cdcd;
+    }
+
+    .top div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .top div h3 {
+      font-size: 20px;
+      margin: 10px 20px;
+    }
+
+    #container {
+      margin:20px;
+      border: 1px solid black;
+    }
+
+    #output {
+      margin:20px;
+      border: 1px solid black;
+      overflow-y: scroll;
+      font-size: 10px;
+    }
+
+    #chartCanvas {
+      width: 1280px;
+      height: 640px;
+      border: 1px solid black;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="top">
+  <div>
+    <h3>画板</h3>
+    <div id="container"></div>
+  </div>
+  <div>
+    <h3>输出</h3>
+    <p id="output"></p>
+  </div>
+</div>
+<hr>
+<div>
+  <canvas id="chartCanvas"></canvas>
+</div>
+
+<script>
+  const container = document.getElementById('container');
+  const output = document.getElementById('output');
+  const chartCanvas = document.getElementById('chartCanvas');
+  const ctx = chartCanvas.getContext('2d');
+  let isDrawing = false;
+  let points = [];
+  let chart;
+
+  // 鼠标按下事件
+  container.addEventListener('mousedown', (e) => {
+    isDrawing = true;
+    points = [];
+    const x = e.offsetX;
+    const y = e.offsetY;
+    points.push([x, y]);
+  });
+
+  // 鼠标移动事件
+  container.addEventListener('mousemove', (e) => {
+    if (isDrawing) {
+      const x = e.offsetX;
+      const y = e.offsetY;
+      points.push([x, y]);
+      const result = points.map(subArray => subArray.join(' ')).join('\n');
+      // output.textContent = JSON.stringify(points, null, 2);
+      output.innerText = result;
+    }
+  });
+
+  // 鼠标松开事件
+  container.addEventListener('mouseup', () => {
+    isDrawing = false;
+    // 发送点数据到 Python 服务器
+    fetch('http://127.0.0.1:5000/receive_points', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({points: points})
+    })
+      .then(response => response.json())
+      .then(data => console.log(data.message))
+      .catch(error => console.error('Error:', error));
+
+    // 使用 Chart.js 绘制点
+    if (chart) {
+      chart.destroy();
+    }
+    const data = {
+      labels: points.map((_, index) => index),
+      datasets: [{
+        label: 'Mouse Points',
+        data: points.map(point => ({x: point[0], y: point[1]})),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1,
+        pointRadius: 3
+      }]
+    };
+    const config = {
+      type: 'scatter',
+      data: data,
+      options: {
+        scales: {
+          x: {
+            min: 0,
+            max: container.offsetWidth
+          },
+          y: {
+            min: 0,
+            max: container.offsetHeight
+          }
+        }
+      }
+    };
+    chart = new Chart(ctx, config);
+  });
+
+  // 鼠标移出容器事件
+  container.addEventListener('mouseout', () => {
+    isDrawing = false;
+  });
+</script>
+</body>
+
+</html>

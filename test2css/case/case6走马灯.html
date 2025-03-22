@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>走马灯</title>
+  <!--
+  实现走马灯效果
+  -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      width: 400px;
+      height: 154px;
+      border: 3px solid #000;
+      margin: 100px auto;
+      overflow: hidden;
+    }
+
+    .box ul {
+      display: flex;
+      animation: move 5s linear infinite;
+    }
+
+    .box ul li {
+      list-style: none;
+      width: 150px;
+      height: 150px;
+      display: inline-block;
+    }
+
+    .box ul li img {
+      width: 150px;
+      height: 150px;
+    }
+
+    @keyframes move {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-1350px);
+      }
+    }
+
+    .box:hover ul {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <ul>
+    <li><img src="/file/image/1.png" alt=""></li>
+    <li><img src="/file/image/2.png" alt=""></li>
+    <li><img src="/file/image/3.png" alt=""></li>
+    <li><img src="/file/image/4.png" alt=""></li>
+    <li><img src="/file/image/5.png" alt=""></li>
+    <li><img src="/file/image/6.png" alt=""></li>
+    <li><img src="/file/image/7.png" alt=""></li>
+    <li><img src="/file/image/8.png" alt=""></li>
+    <li><img src="/file/image/9.png" alt=""></li>
+
+    <!--
+    为了无缝显示，这里要多显示开头的图片
+    -->
+
+    <li><img src="/file/image/1.png" alt=""></li>
+    <li><img src="/file/image/2.png" alt=""></li>
+    <li><img src="/file/image/3.png" alt=""></li>
+  </ul>
+</div>
+</body>
+</html>

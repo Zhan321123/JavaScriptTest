@@ -1,0 +1,20 @@
+/*
+导出位置和名字设置
+ 导出什么地方+名字  out: 路径.css
+ 导出什么地方      out: 路径文件夹/
+ 不导出           out: false
+*/
+// out:false
+
+//导入less文件到当前less文件中
+//@import "less文件路径";
+@import "test1";
+
+// 变量仍然可以使用
+.d {
+  color: @myColor;
+}
+
+.x {
+  color: #fff;
+}

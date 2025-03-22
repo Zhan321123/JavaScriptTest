@@ -1,0 +1,32 @@
+// vscode配置less编译为css，安装Easy Less插件即可
+div {
+  color: red;
+  width: 3rem;
+  height: 4rem;
+  background-color: #0e7c7a;
+  border-radius: 0.5*3rem;
+  // 除法要加括号
+  padding: (0.5/3rem);
+
+  .box {
+    color: red;
+
+    a {
+      text-decoration: none;
+// &相当于自己
+      &:hover {
+        color: #0e7c7a;
+      }
+    }
+  }
+}
+// 定义变量
+// @变量名:属性;
+@myColor: 'pink';
+
+.b{
+  color: @myColor;
+}
+.c{
+  color: @myColor;
+}

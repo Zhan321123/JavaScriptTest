@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Components</title>
+</head>
+<body>
+<!--
+下拉菜单：
+  <select>
+    <option selected>内容</option>...
+  </select>
+selected属性:
+  默认选中
+-->
+你喜欢
+<select>
+  <option>China</option>
+  <option>America</option>
+  <option selected>Japan</option>
+  <option>Korea</option>
+  <option>France</option>
+</select><br><hr>
+
+<!--
+多行文本，文本域：
+  <textarea cols="列数" rows="行数">初始内容</textarea>
+-->
+<textarea cols="30" rows="10">我喜欢的理由是：</textarea><br><hr>
+
+<!--
+label标签：
+  <label>内容</label>
+作用：
+  扩大点击区域
+    写法1：组件id="id"，label的for="id"
+    写法2：直接label包裹组件
+-->
+<input type="radio" name="sex" id="m" checked><label for="m">male</label>
+<label><input type="radio" name="sex">female</label>
+<br><hr>
+<!--
+按钮：
+  <button type='类型'>内容</button>
+type参数：
+  reset：重置表单，重置一个form中的所有输入域的值
+  submit：提交表单
+  button：普通按钮
+-->
+作用域
+<form>
+  email <input><br>
+  password <input><br>
+  recommend <textarea>my recommend is:...</textarea><br>
+  <button>login</button>
+  <button type="reset">reset</button>
+</form>
+
+
+</body>
+</html>

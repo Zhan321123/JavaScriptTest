@@ -1,0 +1,23 @@
+div {
+  color: red;
+  width: 3rem;
+  height: 4rem;
+  background-color: #0e7c7a;
+  border-radius: 1.5rem;
+  padding: 0.16666667rem;
+}
+div .box {
+  color: red;
+}
+div .box a {
+  text-decoration: none;
+}
+div .box a:hover {
+  color: #0e7c7a;
+}
+.b {
+  color: 'pink';
+}
+.c {
+  color: 'pink';
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<button>提交</button>
+<!--
+解绑事件：
+  1 .onclick = fn，.onclick = null
+  2 .removeEventListener('click', fn)，.removeEventListener('click', fn)
+
+注意：
+  1 onclick与removeEventListener混用无效
+  2 removeEventListener方法中，匿名函数无法解绑
+-->
+<script>
+  const btn = document.querySelector('button')
+  // btn.addEventListener('click', function () {
+  //   alert('提交成功')
+  // })
+  btn.onclick = function () {
+    alert('提交成功')
+  }
+  btn.onclick = null
+  function fn(){
+    alert('再次提交')
+  }
+  btn.addEventListener('click', fn)
+  btn.removeEventListener('click', fn)
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #4cc5de;
+    }
+
+    .ad {
+      width: 300px;
+      height: 300px;
+      background-color: #81b363;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+<button class="b">停止</button>
+<button class="c">继续</button>
+
+<div class="ad">
+  I am advertisement
+  <button class="d">关闭广告</button>
+</div>
+<!--
+setInterval(函数,间隔时间ms):
+  间歇函数，重复调用函数，先间隔再执行
+  返回定时器编号int
+clearInterval(定时器编号int):
+  停止定时器
+
+setTimeout(function, ms)
+  延时函数，延迟ms毫秒后执行函数，返回编号int
+clearTimeout(编号int)
+  停止延时函数
+-->
+<script>
+  const box = document.querySelector('.box')
+  console.dir(box)
+
+  function fn() {
+    box.style.backgroundColor = '#' + Math.random().toString(16).slice(2, 8)
+  }
+
+  let n = setInterval(fn, 100);
+
+  function stop() {
+    console.log(n)
+    clearInterval(n)
+  }
+
+  document.querySelector('.b').onclick = stop
+
+  function cont() {
+    n = setInterval(fn, 100)
+    console.log(n)
+  }
+
+  document.querySelector('.c').onclick = cont
+</script>
+<script>
+  setTimeout(function () {
+    alert('2秒后执行')
+  }, 2000)
+  let timeout = setTimeout(function () {
+    alert('5秒后执行')
+  }, 5000);
+  setTimeout(function () {
+    clearTimeout(timeout)
+  }, 4000)
+
+</script>
+<script>
+  const ad = document.querySelector('.ad')
+  setTimeout(function () {
+    ad.style.display = 'none'
+  }, 5000)
+  document.querySelector('.d').onclick = function () {
+    ad.style.display = 'none'
+  }
+</script>
+</body>
+</html>

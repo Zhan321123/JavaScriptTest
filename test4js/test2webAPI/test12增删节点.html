@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: #68af3e;
+    }
+    .uls ul{
+      width: 500px;
+      height: 300px;
+      display: flex;
+      border: 1px solid #000;
+      list-style: none;
+    }
+    .uls ul li{
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <h3>创建元素</h3>
+  <p>你好</p>
+</div>
+<hr>
+<br>
+<div class="uls">
+  <ul>
+    <li>
+      <a href="">首页</a>
+      <button>start</button>
+    </li>
+    <li>
+      <a href="">最后</a>
+      <button>end</button>
+    </li>
+  </ul>
+</div>
+<!--
+元素.createElement('标签名')创建元素
+元素.appendChild(元素)添加元素
+元素.insertBefore(添加的元素, 这个元素之前)
+元素.cloneNode(boolean)，复制元素，true时复制包括子孙元素，false只复制该标签，默认为false
+父元素.removeChild(子元素)删除元素
+-->
+<script>
+  const box = document.createElement('div')
+  document.body.appendChild(box)
+  box.classList.add('box')
+
+  const btn = document.createElement('button')
+  btn.innerText = '加入'
+  // document.querySelector('#app').insertBefore(btn, document.querySelector('#app p'))
+  const app = document.querySelector('#app')
+  app.insertBefore(btn, app.children[1])
+</script>
+<script>
+  const li = document.querySelector('.uls ul li')
+  const li1 = li.cloneNode()
+  const li2 = li.cloneNode(false)
+  const li3 = li.cloneNode(true)
+
+  const ul = document.querySelector('.uls ul')
+  ul.appendChild(li1)
+  ul.appendChild(li2)
+  ul.appendChild(li3)
+</script>
+<script>
+  ul.removeChild(li)
+</script>
+</body>
+</html>

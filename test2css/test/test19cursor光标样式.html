@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Cursor 光标样式</title>
+  <!--
+  cursor:
+    1、光标样式
+    2、url(文件) 图片无法加载时样式/auto
+  具体光标样式看body中内容
+  -->
+  <style>
+    .b {
+      display: flex;
+      width: 1200px;
+      height: 300px;
+      flex-wrap: wrap;
+
+    }
+
+    div {
+      margin: 10px;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="b">
+  <div style="background-color: red;cursor: pointer;">pointer</div>
+  <div style="background-color: blue;cursor: move;">move</div>
+  <div style="background-color: green;cursor: text;">text</div>
+  <div style="background-color: yellow;cursor: wait;">wait</div>
+  <div style="background-color: pink;cursor: help;">help</div>
+  <div style="background-color: purple;cursor: none;">none</div>
+  <div style="background-color: orange;cursor: crosshair;">crosshair</div>
+  <div style="background-color: brown;cursor: default;">default</div>
+  <div style="background-color: gray;cursor: progress;">progress</div>
+  <div style="background-color: #a9a9a9;cursor: not-allowed;">not-allowed</div>
+  <div style="background-color: cyan;cursor: no-drop;">no-drop</div>
+  <div style="background-color: magenta;cursor: all-scroll;">all-scroll</div>
+  <div style="background-color: lime;cursor: col-resize;">col-resize</div>
+  <div style="background-color: silver;cursor: row-resize;">row-resize</div>
+  <div style="background-color: olive;cursor: ew-resize;">ew-resize</div>
+  <div style="background-color: teal;cursor: ns-resize;">ns-resize</div>
+  <div style="background-color: indigo;cursor: nwse-resize;">nwse-resize</div>
+  <div style="background-color: maroon;cursor: nesw-resize;">nesw-resize</div>
+  <div style="background-color: navy;cursor: zoom-in;">zoom-in</div>
+  <div style="background-color: purple;cursor: zoom-out;">zoom-out</div>
+  <div style="background-color: pink;cursor: url('/file/image/10.png') auto;">url</div>
+</div>
+</body>
+</html>

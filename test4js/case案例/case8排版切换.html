@@ -1,0 +1,120 @@
+<!--
+排版切换技巧：
+  给选项定义.active样式
+  通过querySelector("*** .active").classList.remove("active")清除上一个选项样式
+  再this.classList.add("active")添加当前选项样式
+
+-->
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .box {
+      margin: 0 auto;
+      width: 400px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+
+    .top {
+      height: 30px;
+      display: flex;
+      justify-content: space-between;
+      padding-left: 10px;
+      line-height: 30px;
+      border: 1px solid #000;
+    }
+
+    .top ul {
+      display: flex;
+      list-style: none;
+      border: 1px solid #000;
+    }
+
+    .top ul li {
+      margin: 0 10px;
+    }
+
+    .top ul li a {
+      text-decoration: none;
+    }
+
+    .bottom {
+      display: flex;
+    }
+
+    .bottom img {
+      height: 268px;
+    }
+
+    .bottom div {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .bottom div h3 {
+      padding: 20px;
+      width: 130px;
+    }
+
+    .bottom div p {
+      padding: 20px;
+      width: 130px;
+    }
+
+    .active {
+      color: red;
+      border-bottom: 2px solid #0077ff;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="top">
+    <h3>选择</h3>
+    <ul>
+      <li><a href="#" class="active">first</a></li>
+      <li><a href="#">second</a></li>
+      <li><a href="#">third</a></li>
+      <li><a href="#">fourth</a></li>
+      <li><a href="#">fifth</a></li>
+    </ul>
+  </div>
+  <div class="bottom">
+    <img src="/file/image/1.png" alt="">
+    <div>
+      <h3>牛逼哄哄</h3>
+      <p>这是真的牛，不是一般的牛</p>
+    </div>
+  </div>
+</div>
+<script>
+  const a = document.querySelectorAll('.top ul li a')
+  const names = ['first', 'second', 'third', 'fourth', 'fifth']
+  const hs = ['牛逼哄哄', '帅气逼人', '貌美如花', '自信大方', '自欺欺人']
+  const ps = ['牛牛牛牛牛牛牛牛牛牛牛牛', '帅帅帅帅帅帅帅帅帅帅帅帅', '美美美美美美美美美美美美美美美', '信信信信信信信信信信信信', '欺欺欺欺欺欺欺欺欺欺欺欺']
+
+  for (let i in a) {
+    a[i].addEventListener('mouseenter', function () {
+      let n = names.indexOf(this.innerText)
+      document.querySelector('.bottom img').src = '/file/image/' + (n + 1) + '.png'
+      document.querySelector('.bottom h3').innerText = hs[n]
+      document.querySelector('.bottom p').innerText = ps[n]
+      document.querySelector('.top .active').classList.remove('active')
+      this.classList.add('active')
+    })
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style></style>
+</head>
+<body>
+<div>
+  <textarea name="" id="" cols="30" rows="10">
+  请阅读以下内容，并点击“已阅读完毕”按钮，表示您已阅读完毕。
+  请阅读以下内容，并点击“已阅读完毕”按钮，表示您已阅读完毕。
+  请阅读以下内容，并点击“已阅读完毕”按钮，表示您已阅读完毕。
+  请阅读以下内容，并点击“已阅读完毕”按钮，表示您已阅读完毕。
+  请阅读以下内容，并点击“已阅读完毕”按钮，表示您已阅读完毕。
+  </textarea>
+  <br>
+  <button class="btn" disabled>已阅读完毕(3)</button>
+</div>
+
+
+<script>
+  const btn = document.querySelector('.btn')
+  let n = 3
+
+  function fn() {
+    n--
+    btn.innerText = `已阅读完毕(${n})`
+    if (n === 0) {
+      btn.disabled = false
+      clearInterval(t)
+      btn.innerText = `已阅读完毕`
+    }
+  }
+
+  let t = setInterval(fn, 1000)
+</script>
+</body>
+</html>

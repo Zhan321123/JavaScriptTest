@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Table</title>
+</head>
+<body>
+
+<!--
+表格格式：
+  <table>
+    <thead>表的头行
+      <tr>表的一行（table row）
+        <th>表头内容</th>...（table header）
+      </tr>
+    </thead>
+      <tbody>表的主体行
+        <tr>
+          <td>表单内容</td>...（table data）
+        </tr>
+      </tbody>
+    <tfoot>表最后一行
+      <tr>
+        <td></td>
+      </tr>
+    </tfoot>
+  </table>
+表格的合并：
+  左上角保留，右下角删除
+  <td rowspan="行数"></td>行数不变的扩展
+  <td colspan="列数"></td>列数不变的扩展
+-->
+<table border=1>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Sex</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>zhan</td>
+    <td>20</td>
+    <td>Male</td>
+  </tr>
+  <tr>
+    <td>duo</td>
+    <td>18</td>
+    <td>Female</td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr>
+    <td>Total</td>
+    <td>Total</td>
+    <td>Total</td>
+  </tr>
+  </tfoot>
+</table>
+
+<hr>
+
+<table border=1>
+  <tr>
+    <td>name</td>
+    <td>age</td>
+    <td rowspan="2" colspan="2">sex</td>
+<!--    <td>DDD</td>-->
+  </tr>
+  <tr>
+    <td>zhan</td>
+    <td rowspan="2">20</td>
+<!--    <td>male</td>-->
+<!--    <td>DDD</td>-->
+  </tr>
+  <tr>
+    <td rowspan="2">man</td>
+<!--    <td>20</td>-->
+    <td>female</td>
+    <td>DDD</td>
+  </tr>
+  <tr>
+<!--    <td>foot</td>-->
+    <td colspan="2">dont know</td>
+<!--    <td>dont know</td>-->
+    <td>ABC</td>
+  </tr>
+</table>
+
+</body>
+</html>

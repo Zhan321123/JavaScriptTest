@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<button id="btn">按钮</button>
+<button id="btn2">按下2秒后开启</button>
+<button id="btn3">按下2秒后开启</button>
+<!--
+this 指向调用者
+1.普通函数调用，this指向window
+2.使用箭头函数调用，this不改变对象，所以不推荐箭头函数
+-->
+<script>
+  function fn1() {
+    console.log(this)
+  }
+
+  fn1()
+
+  const fn2 = () => {
+    console.log(this)
+  }
+  fn2()
+
+  const obj = {
+    name: 'obj',
+    fn1: function () {
+      console.log(this)
+    },
+    fn2: () => {
+      console.log(this)
+    }
+  }
+  obj.fn1()
+  obj.fn2()
+
+  const btn = document.querySelector('#btn')
+  btn.addEventListener('click', function () {
+    console.log(this)
+  })
+  btn.addEventListener('click', () => {
+    console.log(this)
+  })
+
+</script>
+<!--
+.call(obj,函数的参数...)
+  改变fn的this的指向obj，然后执行fn
+
+fn.apply(obj, [参数...])
+  改变fn的this的指向obj，然后执行fn
+  []是fn中的参数
+
+fn.bind(obj)
+  返回一个复制的fn，它的this指向obj，不执行
+-->
+<script>
+  const obj1 = {name: 'zhan'}
+
+  function fn() {
+    console.log(this)
+  }
+
+  fn.apply(obj1)
+  fn.bind({name: 'xiao'})()
+  fn()
+</script>
+<script>
+  // bind案例
+  document.querySelector('#btn2').addEventListener('click', function () {
+    this.disabled = true
+    window.setTimeout(() => {
+      this.disabled = false
+    }, 2000)
+  })
+  document.querySelector('#btn3').addEventListener('click', function () {
+    this.disabled = true
+    window.setTimeout((function () {
+      this.disabled = false
+    }).bind(this), 2000)
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Animation 动画</title>
+  <!--
+  Animation 动画
+  定义动画
+    @keyframes 名字 {
+      from{} to{}
+    }
+    @keyframes 名字 {
+      0%{} ... 50%{} ... 100%{}
+    }
+
+  给予属性：
+    animation: 名字 持续时长 （速度曲线） （延迟时间） （重复次数） （动画方向） （动作完成后状态）
+  给予多组属性：
+    animation:
+      动画1,
+      动画2
+
+    速度曲线：
+      linear匀速
+      ease-in加速
+      ease-out减速
+      ease-in-out先加速后减速
+      steps(n)每n个像素执行一次
+    延迟时间：int+s
+      不会立即播放动画，延迟
+      如果有两个int+s，前一个是持续时长，后一个是延迟时间
+    重复次数：int，无限循环是infinite
+    alternate：反向播放，配合infinite实现交替动画
+    forwards：动画完成后显示结束时的状态
+    backwards：动画完成后显示开始时的状态
+
+  属性拆分：
+    animation-name: 名字;
+    animation-duration: int+s;持续时长
+    animation-delay: int+s;延迟时间
+    animation-iteration-count: int;重复次数
+    animation-play-state: paused;暂停
+  注意点：
+    可以省略0%和from，省略了则认为动画开始状态为默认状态
+  -->
+  <style>
+    .b1 {
+      width: 200px;
+      height: 200px;
+      background-color: #4cc5de;
+      animation: changeSize1 2s infinite alternate;
+    }
+    .b1:hover {
+      animation-play-state: paused;
+    }
+
+    .b2 {
+      width: 200px;
+      height: 200px;
+      background-color: #ac6b79;
+      animation: changeSize2 2s 3 forwards;
+    }
+
+    @keyframes changeSize1 {
+      from {
+        width: 200px;
+        height: 200px;
+      }
+      to {
+        width: 400px;
+        height: 100px;
+      }
+    }
+
+    @keyframes changeSize2 {
+      0% {
+        width: 200px;
+        height: 200px;
+      }
+      50% {
+        width: 400px;
+        height: 100px;
+      }
+      100% {
+        width: 100px;
+        height: 400px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="b1"></div>
+<div class="b2"></div>
+</body>
+</html>

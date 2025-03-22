@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>@Media 媒体查询</title>
+  <!--
+  @media (条件) {css样式}
+    当屏幕条件成立，执行css样式
+    一般把其中的html的font-size设置为 屏幕宽度/10
+  条件：
+    width
+    min-width
+    max-width
+    orientation: landscape横屏,portrait竖屏
+  媒体查询引入外部css：
+    <link rel="stylesheet" media="(...)" href="*.css">
+
+  引入手淘开发出的一个用来适配移动端的js框架flexible.js对所有屏幕进行适配，1rem都是1/10屏幕
+  -->
+  <style>
+    /*@media (width: 375.2px) {*/
+    /*  body {*/
+    /*    background-color: #49b94c;*/
+    /*  }*/
+
+    /*  html {*/
+    /*    font-size: 38px;*/
+    /*  }*/
+
+    /*}*/
+
+    /*@media (width: 390.4px) {*/
+    /*  body {*/
+    /*    background-color: #b9a349;*/
+    /*  }*/
+
+    /*  html {*/
+    /*    font-size: 39px;*/
+    /*  }*/
+
+    /*}*/
+
+    .box {
+      width: 5rem;
+      height: 1rem;
+      background-color: #0fe534;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+<script src="/lib/flexible.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>立体3D转换</title>
+  <style>
+    .box {
+      perspective: 800px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .box div {
+      margin: 40px;
+      width: 200px;
+      height: 200px;
+      background-color: #68af3e;
+
+      transition: all 1s;
+    }
+
+    .box div:nth-child(1):hover {
+      transform: translateZ(300px);
+    }
+    .box div:nth-child(2):hover {
+      transform: translateZ(-300px);
+    }
+    .box div:nth-child(3):hover {
+      transform: rotateZ(60deg);
+    }
+    .box div:nth-child(4):hover {
+      transform: rotateX(-60deg);
+    }
+    .box div:nth-child(5):hover {
+      transform: rotateY(60deg);
+    }
+    .box div:nth-child(6):hover {
+      transform: rotate3d(1, 1, 1, 60deg);
+    }
+    .box div:nth-child(7):hover {
+      transform: scale3d(2, 3,4);
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div>translateZ(300px)</div>
+  <div>translateZ(-300px)</div>
+  <div>rotateZ(60deg)</div>
+  <div>rotateX(-60deg)</div>
+  <div>rotateY(60deg)</div>
+  <div>rotate3d(1, 1, 1, 60deg)</div>
+  <div>scale3d(2, 3,4)</div>
+  <div>8</div>
+  <div>9</div>
+  <div>10</div>
+  <div>11</div>
+</div>
+</body>
+</html>

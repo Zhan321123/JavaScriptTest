@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box1 ul{
+      width: 300px;
+      height: 300px;
+      background-color: #4cc5de;
+    }
+  </style>
+</head>
+<body>
+<button class="b1">please press</button>
+<input type="text" class="i1">
+<div class="box1">
+  <ul>
+    <li>first</li>
+    <li>second</li>
+    <li>third</li>
+    <li>fourth</li>
+
+    <p>我是什么东西</p>
+  </ul>
+</div>
+<a href="https://www.baidu.com" id="a">百度一下</a>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<div>1</div>
+<!--
+click事件，e.target 可以获取到触发事件的元素
+keyup事件，e.key 获取键盘输入的字符
+
+e.preventDefault() 阻止默认事件，如a标签的跳转，input标签的回车键提交等
+
+事件委托，子元素太多，挨个绑定事件麻烦，性能也低，于是交给父元素来处理
+  addEventListener('event'，function(e))
+
+.tagName 获取元素的标签名，大小写敏感
+.scrollTop 获取对象滚动的像素值
+document.documentElement.scrollTop 获取整个页面滚动的像素值
+-->
+<script>
+  const b1 = document.querySelector('.b1')
+  b1.addEventListener('click', function (e) {
+    console.log(e)
+    console.log(e.type)
+    console.log(e.clientX, e.clientY)
+    console.log(e.offsetX, e.offsetY)
+  })
+
+  //传入event对象
+  const i1 = document.querySelector('.i1')
+  i1.addEventListener('keyup', function (e) {
+    console.log(e)
+    console.log(e.key)
+    if (e.key === 'Enter') {
+      alert('enter')
+    }
+  })
+</script>
+<script>
+  const ul = document.querySelector('.box1 ul')
+  let active = document.querySelector('.box1 ul li')
+  ul.addEventListener('click', function (e){
+    console.log(e.target)
+    if (e.target.tagName === 'LI'){
+      active.style.color = '#000'
+      e.target.style.color = '#ff0000'
+      active = e.target
+    }
+  })
+</script>
+<script>
+  const a = document.querySelector('#a')
+  a.addEventListener('click', function (e) {
+    e.preventDefault()
+  })
+</script>
+<script>
+  window.addEventListener('scroll', function (e){
+    n = document.documentElement.scrollTop
+    console.log(n)
+  })
+</script>
+</body>
+</html>

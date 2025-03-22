@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Function</title>
+</head>
+<body>
+<button>A Button</button>
+<script>
+  /*
+  定义函数方法：
+    function 函数名(参数...){代码块}，调用方法：函数名(参数...)
+
+    let name = function 函数名(参数...){代码块}，调用方法：name(参数...)，不能使用：函数名()
+    let name = function(参数...){}
+
+  区别：
+    function可以在任何位置调用
+    let就遵循let的作用域，只能在定义函数之后调用
+
+  函数使用时注意：
+    参数可以给默认值，默认时NaN
+    调用函数时没给参数就时NaN
+    return之后不会执行
+    没有return则返回undefined
+    function可以嵌套
+    方法也是对象，可以作为参数传递
+
+  立即调用的匿名函数:必须前后加分号
+  常用于引入js文件
+     ;(function(){})();
+     ;(function(){}());
+
+   */
+  function func1(a, b, c) {
+    return a + b + c
+  }
+
+  func6()
+  let x = func1(2, 3, 4)
+  console.log(x)
+  console.log(func1())
+  console.log(func1(2))
+  console.log(func1(2, 3))
+  console.log(func1)
+
+  function func2(a = 1, b = 1) {
+    return a ** b
+  }
+
+  console.log(func2())
+  console.log(func2(3))
+  console.log(func2(3, 3))
+  console.log(func2(x = 2, y = 1))
+  console.log(func2(b = 2, a = 1))
+
+  function func3(a = 1, b) {
+    return a * b
+  }
+
+  console.log(func3())
+  console.log(func3(3))
+  console.log(func3(3, 5))
+
+  function func4(a, b = 2) {
+    return a / b
+  }
+
+  console.log(func4())
+  console.log(func4(3))
+  console.log(func4(4, 5))
+
+  function func5() {
+    console.log(100)
+  }
+
+  console.log(func5())
+
+  function func6() {
+    function func61() {
+      console.log(666)
+    }
+
+    func61()
+  }
+
+  func6()
+
+  let mm = function func7() {
+    console.log('amazing')
+  }
+  mm()
+  // func7()报错
+
+
+  ;//此处必须加;，除非直接调用的函数在<script>开头
+  (function () {
+    console.log('a')})()
+  ;
+  (function (){
+    console.log('b')}());
+
+  function fc(f){
+    f()
+    console.log(`${f.name} has been executed`)
+  }
+  fc(mm)
+
+</script>
+</body>
+</html>

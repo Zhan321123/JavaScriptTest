@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Bar</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      display: flex;
+      width: 700px;
+      height: 300px;
+      border-left: 1px solid blue;
+      border-bottom: 1px solid #1c9f20;
+      margin: 50px auto;
+      justify-content: space-around;
+      align-items: flex-end;
+      text-align: center;
+    }
+
+    .box > div {
+      display: flex;
+      width: 50px;
+      background-color: pink;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .box div span {
+      margin-top: -20px;
+    }
+
+    .box div h4 {
+      margin-bottom: -35px;
+      width: 70px;
+      margin-left: -10px;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div style="height: 123px">
+    <span>123</span>
+    <h4>Spring</h4>
+  </div>
+  <div style="height: 156px">
+    <span>156</span>
+    <h4>Summer</h4>
+  </div>
+  <div style="height: 194px">
+    <span>194</span>
+    <h4>Autumn</h4>
+  </div>
+  <div style="height: 241px">
+    <span>241</span>
+    <h4>Winter</h4>
+  </div>
+</div>
+
+<script>
+  let arr = [112, 223, 34, 245]
+  let season = ['Spring', 'Summer', 'Autumn', 'Winter']
+  document.write('<div class="box">')
+  for (let i = 0; i < 4; i++) {
+    document.write(`<div style="height: ${arr[i]}px">
+        <span>${arr[i]}</span>
+        <h4>${season[i]}</h4>
+    </div>`)
+  }
+  document.write('</div>')
+
+</script>
+</body>
+</html>

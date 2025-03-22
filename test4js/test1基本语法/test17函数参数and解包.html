@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<!--
+传入函数的参数在arguments中
+
+...变量名
+  可以接收多个变量，也可以将数组作为多个变量传入
+  可以用于合并数组，[...arr1, ...arr2, ...]
+
+数组解包
+  [a,b,c] = [1,2,3]
+  [a,,c] = [1,2,3]
+  [a,b,c] = [1,2]，c为undefined
+  [a,b,...c] = [1,2,3,4,5]
+  [a,[b,c]] = [1,[2,3]]
+  交换变量，;[a,b] = [b,a];，注意要加";"
+
+对象解包
+  {a,b,c} = {a:1,b:2,c:3}
+  {a:aaa,b} = {a:1,b:2}，结果为aaa=1，b=2
+  obj = {a:1,b:2,c:3}，[{a,b,c}] = [obj]，奇怪语法就是这样才行
+-->
+<script>
+
+  function fn1(a, b) {
+    console.log(a, b)
+    console.log(arguments)
+  }
+
+  fn1(1, 2, 3, 4, 5)
+
+
+  function fn2(a, b, ...c) {
+    console.log(a, b, c)
+  }
+
+  fn2(1, 2, 3, 4, 5)
+
+  const x = [1, 2, 3, 4, 5]
+  fn2(x)
+  fn2(...x)
+
+  const y = [6, 7, 8]
+  const arr = [...x, ...y]
+  console.log(arr)
+</script>
+<script>
+  let [a, b, c] = [1, 2]
+  console.log(a, b, c)
+  ;[a, b] = [b, a]
+  console.log(a, b)
+</script>
+<script>
+  const obj =
+    {a, b, c} = {
+      a: 1,
+      b: 2,
+      c: 3,
+    }
+  console.log(a, b, c)
+</script>
+</body>
+</html>

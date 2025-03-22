@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>逐帧动画</title>
+  <!--
+  两种实现方式
+    div>img
+    div
+  -->
+  <style>
+
+    .box {
+      height: 128px;
+      width: 128px;
+      overflow: hidden;
+      margin: 100px auto;
+      border: 1px solid #000;
+    }
+
+    .box img {
+      /*
+      steps(n)表示在这时间内共n帧
+      */
+      animation: fire 0.8s steps(8) infinite;
+      width: 100%;
+    }
+
+    @keyframes fire {
+      /*动画从头拉到尾*/
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-1024px);
+      }
+    }
+
+    .box2 {
+      height: 128px;
+      width: 128px;
+      margin: 100px auto;
+      border: 1px solid #dc0b0b;
+      background-image: url("/file/image/fire.png");
+      background-size: 128px 1024px;
+      animation: fire2 0.8s steps(8) infinite;
+    }
+
+    @keyframes fire2 {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 0 -1024px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+<div class="box">
+  <img src="/file/image/fire.png" alt="">
+</div>
+<hr>
+<div class="box2"></div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    table {
+      width: 300px;
+      height: 200px;
+      /*合并单元格边框*/
+      border-collapse: collapse;
+    }
+
+    td {
+      /*单元格边框*/
+      border: 1px solid #000;
+      text-align: center;
+    }
+
+    /*给第一列设置样式*/
+    td:nth-child(1) {
+      color: #ac6b79;
+    }
+
+    /*给第一行设置样式*/
+    tr:nth-child(1) {
+      background-color: #39988f;
+    }
+  </style>
+</head>
+<body>
+<table>
+  <tr>
+    <td>1</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>4</td>
+  </tr>
+</table>
+</body>
+</html>

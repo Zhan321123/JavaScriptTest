@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Word Style</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: #302c2c;
+      text-decoration: none;
+    }
+
+    body {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #0cd5d5;
+    }
+
+    .introduce {
+
+    }
+
+    .introduce ul > li {
+      border-bottom: 1px solid #012c4a;
+      margin-bottom: 20px;
+    }
+    .introduce ul p {
+      font-family: Consolas, serif;
+      padding-left: 20px;
+      color: #756161;
+    }
+
+    .introduce ul p::before {
+      content: 'ep: ';
+    }
+    .introduce ul li > h3{
+      font-size: 20px;
+      color: rgb(126, 3, 3);
+    }
+    .introduce ul li > div{
+      color: #9c007a;
+    }
+
+    .introduce ul {
+      padding-left: 25px;
+    }
+
+    .introduce ul ol {
+      padding-left: 30px;
+    }
+
+    .introduce ul ol li{
+      color: #016a03;
+    }
+
+    .textAlign {
+      width: 20em;
+      border: 1px solid #000000;
+    }
+
+    .font1 {
+      font-size: 20px;
+      font-weight: bold;
+      font-style: italic;
+      line-height: 3;
+      font-family: Microsoft YaHei, sans-serif;
+      text-indent: 2em;
+      text-align: left;
+      text-decoration: #dc0b0b underline;
+      color: blueviolet;
+    }
+
+    .font2 {
+      font: bold 20px/3 serif;
+      background-color: #4cc5de;
+      height: 100px;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body>
+<h1>文字样式</h1>
+<div class="introduce">
+  <ul>
+    <li>
+      <h3>font-size: 字号，大小</h3>
+    </li>
+    <li>
+      <h3>font-weight: 字体粗细</h3>
+      <div>
+        <ol>
+          <li style="font-weight: bold">bold or 700：加粗</li>
+          <li style="font-weight: bolder">bolder：重体</li>
+          <li style="font-weight: lighter">lighter：细体</li>
+          <li style="font-weight: 500">500：中体</li>
+          <li style="font-weight: 100">100：最细体</li>
+          <li style="font-weight: 900">900：最粗体</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <h3>font-style: 字体倾斜</h3>
+      <ol>
+        <li style="font-style: italic">italic：倾斜</li>
+        <li style="font-style: oblique">oblique：倾斜</li>
+        <li style="font-style: normal">normal：正常</li>
+      </ol>
+    </li>
+    <li>
+      <h3>line-height: 行高，一行文字的高度（或者上行文字的顶部到下行文字的顶部）</h3>
+      <div>如果是数字，就是字高的倍数 <br>
+        文字上下居中技巧: 设置 height 和 (line-height*行数) 一样高
+      </div>
+    </li>
+    <li>
+      <h3>font-family: 字体</h3>
+      <div>用“, ”隔开，浏览器会从左到右依次寻找，找到第一个存在的字体，就用这个字体 <br>
+        最后一个用sans-serif无衬线字体 <br>
+        一般从中文网页上直接复制该属性
+      </div>
+      <p>*{font-family: Microsoft YaHei, sans-serif; }<br>
+        设置字体为微软雅黑，如果找不到就使用无衬线字体</p>
+    </li>
+    <li>
+      <h3>text-indent: 首行缩进</h3>
+      <div>数字+em，1em=1个字的像素数</div>
+      <p>h5{text-indent: 2em;} <br>
+        设置h5标签的文本缩进为2个字</p>
+    </li>
+    <li>
+      <h3>text-align: 文字对齐方式</h3>
+      <ol class="textAlign">
+        <li style="text-align: left">left：左对齐（默认）</li>
+        <li style="text-align: right">right：右对齐</li>
+        <li style="text-align: center">center：居中对齐</li>
+      </ol>
+    </li>
+    <li>
+      <h3>text-decoration: 修饰线</h3>
+      <div>一般用于超链接去除下划线 <br>
+        box一般指定border-bottom
+      </div>
+      <ol>
+        <li style="text-decoration: none">none：无修饰线（默认）</li>
+        <li style="text-decoration: overline">overline：上划线</li>
+        <li style="text-decoration: underline">underline：下划线</li>
+        <li style="text-decoration: line-through">line-through：删除线</li>
+      </ol>
+    </li>
+    <li>
+      <h3>color: 字体颜色，背景色是background-color</h3>
+      <ol>
+        <li style="color: blueviolet">颜色名写法：blue、red、yellow...</li>
+        <li style="color: rgb(255,255,0)">rgb写法：rgb(0-255,0-255,0-255)</li>
+        <li style="color: rgba(0,123,0,0.7)">rgba写法：rgba(0-255,0-255,0-255,0-1)</li>
+        <li style="color: #133939">16进制写法：#rrggbb</li>
+      </ol>
+    </li>
+    <li>
+      <h3>font:是否倾斜 是否加粗 字号/行高 字体</h3>
+      <div>综合属性，将几个字体属性放在一起, 一般用于网页开发初期默认字体</div>
+    </li>
+    <li>
+      <h3>text-shadow: 文字阴影</h3>
+      <div style="text-shadow: 1px 1px 1px #000000">阴影文字</div>
+    </li>
+    <li>
+      <h3>-webkit-text-stroke: 网页套件文本描边</h3>
+      <div style="-webkit-text-stroke: 1px black;">描边文字</div>
+    </li>
+  </ul>
+  <p>
+    <span class="font1">示例字体样式1</span>
+    <span class="font2">示例字体样式2</span>
+  </p>
+</div>
+</body>
+</html>

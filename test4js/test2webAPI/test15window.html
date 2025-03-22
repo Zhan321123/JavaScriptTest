@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<form action="">
+  <input type="text" name="username">
+  <input type="text" name="password">
+  <input type="submit" value="登录">
+</form>
+<a href="#self">我的</a>
+<a href="#friend">社交</a>
+<button id="reload">刷新</button>
+<hr>
+<br>
+<button id="back">back</button>
+<button id="forward">forward</button>
+<button id="go">go</button>
+<!--
+BOM，即window，浏览器最高级别对象，包含：
+  location：地址栏信息，包含href、origin、protocol、search、hash等
+  history：历史记录，包含back、forward、go、pushState、replaceState等方法
+  screen：屏幕信息，包含width、height、colorDepth、pixelDepth等
+  navigator：浏览器信息，包含appCodeName、appName、appVersion、cookieEnabled、platform、userAgent等
+  document：文档信息，包含title、body、head、cookie等
+  console：控制台，包含log、info、warn、error、table、trace、assert、clear、count、countReset、group、groupEnd、groupCollapsed、time、timeEnd、timeLog、timeStamp、trace等方法
+ -->
+<script>
+  console.log(window.document === document)
+  window.alert('window.alert')
+
+  function fn() {
+    console.log(this)
+  }
+
+  window.fn()
+
+  var n = 100
+  console.log(window.n)
+  const m = 200
+  console.log(window.m)
+  let o = 300
+  console.log(window.o)
+</script>
+<!--
+location网页地址组成：
+  href = protocol // 主机名host : 端口号port / 路径名pathname ? 参数search # 锚点hash
+  origin = protocol://host
+  protocol = http: 或 https:
+  search用&连接参数，在form action中体现，常用于输入信息登录
+location.reload(),刷新页面
+location.reload(true)，强制刷新
+-->
+<script>
+  console.log(window.location)
+  console.log(location.href)
+  console.log(location.search)
+  console.log(location.hash)
+  document.querySelector('#reload').addEventListener('click', function (){location.reload()})
+</script>
+<script>
+  console.log(window.navigator)
+</script>
+<!--
+history.back()，后退
+history.forward()，前进
+history.go(1), 前进
+history.go(-1), 后退
+-->
+<script>
+  document.querySelector('#back').onclick = function () {window.history.back()}
+  document.querySelector('#forward').onclick = function () {history.forward()}
+  document.querySelector('#go').onclick = function () {history.go(1)}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Carousel</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/lib/study.css">
+  <link rel="stylesheet" href="/lib/origin.css">
+</head>
+<body>
+
+<header>
+  <div style="height: 150px"></div>
+</header>
+
+<main>
+
+  <!--  幻灯片-->
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <!--    选框条带-->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true"
+              aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+
+    <!--    内容-->
+    <div class="carousel-inner">
+      <!--      页面-->
+      <div class="carousel-item active">
+        <div style="height: 200px" class="bg-primary text-center">
+          <div class="h1">first page</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div style="height: 200px" class="bg-danger text-center">
+          <div class="h1">second page</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div style="height: 200px" class="bg-info text-center">
+          <div class="h1">third page</div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div style="height: 200px" class="bg-info text-center">
+          <div class="h1">forth page</div>
+        </div>
+      </div>
+    </div>
+
+    <!--    左右按钮-->
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+</main>
+
+
+<script src="/lib/study.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
+        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

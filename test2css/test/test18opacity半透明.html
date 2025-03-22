@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Opacity 半透明</title>
+  <!--
+  opacity:取值0-1，透明度
+    让该元素与所有子元素一起透明
+    与rgba不同的是，rgba不影响子元素的透明度
+  -->
+  <style>
+    .front {
+      border: 1px solid red;
+      background-color: #98c2a6;
+      height: 400px;
+      transition: all 3s;
+      z-index: 1;
+    }
+
+    .front:hover {
+      opacity: 0;
+    }
+
+  </style>
+</head>
+<body>
+<div class="front">
+  <img src="/file/image/logo1.png" alt="">
+</div>
+</body>
+</html>

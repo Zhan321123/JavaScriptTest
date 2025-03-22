@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: #39988f;
+    }
+  </style>
+</head>
+<body>
+<div>ok</div>
+<div class="box"></div>
+<p>first</p>
+<p>second</p>
+<h3 id="h">h3</h3>
+<script>
+  // document.querySelector("css选择器"/"#id")
+  // 匹配第一个该元素，没有返回null
+  const d = document.querySelector('div')
+  console.dir(d)
+  const p = document.querySelector('p')
+  console.log(p)
+  const b = document.querySelector('.box')
+  console.log(b)
+  const h = document.querySelector('#h')
+  console.log(h)
+
+  // document.querySelectorAll("css选择器")
+  // 匹配所有该元素
+  const ps = document.querySelectorAll('p')
+  console.log(ps)
+  console.log(ps.length)
+  for (const p of ps) {
+    console.log(p)
+  }
+  for (let i = 0; i < ps.length; i++) {
+    console.log(ps[i])
+  }
+
+</script>
+</body>
+</html>

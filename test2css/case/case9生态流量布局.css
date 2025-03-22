@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Microsoft YaHei", serif;
+  font-size: 14px;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: white;
+}
+
+strong {
+  color: black;
+}
+
+body {
+  width: 1280px;
+  background-color: #222832;
+  margin:20px auto;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img {
+  transition: 1s;
+}
+
+img:hover {
+  transform: scale(2);
+}
+
+button {
+  color: white;
+  background-color: rgb(9, 73, 119);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #001169;
+  cursor: pointer;
+}
+
+hr {
+  background-color: #005b69;
+  height: 1px;
+  border: none;
+}
+
+.import,
+.logo,
+.function,
+.calculate,
+.ecologyFlow,
+.guarantee,
+.analysis {
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 30px;
+  background-color: #14181e;
+}
+
+.import,
+.logo {
+  height: 200px;
+}
+
+.import {
+  width: 500px;
+}
+
+.import h3,
+.logo h3,
+.function h3,
+.calculate h3,
+.ecologyFlow h3,
+.guarantee h3,
+.analysis h3 {
+  width: 100%;
+  margin: 0 auto;
+  line-height: 30px;
+  text-align: center;
+}
+
+.import button {
+  width: 150px;
+  height: 40px;
+}
+
+.import div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 10px;
+}
+
+.import div * {
+  display: inline-block;
+}
+
+.import div div h4 {
+  margin-left: 30px;
+  width: 250px;
+  border: 1px solid black;
+}
+
+.logo {
+  width: 500px;
+  height: 200px;
+  position: relative;
+}
+
+.logo img {
+  width: 128px;
+  height: 128px;
+  display: inline-block;
+  border: 1px solid black;
+  margin-left: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.logo p {
+  display: inline-block;
+  width: 300px;
+  height: 150px;
+  border: 1px solid black;
+  margin-left: 160px;
+  margin-top: 20px;
+  padding: 12px 30px;
+  background-image: url("/file/image/map.png");
+  background-size: 100% 100%;
+  color: black;
+  cursor: pointer;
+  overflow-y: scroll;
+}
+
+.function {
+  width: 220px;
+}
+
+.function div {
+  margin: 10px auto;
+}
+
+.function div button {
+  display: block;
+  width: 130px;
+  height: 30px;
+  margin: 10px auto;
+}
+
+.ecologyFlow {
+  width: 140px;
+  height: 440px;
+}
+
+.ecologyFlow div button {
+  display: block;
+  width: 100px;
+  height: 30px;
+  margin: 10px auto;
+}
+
+.calculate {
+  width: 500px;
+}
+
+.calculate div img {
+  display: block;
+  width: 460px;
+  height: 270px;
+  border: 1px solid black;
+  margin: 10px auto;
+}
+
+.calculate div p {
+  display: block;
+  margin: 10px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.guarantee {
+  width: 340px;
+}
+
+.guarantee img {
+  display: block;
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  margin: 10px auto;
+}
+
+.analysis {
+  width: 220px;
+}
+
+.analysis div {
+  height: 200px;
+}
+
+.analysis div p {
+  margin: 10px;
+  height: 150px;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+
+.instruction{
+  position: fixed;
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  background-color: rgba(80, 48, 48,0.8);
+  border-radius: 20px;
+  display: none;
+}
+.instruction button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 100%;
+  text-align: center;
+  background-color: #154194;
+  font-size: 30px;
+}
+.instruction div{
+  width: 96%;
+  height: 92%;
+  margin: 2%;
+  border: 1px solid black;
+}

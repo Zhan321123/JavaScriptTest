@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Transition 过渡</title>
+<!--
+transition: all second;
+  给元素变化产生过渡效果
+  配合hover属性使用，注意属性加给元素，而不是hover
+-->
+  <style>
+    button {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    #btn {
+      transition: all 1s;
+    }
+    button:hover {
+      width: 200px;
+      height: 200px;
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <button id="btn">按钮</button>
+  <button>按钮</button>
+</div>
+</body>
+</html>

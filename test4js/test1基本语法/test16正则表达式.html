@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<textarea name="" id="" cols="30" rows="10"></textarea>
+<button>发布</button>
+<!--
+正则表达式.
+  test(str),
+  exec(str),
+-->
+<script>
+  const reg = /java/
+  console.log(reg.test('i am learning java'))
+  console.log(reg.test('i am learning javascript and java'))
+  console.log(reg.exec('i am learning javascript and java'))
+</script>
+<script>
+  const block = /愚蠢/g
+  const text = document.querySelector('textarea')
+  const btn = document.querySelector('button')
+  btn.addEventListener('click', function (){
+    const content = text.value
+    const result = content.replace(block, '**')
+    const p = document.createElement('p')
+    p.innerText = result
+    document.body.appendChild(p)
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>vertical-align</title>
+  <!--
+  当未指定vertical-align属性时，图片与文字在一行显示图片下面有空白，文字显示靠底
+  vertical-align属性：
+    middle：清除图片与文字在一行显示图片下面有空白，文字显示居中
+    bottom：清除图片与文字在一行显示图片下面有空白，文字在底部显示
+    top：清除图片与文字在一行显示图片下面有空白，文字在顶部显示
+  通常加给一行中最高的那个元素
+  -->
+  <style>
+
+    div {
+      border: 1px solid red;
+    }
+
+    .v {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <img src="/file/image/spirit.jpg" alt="">
+  <span>未垂直居中</span>
+</div>
+<div>
+  <img src="/file/image/spirit.jpg" alt="" class="v">
+  <span>垂直居中</span>
+</div>
+</body>
+</html>

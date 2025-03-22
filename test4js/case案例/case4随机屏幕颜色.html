@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Color</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+<button>改变颜色</button>
+<div></div>
+<script>
+  function randomColor(flag = false) {
+    if (flag) {
+      return `rgb(${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)},${Math.floor(Math.random() * 256)})`
+    } else {
+      let color = '#'
+      for (let i = 0; i < 6; i++) {
+        color += ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'][Math.floor(Math.random() * 16)])
+      }
+      return color
+    }
+  }
+
+  const div = document.querySelector('div')
+  const button = document.querySelector('button')
+  button.onclick = function () {
+    let color = randomColor()
+    console.log(color)
+    div.style.backgroundColor = color
+  }
+</script>
+</body>
+</html>

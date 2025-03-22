@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>背景属性</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      text-shadow: 1px 1px 1px #000000;
+    }
+
+    body {
+      background-image: url('/file/image/5.png');
+      background-attachment: fixed;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .background {
+
+    }
+
+    .background ul {
+      padding-left: 25px;
+    }
+
+    .background ul ol {
+      padding-left: 30px;
+    }
+
+    .background ul > li {
+      border-bottom: 1px solid #012c4a;
+    }
+
+    .background ul h3 {
+      font-size: 20px;
+      color: rgb(126, 3, 3);
+      margin-top: 20px;
+    }
+
+    .repeat li {
+      background-image: url('/file/image/4.png');
+      padding: 10px;
+      border: 1px solid #000000;
+    }
+
+    .position li {
+      background-image: url('/file/image/7.png');
+      padding: 10px;
+      border: 1px solid #000000;
+      background-repeat: no-repeat;
+    }
+
+    .size li {
+      background-image: url('/file/image/8.png');
+      padding: 10px;
+      border: 1px solid #000000;
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="background">
+  <h1>背景属性</h1>
+  <ul>
+    <li>
+      <h3>background-color:背景颜色</h3>
+      <div></div>
+      <a href="" style="background-color: #0fe534">background-color</a>
+    </li>
+    <li>
+      <h3>background-image:url('文件路径') 背景图片</h3>
+      <div>该image不可拖动</div>
+      <a href="" style="background-image: url('/file/image/2.png')">background-image</a>
+    </li>
+    <li>
+      <h3>background-repeat: 图片重复方式</h3>
+      <div>
+        <ol class="repeat">
+          <li style="background-repeat: repeat">repeat：平铺，像瓷砖一样铺设（默认）</li>
+          <li style="background-repeat: no-repeat">no-repeat：左上角显示一张图，如果width和height大于图片大小，不会被拉伸
+          </li>
+          <li style="background-repeat: repeat-x">repeat-x：横向平铺</li>
+          <li style="background-repeat: repeat-y">repeat-y：纵向平铺</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <h3>background-position:横向, 竖向</h3>
+      <div>
+        背景图片关于标签锚点的位置
+        <ol class="position">
+          <li style="background-position: left">left</li>
+          <li style="background-position: right">right</li>
+          <li style="background-position: top">top</li>
+          <li style="background-position: bottom">bottom</li>
+          <li style="background-position: center">center</li>
+          <li style="background-position: left top">其他组合 如：left top</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <h3>background-size: 缩放背景图片的大小</h3>
+      <div>
+        <ol class="size">
+          <li style="background-size: cover">cover：等比缩放覆盖全部</li>
+          <li style="background-size: contain">contain：等比缩放最大程度装入</li>
+          <li style="background-size: 50% 50%">百分比：根据盒子尺寸计算图片大小</li>
+        </ol>
+      </div>
+    </li>
+    <li>
+      <h3>background-attachment:fixed</h3>
+      <div>固定背景图片，滚动页面时背景图片不会跟随滚动，常用于网页背景图片制作</div>
+      <p>body{ background-image:url(...);background-attachment:fixed }
+        设置body的背景图片，固定背景图片, 就像本页面的背景图片</p>
+    </li>
+    <li>
+      <h3>background: 复合属性</h3>
+      <div>背景色 背景图 背景图平铺方式 背景位置/背景图缩放 背景图固定（无顺序）</div>
+    </li>
+
+  </ul>
+</div>
+<br>
+<br>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="/lib/bootstrap/bootstrap.min.css">
+  <style>
+    .box {
+      width: 800px;
+      height: 60px;
+      margin: 40px auto;
+      border: 1px solid #000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .box input {
+      width: 80px;
+      padding: 5px;
+      margin-right: 40px;
+    }
+
+    .tab {
+      width: 800px;
+      margin: 40px auto;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  name:<input type="text">
+  age:<input type="text">
+  sex:<input type="text">
+  address:<input type="text">
+  <button>OK</button>
+</div>
+<table class="tab table table-bordered table-light" id="tab">
+  <tr>
+    <td>name</td>
+    <td>age</td>
+    <td>sex</td>
+    <td>address</td>
+  </tr>
+</table>
+<script>
+  const tab = document.querySelector('#tab')
+  const messages = document.querySelector('.box').children
+  console.log(messages)
+  messages[4].addEventListener('click', function () {
+    const name = messages[0].value
+    const age = messages[1].value
+    const sex = messages[2].value
+    const address = messages[3].value
+    if (name && age && sex && address) {
+      const tr = tab.children[0].cloneNode()
+      tr.innerHTML = `
+      <td>${name}</td>
+      <td>${age}</td>
+      <td>${sex}</td>
+      <td>${address}</td>`
+      tab.appendChild(tr)
+    } else {
+      alert('请输入完整信息')
+    }
+  })
+</script>
+</body>
+</html>

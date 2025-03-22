@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Float</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    body {
+      width: 80%;
+      margin: 50px auto 0;
+      background-color: #d8cfae;
+    }
+
+    .layout {
+
+    }
+
+    .layout ul {
+      padding-left: 20px;
+    }
+
+    .layout ul ol {
+      padding-left: 40px;
+    }
+
+    .layout ul ol ul {
+      padding-left: 60px;
+    }
+
+    .layout > ul > li {
+      border-bottom: black 1px solid;
+      margin-bottom: 30px;
+    }
+
+    .layout li {
+      margin: 10px 0;
+    }
+
+    .layout h3 {
+      font-size: 23px;
+      color: #610303;
+    }
+
+    .layout h4 {
+      font-size: 18px;
+      color: #044a3b;
+    }
+
+    .layout h5 {
+      font-size: 16px;
+      color: #4a0449;
+    }
+
+    .layout code {
+      font-family: "Consolas", serif;
+      color: #065660;
+      font-weight: bold;
+      display: inline-block;
+      background-color: rgba(177, 174, 174, 0.5);
+      border-radius: 10px;
+    }
+
+    .justifyContent {
+
+    }
+
+    .justifyContent li div {
+      display: flex;
+      height: 30px;
+      border: #000000 1px solid;
+      background-color: #95dfa1;
+    }
+
+    .justifyContent li div span {
+      background-color: #00d0ff;
+      width: 30px;
+      text-align: center;
+      line-height: 30px;
+      border: #000000 1px solid;
+    }
+
+    .alignItem {
+
+    }
+
+    .alignItem li div {
+      display: flex;
+      height: 60px;
+      width: 30px;
+      background-color: #95dfa1;
+      border: #000000 1px solid;
+    }
+
+    .alignItem li div span {
+      background-color: #39988f;
+      height: 30px;
+      width: 30px;
+      border: #000000 1px solid;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .flexDirection {
+    }
+
+    .flexDirection li div {
+      background-color: #95dfa1;
+      border: #000000 1px solid;
+      display: flex;
+    }
+
+    .flexDirection li div span {
+      background-color: #39988f;
+      height: 30px;
+      width: 30px;
+      border: #000000 1px solid;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .flexWrap {
+      background-color: #95dfa1;
+      width: 150px;
+      height: 80px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      border: #000000 1px solid;
+      align-items: center;
+    }
+
+    .flexWrap span {
+      background-color: #39988f;
+      width: 30px;
+      height: 30px;
+      border: #000000 1px solid;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .overflow li div {
+      height: 60px;
+      width: 200px;
+      border: #000000 1px solid;
+    }
+
+  </style>
+</head>
+<body>
+<div class="layout">
+  <h2>排版</h2>
+  <ul>
+    <li>
+      <h3>float: left、right</h3>
+      <div>
+        <p>改变盒子的显示模式，显示为浮动，脱离标准流</p>
+        <br>
+        <h4>浮动模式的盒子不会撑大父盒子，解决方式：</h4>
+        <ol>
+          <li>同级添加一个盒子，属性给 <code>clear:both</code>，给标准流的影响</li>
+          <li>使用 <code>.clearfix::after {content: "";display: block;clear: both;}</code>，给父盒子添加该类</li>
+          <li>（推荐）<br>
+            <code>.clearfix::before, .clearfix::after{content: "", display: table;}</code> <br>
+            <code>.clearfix::after{clear:both;}</code>
+          </li>
+          <li>同级之下添加一个空盒子，并指定 <code>height</code></li>
+          <li>父盒子加属性 <code>overflow: hidden</code></li>
+        </ol>
+        <div style="background-color: #e5d51d;">
+          <div style="width: 100px;height: 100px;background-color: #0fe534;float: left">Box1</div>
+          <div style="width: 200px;height: 50px;background-color: #ff7531;float: right">Box2</div>
+          <div style="clear: both;"></div>
+        </div>
+      </div>
+      <pre></pre>
+    </li>
+
+    <li>
+      <h3>display: flex</h3>
+      <div>
+        <p>特性：（父盒子叫弹性容器，子盒子叫弹性盒子）</p>
+        <p>子盒子都会自动拉伸和压缩</p>
+        <p>子盒子只在一行排列，空间不够就会自动压缩，当被压缩空间时指定 <code>width</code>也无效</p>
+        <ol>
+          <li>
+            <h4>justify-content:盒子排列方式</h4>
+            <ul class="justifyContent">
+              <li>
+                <h5>flex-start：盒子从左往右排列，盒子之间无空隙</h5>
+                <div style="justify-content: flex-start"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>flex-end：盒子从右往左排列，盒子之间无空隙</h5>
+                <div style="justify-content: flex-end"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>center：盒子居中排列，盒子之间无空隙</h5>
+                <div style="justify-content: center"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>space-between：盒子之间空隙均匀，盒子左右紧贴容器</h5>
+                <div style="justify-content: space-between"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>space-around：盒子之间空隙均匀，每个盒子的margin一致</h5>
+                <div style="justify-content: space-around"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>space-evenly：盒子之间空隙均匀，左右空隙与之一致</h5>
+                <div style="justify-content: space-evenly"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h4>align-items（用在容器）/align-self（用在盒子）:盒子侧轴对齐方式</h4>
+            <ul class="alignItem">
+              <li>
+                <h5>flex-start：侧轴从顶部对齐（默认）</h5>
+                <div style="align-items: flex-start"><span>1</span></div>
+              </li>
+              <li>
+                <h5>center：居中</h5>
+                <div style="align-items: center"><span>1</span></div>
+              </li>
+              <li>
+                <h5>stretch：拉伸到容器大小，但是指定了width就会居中</h5>
+                <div style="align-items: stretch"><span style="height: auto">1</span></div>
+              </li>
+              <li>
+                <h5>flex-end：侧轴从底部对齐</h5>
+                <div style="align-items: flex-end"><span>1</span></div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h4>flex-direction:盒子主轴方向</h4>
+            <ul class="flexDirection">
+              <li>
+                <h5>row：从左往右排列（默认）</h5>
+                <div style="width: 200px;flex-direction: row"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>row-reverse：从右往左排列</h5>
+                <div style="width: 200px;flex-direction: row-reverse"><span>1</span><span>2</span><span>3</span></div>
+              </li>
+              <li>
+                <h5>column：从上往下排列</h5>
+                <div style="height:120px;width:30px;flex-direction: column"><span>1</span><span>2</span><span>3</span>
+                </div>
+              </li>
+              <li>
+                <h5>column-reverse：从下往上排列</h5>
+                <div style="height:120px;width:30px;flex-direction: column-reverse">
+                  <span>1</span><span>2</span><span>3</span></div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <h4>flex:数字：弹性盒子的宽度比例，可用nth指定每个盒子的宽度比例</h4>
+          </li>
+          <li>
+            <h4>flex-wrap:nowrap/wrap/wrap-reverse：盒子是否换行</h4>
+            <div class="flexWrap">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+            </div>
+          </li>
+        </ol>
+
+      </div>
+      <pre></pre>
+    </li>
+    <li>
+      <h3>overflow: 超出盒子的显示方式</h3>
+      <div>
+        <p>默认情况会显示所有内容，超出的内容就超出显示</p>
+        <ol class="overflow">
+          <li>
+            <h4>hidden，隐藏超出的内容</h4>
+            <div style="overflow: hidden">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+            </div>
+          </li>
+          <li>
+            <h4>scroll，显示横向和竖向滚动条</h4>
+            <div style="overflow: scroll">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+            </div>
+          </li>
+          <li>
+            <h4>auto，当内容超出盒子时，显示滚动条，横向和竖向都是</h4>
+            <div style="overflow: auto">
+              <p>1</p>
+              <p>2</p>
+              <p>3</p>
+              <p>4</p>
+              <p>5</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </li>
+  </ul>
+</div>
+<br>
+
+</body>
+</html>

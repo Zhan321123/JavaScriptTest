@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>悬停放大图</title>
+  <style>
+
+    .product {
+      height: 210px;
+      width: 390px;
+      margin: 20px auto 0;
+      /*background-color: #1c9f20;*/
+      background-image: url("/file/image/logo1.png");
+      overflow: hidden;
+      transition: all 0.5s;
+      border: 1px solid #1c9f20;
+    }
+
+    .product div {
+      height: 100%;
+      width: 100%;
+    }
+
+    .product div h3 {
+      padding: 70px 20px 20px;
+      color: #a2a2a2;
+      font-size: 30px;
+      transition: all 0.5s;
+    }
+
+    .product div:hover {
+      background-image: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0.2),
+          rgba(0, 0, 0, 0.2)
+      );
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product div:hover h3 {
+      padding: 60px 20px 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="product">
+  <div>
+    <h3>学习html学习css学习javascript学习java，有学不完的东西</h3>
+  </div>
+</div>
+</body>
+</html>

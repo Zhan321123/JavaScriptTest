@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Scope</title>
+</head>
+<body>
+<script>
+  /*
+  let const var 声明的变量都是局部变量
+  直接赋值的变量是全局变量（不推荐使用）
+  如果修改外部变量然后声明同名变量，则还是内部变量
+   */
+  let a = 100
+
+  function func1() {
+    let a = 200
+  }
+
+  func1()
+  console.log(a)
+
+  function func2() {
+    a = 400
+    let a
+  }
+
+  console.log(a)
+
+  function func3() {
+    b = 300 //全局变量声明
+  }
+
+  func3()
+  console.log(b)
+
+  function func4() {
+    a = 500
+  }
+
+  func4()
+  console.log(a)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!--
+  input:checked 被选中的checkbox
+  input:disabled 禁用的input
+  input:enabled 可用的input
+  input[type="checkbox"]:not(:checked) 未被选中的checkbox
+
+  input[type="类型"] 特定类型的input
+  -->
+  <style>
+    input[type="checkbox"]:not(:checked){
+      margin: 20px;
+    }
+    input:checked {
+      width: 100px;
+      height: 100px;
+    }
+    input:disabled {
+      background-color: #ff0000;
+    }
+    input:enabled {
+      background-color: #00ff00;
+    }
+    input[type="text"]{
+      width: 100px;
+      height: 100px;
+    }
+    input[type="checkbox"]
+  </style>
+</head>
+<body>
+<div>
+  <input type="checkbox">
+  <input type="checkbox">
+  <input type="checkbox">
+</div>
+<div>
+  <input type="text" disabled>
+  <input type="text">
+
+</div>
+</body>
+</html>

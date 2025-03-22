@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>方程求解器</title>
+  <script src="/lib/echarts/echarts.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    input {
+      padding: 5px;
+    }
+
+    .box {
+      width: 1200px;
+      height: 600px;
+      margin: 20px auto;
+      display: flex;
+      border: 1px solid #000;
+    }
+
+    .figure {
+      width: 600px;
+      height: 500px;
+      border: 1px solid #000;
+      padding: 10px;
+    }
+
+    .figure div {
+      width: 680px;
+      height: 480px;
+      z-index: 0;
+    }
+
+    .fx {
+      z-index: 100;
+      width: 600px;
+      height: 100px;
+      display: flex;
+      padding: 20px;
+      justify-content: space-between;
+      line-height: 60px;
+      border: 1px solid #000;
+    }
+
+    .fx h4 {
+      padding-left: 20px;
+      width: 160px;
+    }
+
+    .fx textarea {
+      width: 320px;
+      resize: none;
+      font-size: 20px;
+      padding: 5px;
+    }
+
+    .fx button {
+      width: 60px;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      border: 1px solid #000;
+      z-index: 100;
+    }
+
+    .right input {
+      width: 60px;
+      height: 30px;
+    }
+
+    .domain {
+      /*height: 400px;*/
+      width: 300px;
+      border: 1px solid #000;
+      margin-bottom: 10px;
+    }
+
+    .domain h4 {
+      padding: 10px;
+    }
+
+    .domain .inputDomain {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid #000;
+    }
+
+    .domain .inputDomain div {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .domain .inputDomain div h5 {
+      width: 150px;
+    }
+
+    .domain .inputDomain div button {
+      width: 80px;
+    }
+
+    .domain .addDomain {
+      border-top: 1px solid #000;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .domain .addDomain div {
+      width: 160px;
+    }
+
+
+    .domain .addDomain button {
+      width: 80px;
+    }
+
+    .end {
+      height: 200px;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #000;
+    }
+
+    .end .range {
+      padding: 10px;
+    }
+
+    .end button {
+      width: 80px;
+      height: 50px;
+      margin: 10px auto;
+    }
+
+    .end .result {
+      border-top: 1px solid #000;
+      padding: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="box">
+  <div>
+    <div class="figure">
+      <div></div>
+    </div>
+    <div class="fx">
+      <h4>输入方程: f(x) = </h4>
+      <textarea type="text"></textarea>
+      <button>OK</button>
+    </div>
+  </div>
+  <div class="right">
+    <div class="domain">
+      <h4>定义域:</h4>
+      <div class="inputDomain">
+        <div><h5></h5>
+          <button>删除定义域</button>
+        </div>
+      </div>
+      <div class="addDomain">
+        <div>[ <input type="text"> , <input type="text"> ]</div>
+        <button>拓展定义域</button>
+      </div>
+
+    </div>
+    <div class="end">
+      <div class="range">输入解的范围: [ <input type="text"> , <input type="text"> ]</div>
+      <button>计算</button>
+      <h4 class="result">计算结果为:</h4>
+    </div>
+  </div>
+</div>
+<div>使用方法</div>
+<div>注意事项</div>
+<script>
+  function lineSpace(a, b, n) {
+    let step = (b - a) / n
+    let result = []
+    for (let i = 0; i < n; i++) {
+      result.push(a + i * step)
+    }
+    return result
+  }
+
+  function getYs(f, xs) {
+    let y = undefined
+    let result = []
+    for (let i = 0; i < xs.length; i++) {
+      const x = xs[i]
+      eval(`y = ${f}`)
+      result.push(y)
+    }
+    console.log(result)
+    return result
+  }
+
+  function getValueDomain() {
+    const d = document.querySelector(".range")
+    const left = d.children[0].innerText
+    const right = d.children[1].innerText
+    return [left, right]
+  }
+
+  function getValue(f, x) {
+    eval(`y = ${f}`)
+    return y
+  }
+
+  function calculate(f, left, right) {
+    // 函数二分法迭代求解
+    if (left >= right) return false
+    if (getValue(f, left) * getValue(f, right) > 0) return
+    let result = undefined
+    while (true) {
+      let mid = (left + right) / 2
+      if (getValue(f, mid) * getValue(f, left) < 0) {
+        right = mid
+      } else {
+        left = mid
+      }
+      if (Math.abs(getValue(f, mid)) < error) {
+        result = mid
+        break
+      }
+    }
+    let er = getValue(f, result)
+    return [result, er]
+  }
+
+  function updateChart(f, xss, yss) {
+    // TODO 更新图表
+  }
+</script>
+<script>
+  // 初始化
+  const error = 0.000000001
+  const fx = document.querySelector(".fx textarea")
+  f = "x**2-Math.sin(Math.E*x)"
+  fx.innerHTML = f
+  const domains = document.querySelector(".domain .inputDomain")
+  const domainsData = [[0, 10],]
+  domains.children[0].children[0].innerHTML = '[ ' + domainsData[0] + ' ]'
+  const xss = [lineSpace(domainsData[0][0], domainsData[0][1], 100),]
+  const yss = [getYs(f, xss[0]),]
+  const chart = echarts.init(document.querySelector(".figure div"));
+
+  const d = document.querySelector(".range")
+  console.log(d.children)
+  d.children[0].value = 0
+  d.children[1].value = 3
+
+  const result = document.querySelector(".end .result")
+  r = calculate(f, d.children[0].value, d.children[1].value)
+  result.innerHTML = "计算结果为:" + r[0] + ",<br>误差为:" + r[1]
+
+  option = {
+    xAxis: {
+      type: 'category',
+      data: xss[0]
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: yss[0],
+        type: 'line'
+      }
+    ]
+  };
+  chart.setOption(option);
+
+
+</script>
+<script>
+
+</script>
+</body>
+</html>

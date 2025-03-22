@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .box{
+      background-color: #ac6b79;
+    }
+    .box p{
+      width: 300px;
+      height: 100px;
+      background-color: #4cc5de;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <p class="a"></p>
+  <p class="b">ok</p>
+  <p class="c">do you know</p>
+  <button><p>click me</p></button>
+</div>
+<div>
+  <div>
+    <div>
+
+    </div>
+  </div>
+</div>
+<script>
+  const box = document.querySelector('.box')
+  const a = box.querySelector('.a')
+  const b = box.querySelector('.b')
+  a.innerHTML = 'hello world'
+  console.log(a.parentNode)//父节点
+  console.log(a.parentElement)//父元素
+  console.log(box.childNodes)//子孙节点，不常用，因为包含text等
+  console.log(box.children)//子节点，常用，只获取子元素
+  console.log(b.previousSibling)//上一个兄弟节点
+  console.log(b.nextSibling)//下一个兄弟节点
+
+</script>
+</body>
+</html>

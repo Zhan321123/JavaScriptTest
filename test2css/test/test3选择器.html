@@ -1,0 +1,245 @@
+<!--
+css 选择器
+-->
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选择器</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    ol, ul {
+      padding-left: 20px;
+    }
+
+    .w {
+      width: 80%;
+      margin: 0 auto;
+      background-color: #c3dfdc;
+    }
+
+    h1, h2 {
+      color: #1c9f20;
+      font-size: 20px;
+      text-align: center;
+      line-height: 40px;
+    }
+
+    .choice {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    #selector {
+      background-color: #a7dada;
+      display: flex;
+    }
+
+    #selector div {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    #selector div h3 {
+      font-size: 20px;
+      color: #afed16;
+    }
+
+    #selector div ul h4 {
+      font-size: 15px;
+      color: #503705;
+    }
+
+    #selector div ul a {
+      color: #8205ac;
+    }
+
+    #selector div ul p {
+      font-size: 13px;
+      font-family: Consolas, serif;
+    }
+
+    #selector div ul p::before {
+      content: 'ep: ';
+    }
+
+    #selector div ul li {
+      border-bottom: 1px solid #0f0f0f;
+      margin-bottom: 20px;
+    }
+
+    #selector > div {
+      width: 360px;
+      background-color: #39afae;
+      border: 1px solid #9c1818;
+      margin: 0 auto;
+    }
+
+    .inherit {
+      background-color: #3bc558;
+
+      h3 {
+        font-size: 20px;
+      }
+    }
+
+    .inherit > div {
+      margin: 10px;
+    }
+
+  </style>
+</head>
+<body>
+<div class="w">
+  <h1>选择器</h1>
+  <div class="choice">
+    <h2>一般选择器</h2>
+    <h2>复合选择器</h2>
+    <h2>伪类选择器</h2>
+  </div>
+</div>
+<div id="selector" class="w">
+  <div>
+    <h3>一般选择器</h3>
+    <hr>
+    <ul>
+      <li>
+        <h4>普通选择器</h4>
+        <a>label {}</a>
+        <div>所有该label的标签</div>
+        <p>p{color:red} <br>
+          设置段落标签字体为红色</p>
+      </li>
+      <li>
+        <h4>class选择器</h4>
+        <a>.class {}</a>
+        <div>所有该class的标签 <br>
+          使用多个class时，用空格分割class='class1 class2...'
+        </div>
+        <p>ep: .w{width:80%} <br>
+          设置class='w'的标签的宽度为80%</p>
+      </li>
+      <li>
+        <h4>id选择器</h4>
+        <a>#id {}</a>
+        <div>一个id的标签的样式，id不能给一个标签使用</div>
+        <p>#output{font-size:20px} <br>
+          设置id="output"的标签的字体大小为20px</p>
+      </li>
+      <li>
+        <h4>* 选择器</h4>
+        <a>* {}</a>
+        <div>包含所有标签</div>
+        <p>*{box-sizing:border-box} <br>
+          设置所有标签的边框模型为border-box</p>
+      </li>
+      <li>
+        <h4>反选选择器</h4>
+        <a>not(选择器){}，选择这种的选择器</a>
+        <div>选择器1:not(选择器2){}，选择所有选择器1，但是匹配选择器2不会被选择</div>
+        <p>ep: .box:not(span){} <br>
+          设置class="box"中所有不是span的标签的样式</p>
+      </li>
+    </ul>
+
+  </div>
+  <div>
+    <h3>复合选择器</h3>
+    <hr>
+    <ul>
+      <li>
+        <h4>后代选择器</h4>
+        <a>label1 label2{}</a>
+        <div>所有后代</div>
+        <p>.box div{} <br>
+          设置class="box"中所有div的样式</p>
+      </li>
+      <li>
+        <h4>子代选择器</h4>
+        <a>label1 > label2{}</a>
+        <div>只改变子代，孙代不改变</div>
+        <p>.box > div{} <br>
+          设置class="box"中子代div的样式，.box div div 不会被选择</p>
+      </li>
+      <li>
+        <h4>并集选择器</h4>
+        <a>label1, label2, ...{}</a>
+        <div>多个标签</div>
+        <p>ol, ul{padding-left:20px} <br>
+          设置所有ol和ul的padding-left为20px</p>
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>伪类选择器</h3>
+    <hr>
+    <ul>
+      <li>
+        <h4>结构伪类选择器</h4>
+        <a>label: first-child，匹配第一个元素 <br>
+          label: last-child，匹配最后一个元素 <br>
+          label: nth-child(n)，匹配第n个元素，注意，从1开始！！！ <br>
+          label: nth-child(f(n))，填好fn，n ∈ N，匹配所有值的元素</a>
+        <div>用于匹配列表ul和ol种第n的元素</div>
+        <p>ul:first-child{background-color:cyan} <br>
+          设置ul的第一个子标签的背景色为青色</p>
+      </li>
+      <li>
+        <h4>状态伪类选择器</h4>
+        <a>label: 状态{} <br>
+          hover: 鼠标悬停，走开取消 <br>
+          active: 鼠标按下激活，松开取消 <br>
+          focus: 获得焦点 <br>
+          visited: 访问过 <br>
+          link: 链接</a>
+        <div>注意:
+          遵循link-visited-hover-active的顺序，否则无法生效 <br>
+          工作中常用设置超链接的方法: <br>
+          a:{} <br>
+          a:hover{} <br>
+        </div>
+        <p>button:hover{cursor:pointer} <br>
+          设置button标签的鼠标悬停样式为指针</p>
+      </li>
+      <li>
+        <h4>元素伪类选择器</h4>
+        <a>label::before{}，在元素前添加内容 <br>
+          label::after{}，在元素后添加内容</a>
+        <div>注意: 必须要有content属性，否则不会生效</div>
+        <p>li::before{content:'+'} <br>
+          设置所有li标签前添加+号</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="inherit w">
+  <div>
+    <h3>继承属性</h3>
+    <ul>
+      <li>默认情况下文字的属性直接继承父元素，除非自己有相应的样式</li>
+      <li>配置两次相同属性时，不同的会叠加，相同的会选择后者生效</li>
+      <li>属性特性的优先级：（范围越大，优先级越低）
+        <div>
+          继承 < * < 直接标签 < class < id < 行内样式 < !important
+        </div>
+      </li>
+      <li>复合选择器的优先级过于复杂</li>
+    </ul>
+  </div>
+</div>
+
+</body>
+</html>

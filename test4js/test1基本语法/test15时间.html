@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box {
+      background-color: #c4be36;
+    }
+  </style>
+</head>
+<body>
+<div class="box"></div>
+<script>
+  const box = document.querySelector('.box')
+  setInterval(function () {
+    const time = new Date()
+    box.innerHTML =
+      'Data:' + time +
+      '<br> toLocaleTimeString:' + time.toLocaleTimeString() +
+      '<br> toLocaleDateString:' + time.toLocaleDateString() +
+      '<br> toLocaleString:' + time.toLocaleString() +
+      '<br> getTime:' + time.getTime() +
+      '<br> Data.now:' + Date.now() +
+      '<br> new Data(2022-6-8):' + new Date("2022-6-8")
+  }, 1000)
+</script>
+</body>
+</html>

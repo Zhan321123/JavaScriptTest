@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Each</title>
+</head>
+<body>
+<script>
+  /*
+  Foreach遍历对象
+    语法：for(let k in Sequence){}
+    其中的k时可遍历对象的键
+    对于数组就是其下标（注意是字符串型），对象是其键
+
+   */
+  let arr = [5, 2, 6, 1,]
+  for (let k in arr) {
+    console.log(k,typeof k)
+    console.log(arr[k])
+  }
+
+  let obj = {
+    name: 'zhan',
+    age: 18,
+    IQ: 250,
+    study: function () {
+      console.log('play game')
+    }
+  }
+  for (let k in obj) {
+    console.log(`${k}:${obj[k]}`)
+  }
+
+</script>
+</body>
+</html>

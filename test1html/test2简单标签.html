@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Simple Tags</title>
+  <style>
+
+  </style>
+  <link rel="stylesheet" href="/lib/study.css">
+</head>
+<body>
+
+<h1>head level 1</h1>
+<h2>head level 2</h2>
+<h3>head level 3</h3>
+<h4>head level 4</h4>
+<h5>head level 5</h5>
+<h6>head level 6</h6>
+
+
+<p>paragraph</p>
+
+<!--
+换行<br>（单行标签）
+水平线<hr>（单行标签）
+-->
+<hr>
+<hr>
+<br>
+<hr>
+
+<!--
+文本格式化
+-->
+<p>
+  I am <strong>加粗 strong or b</strong>, never <em>斜体 em or i</em>, please
+  <ins>下划线 ins or u</ins> me, don't <del>删除线 del or s</del> me.
+</p>
+
+<!--
+图像
+<img src='文件路径'
+     width='宽度'
+     height='高度'
+     alt='图片无法显示时提示的文本'
+     title='tooltip，鼠标悬停之后提示'>
+-->
+<img src="/file/image/x.png" title="this is tip" width=80 height=80 alt="">
+<img src="/file/image/1.png" width=80 height=80 alt="">
+<img src="/file/image/2.png" width=80 height=80 alt="">
+<img src="/file/image/3.png" width=80 height=80 alt="">
+<img src="" width=80 height=80 alt="this picture is not found">
+<img src="https://www.baidu.com/img/bd_logo1.png" alt=''>
+<br>
+<hr>
+
+<!--
+超链接标签
+<a
+  href='路径网址'
+  target='_blank'>内容</a>
+href写#时为空链接，不会跳转
+target='_blank'，会在新窗口打开，不写会覆盖此窗口
+-->
+<a href="https://www.baidu.com">点击后跳转链接，并覆盖本窗口</a>
+<br>
+<a href="https://www.baidu.com" target="_blank">点击后在新标签页打开网页</a>
+<br>
+<a href="#"><em>空链接不会跳转</em></a>
+<hr>
+<br>
+
+<!--
+音频文件
+<audio
+  src='路径或网址'
+  controls='控制栏'
+  loop='循环播放'
+  autoplay='自动播放'>
+大多数浏览器都禁用了自动播放，所以可能不会生效
+
+视频文件
+<video
+  src='路径或网址'
+  controls='控制栏'
+  loop='循环播放'
+  muted='静音播放'
+  autoplay='自动播放'>
+自动播放前提时静音
+
+-->
+<audio src="/file/music1.ogg" controls="controls" loop="loop">Music</audio>
+<br>
+<video src="/file/video1.mp4" controls="controls" loop="loop" muted="muted" autoplay="autoplay" width="300">Video</video>
+<hr>
+<br>
+
+<!--
+其他标签
+<abbr>缩写</abbr>
+<address>地址</address>
+<code>代码</code>
+
+
+-->
+<p>abbr 鼠标放上去有奇效 <abbr title="邮政特快专递服务">EMS</abbr> </p>
+<br>
+<address><a href="tel:+19838606098"></a>我的电话</address>
+<br>
+<p>这是一个函数 <code>function(param)</code> 就是一段代码而已</p>
+<br>
+<ruby>汉<rp>(</rp><rt>han</rt><rp>)</rp>字<rp>(</rp><rt>zi</rt><rp>)</rp></ruby>
+<ruby>明日<rp>(</rp><rt>ming ri</rt><rp>)</rp> </ruby>
+<br>
+<p>这里的文本这么大 <small>这里的文本小</small></p>
+<br>
+<p>下标元素 A<sub>n</sub>=2n+1</p>
+<br>
+<time>2019-01-01</time>
+
+<script src="/lib/study.js"></script>
+</body>
+</html>

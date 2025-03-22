@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>颜色渐变</title>
+  <!--
+  颜色渐变
+  background-image: linear-gradient(
+    to 位置 / int+deg角度,
+    颜色1 (位置1),
+    颜色2 (位置2),
+    ...
+  )
+    创建线型渐变色背景图片
+  background-image: radial-gradient(
+    at 位置x，y,
+    颜色1 (位置1),
+    颜色2 (位置2),
+    ...
+  )
+    创建径向渐变色背景图片
+    可以有两个位置，是椭圆形渐变方向
+  -->
+  <style>
+    .box {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .box div {
+      width: 200px;
+      height: 200px;
+      background-color: #e5d51d;
+      margin: 10px;
+    }
+
+    .box div:nth-child(1) {
+      background-image: linear-gradient(
+          #0fe534,
+          #00d0ff
+      );
+    }
+
+    .box div:nth-child(2) {
+      background-image: linear-gradient(
+          to right,
+          #0fe534,
+          #00d1ff
+      );
+    }
+
+    .box div:nth-child(3) {
+      background-image: linear-gradient(
+          -45deg,
+          #0fe534,
+          #4cc5de
+      );
+    }
+
+    .box div:nth-child(4) {
+      background-image: linear-gradient(
+          to left,
+          #0fe534 70%,
+          #4cc5de
+      );
+    }
+
+    .box div:nth-child(5) {
+      background-image: linear-gradient(
+          45deg,
+          red,
+          orange,
+          yellow,
+          green,
+          blue,
+          indigo,
+          violet
+      );
+    }
+
+    .box div:nth-child(6) {
+      background-image: radial-gradient(
+          rgb(15, 229, 52),
+          rgb(0, 208, 255)
+      );
+    }
+
+    .box div:nth-child(7) {
+      background-image: radial-gradient(
+          at 0 0,
+          rgb(15, 229, 52),
+          rgb(0, 208, 255)
+      );
+    }
+
+    .box div:nth-child(8) {
+      background-image: radial-gradient(
+          at 0 0,
+          red,
+          orange,
+          yellow,
+          green,
+          blue,
+          indigo,
+          violet
+      );
+    }
+
+
+    .hl {
+      background-color: #61c2d3;
+      height: 50px;
+      width: 200px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .hl:hover {
+      background-image: radial-gradient(
+          #ffffff,
+          rgb(0, 208, 255)
+      );
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+
+<hr>
+<div style="height: 50px;width: 200px;">
+  <button class="hl">
+    <text>按钮</text>
+  </button>
+</div>
+</body>
+</html>

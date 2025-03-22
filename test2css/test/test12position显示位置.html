@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>相对固定与绝对固定</title>
+  <!--
+  相对位置与绝对位置
+    用于脱标的元素排布
+  position:
+  可配置属性：
+    top、right、bottom、left: 数值
+      偏移量，当定义为相对relative，就是相对于自身的偏移
+      当absolute，就是相对于定义了相对位置的父元素的偏移
+  用法技巧
+    偏移显示：
+      给父元素定义为relative，子元素定义为absolute，然后定义2个方向的偏移量
+    居中弹窗
+      给元素定义为absolute，然后定义left、top为50%
+      然后使用相对自身移动：transform: translate(-50%, -50%)
+  -->
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      text-decoration: none;
+    }
+
+    body {
+      background-color: #d8aec7;
+      margin: 20px auto;
+    }
+
+    .display {
+
+    }
+
+    .display ul {
+      padding-left: 20px;
+    }
+
+    .display ul ol {
+      padding-left: 40px;
+    }
+
+    .display ul ol ul {
+      padding-left: 60px;
+    }
+
+    .display > ul > li {
+      border-bottom: black 1px solid;
+      margin-bottom: 30px;
+    }
+
+    .w {
+      margin: 0 auto;
+      width: 80%;
+    }
+
+
+    .fixed {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+
+    .fixed a {
+      padding: 6px 16px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.3);
+      top: 0;
+      right: 0;
+      position: absolute;
+    }
+
+    .zIndex {
+
+    }
+
+    .zIndex div {
+      position: relative;
+      height: 100px;
+      width: 100px;
+      border: 1px solid black;
+      margin: 10px;
+    }
+
+    .zIndex div span {
+      text-align: center;
+      position: absolute;
+      line-height: 100px;
+    }
+
+    .ad {
+      padding: 0 20px;
+      width: 100%;
+      height: 10%;
+      position: fixed;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 100;
+    }
+
+  </style>
+</head>
+<body>
+<h1 class="w">显示方式</h1>
+<div class="display w">
+  <ul>
+    <li>
+      <h3>position: 显示方式</h3>
+      <p>标准流、浮动、固定标签</p>
+      <ol>
+        <li>
+          <h4>relative：相对位置</h4>
+          <p>结合absolute使用用于元素相对显示</p>
+        </li>
+        <li>
+          <h4>absolute：绝对位置</h4>
+          <p>用于居中弹窗</p>
+        </li>
+        <li>
+          <h4>fixed：固定位置</h4>
+          <p>不随滚动条滚动，始终在固定位置显示,用于固定的广告</p>
+        </li>
+      </ol>
+      <div class="fixed">
+        <img style="width: 100%;height: 100%;" src="/file/image/7.png" alt="">
+        <a>2018</a>
+      </div>
+    </li>
+    <li>
+      <h3>z-index: 图层顺序</h3>
+      <p>图层显示优先级，默认0，越大优先级越高显示越靠前</p>
+      <h4>图层渲染顺序</h4>
+      <ol>
+        <li>标准流元素</li>
+        <li>浮动元素（遵循代码顺序）</li>
+      </ol>
+      <div class="zIndex">
+        <div>
+          <span style="z-index: 1;background-color: #07a934;width: 50px;height: 100px;">box1</span>
+          <span style="z-index: 0;background-color: #0d6c6c;width: 100px;height: 50px;line-height: 50px">box2</span>
+        </div>
+        <div>
+          <span style="z-index: 0;background-color: #07a934;width: 50px;height: 100px;">box1</span>
+          <span style="z-index: 1;background-color: #0d6c6c;width: 100px;height: 50px;line-height: 50px">box2</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="ad">
+  <p>学前端，找瞻哥，瞻哥带你学好前端</p>
+</div>
+</body>
+</html>

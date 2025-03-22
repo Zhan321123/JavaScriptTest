@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>VW VH</title>
+<!--
+新单位vw vh
+  vw：1vw=1%视口宽度，视口宽度=浏览器宽度
+  vh：1vh=1vw=1%视口高度，视口高度=浏览器高度
+注意：
+  宽高都能给vw或vh，但一个窗口不要混用vw vh
+
+
+-->
+  <style>
+    div{
+      background-color: #39988f;
+    }
+    div:first-child {
+      width: 50vw;
+      height: 50vh;
+    }
+    div:nth-child(2) {
+      width: 50vw;
+      height: 50vw;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <p>
+    50vw 50vh
+  </p>
+</div>
+<div>
+  <p>
+    50vw 50vw
+  </p>
+</div>
+</body>
+</html>

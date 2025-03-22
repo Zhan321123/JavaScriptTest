@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Css精灵</title>
+  <!--
+  css精灵，大图包含小图
+    作用：减少http请求次数，减少服务器压力
+    使用方法：
+      1、定义div的width，height，background-image: url("大图")
+      2、使用background-position: -x -y，xy为小图在大图中的坐标
+  -->
+  <style>
+    .box {
+      display: flex;
+      justify-content: center;
+    }
+
+    .box div {
+      background-image: url("/file/image/spirit.jpg");
+      width: 55px;
+      height: 55px;
+      margin: 40px 15px;
+    }
+    .z {
+      background-position: -233px -265px;
+    }
+
+    .h {
+      background-position: -100px -68px;
+    }
+
+    .a {
+    }
+
+    .n {
+      background-position: -121px -130px;
+    }
+  </style>
+</head>
+<body>
+<div class="box">
+  <div class="z"></div>
+  <div class="h"></div>
+  <div class="a"></div>
+  <div class="n"></div>
+</div>
+</body>
+</html>

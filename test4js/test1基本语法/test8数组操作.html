@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+    数组操作 []
+    .push(T...)，添加元素到数组最后，返回新数组的长度
+    .unshift(T...)，添加元素到数组开头，返回新数组的长度
+    .pop() 弹出最后一个元素，并返回
+    .shift() 弹出第一个元素，并返回
+    .splice(index) 弹出第index之后全部元素，并返回
+    .splice(index, num) 弹出从第index个开始之后的num个元素，并返回
+    */
+    x = []
+    m = x.push('element1')
+    n = x.push('e2', 'e3', 'e4')
+    console.log(m, n)
+    console.log(x)
+    console.log(x.toString())
+    console.log(x[0], x[1], x[2], x[3])
+    console.log(x[4])
+
+    o = x.unshift('e0', 'e-1')
+    console.log(x.toString())
+    console.log(o)
+    o = x.pop()
+    console.log(o)
+    console.log(x.toString())
+    o = x.shift()
+    console.log(o)
+    console.log(x.toString())
+    o = x.splice(1)
+    console.log(o)
+    console.log(x.toString())
+
+</script>
+</body>
+</html>

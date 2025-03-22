@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="keywords" content="生态流量,水文学法,生态保障率,水库调度">
+  <meta name="description"
+        content="一款生态流量计算软件，支持径流计算，可使用多种水文学法，计算生态流量，计算保证率，分析给出水库调度建议。">
+  <title>【EF】生态流量计算软件</title>
+  <link rel="shortcut icon" href="/file/image/ef.png" type="image/x-icon">
+  <link rel="stylesheet" href="./case9生态流量布局.css">
+</head>
+<body>
+<div class="import">
+  <h3>导入</h3>
+  <hr>
+  <div>
+    <div>
+      <button>导入月径流数据</button>
+      <h4>D:\code\...\scale data\桥东村月尺度.xlsx</h4></div>
+    <div>
+      <button>导入日径流数据</button>
+      <h4>D:\code\...\scale data\桥东村日尺度.xlsx</h4></div>
+  </div>
+</div>
+<div class="logo">
+  <img src="/file/image/ef.svg" alt="logo">
+  <p><strong>使用说明:</strong><br>
+    在软件界面左上角导入待测地区月尺度和日尺度径流数据<br>
+    点击下方选择相应的水文学计算方法<br>
+    即可加载出生态流量计算过程图、计算结果、生态保障率结果热力图<br>
+    在界面右侧显示分析生态保障率结果以及对应的水库调度建议<br>
+  </p>
+</div>
+<div class="function">
+  <h3>功能</h3>
+  <hr>
+  <div>
+    <button>导出计算图</button>
+    <button>导出保证率分析图</button>
+    <button>导出计算结果图</button>
+    <button>未定</button>
+  </div>
+</div>
+<div class="ecologyFlow">
+  <h3>水文学法</h3>
+  <hr>
+  <div>
+    <button>Tennant法</button>
+    <button>Texas法</button>
+    <button>Qp法</button>
+    <button>Q90法</button>
+    <button>7Q10法</button>
+    <button>最小月径流法</button>
+    <button>频率曲线法</button>
+    <button>历时曲线法</button>
+    <button>更多...</button>
+  </div>
+</div>
+<div class="calculate">
+  <div>
+    <h3>计算过程图</h3>
+    <hr>
+    <img src="/file/image/tennant.png" alt="计算过程">
+  </div>
+  <hr>
+  <div>
+    <h3>计算结果</h3>
+    <hr>
+    <p>该地区生态流量日径流为1.4905883870967744m3/s，此结果为Tennant法中最佳流量中最小流量。</p>
+  </div>
+</div>
+<div class="guarantee">
+  <h3>保证率图</h3>
+  <hr>
+  <img src="/file/image/guarantee.png" alt="保证率">
+</div>
+<div class="analysis">
+  <div>
+    <h3>保证率分析</h3>
+    <hr>
+    <p>智能分析得出：<br>
+      从月份上看，在1-4月保障率较低；从年份上看，保障程度成周期性变化。</p>
+  </div>
+  <div>
+    <h3>水库调度建议</h3>
+    <hr>
+    <p>1.季节性调整：<br>
+      1-4月：由于此期间保障率较低，建议优先保障生活用水和基本农业灌溉需求。同时，应优化蓄水量管理，通过减少不必要的放水来保持水库水位，以备不时之需。考虑实施节水措施，提高水资源利用效率。
+      其他月份：随着降水量的增加，可以逐渐增加水库的蓄水量，并根据实际需求进行灵活调度，确保水资源在全年内均衡利用。
+      <br>
+      2.周期性策略：<br>
+      鉴于保障程度呈周期性变化，建议制定长期的调度规划，结合历史数据和气象预测，预测未来的保障率变化趋势。
+      在保障率较低的年份，采取更加保守的调度策略，确保关键时期的水资源供应；在保障率较高的年份，则可以适当增加放水量，以补充地下水、改善生态环境或进行其他有益的水资源利用。
+      <br>
+    </p>
+  </div>
+</div>
+<div class="instruction">
+  <button>×</button>
+  <div>
+
+  </div>
+</div>
+</body>
+<script type="text/javascript">
+  function resizeWindow(width, height) {
+    window.resizeTo(width, height);
+  }
+
+  window.onload = function () {
+    resizeWindow(1400, 800);
+  }
+</script>
+<script>
+  let logoP = document.querySelector(".logo p");
+  let instruction = document.querySelector(".instruction");
+  logoP.onclick = function () {
+    instruction.style.display = "block";
+  }
+  document.querySelector(".instruction button").onclick = function () {
+    instruction.style.display = "none";
+  }
+</script>
+</html>

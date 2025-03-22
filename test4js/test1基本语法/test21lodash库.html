@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: #c4be36;
+    }
+    p {
+      background-color: #00d0ff;
+    }
+  </style>
+</head>
+<body>
+<div class="d1">无效果<p>0</p></div>
+<div class="d2">防抖<p>0</p></div>
+<div class="d3">节流<p>0</p></div>
+<!--
+lodash库的使用
+  _.cloneDeep(对象)，深拷贝对象，返回一个新对象，不会改变原对象
+
+先引入lodash.min.js文件，再使用方法
+所有方法前加_.
+-->
+<script src="/lib/lodash/lodash.min.js"></script>
+<script>
+  const arr = [1, 2, 3, 4, 5, 6, {name: 'zhan', age: 18}]
+
+  const arr2 = _.cloneDeep(arr)
+  arr2[6].age = 19
+  console.log(arr[6].age)
+  console.log(arr2[6].age)
+
+  arr1 = []
+  Object.assign(arr1, arr)
+  arr1[6].age = 20
+  console.log(arr[6].age)
+  console.log(arr1[6].age)
+</script>
+<!--
+防抖_.debounce(回调函数, 延迟时间), 防止函数频繁调用，只执行最后一次，延迟执行，
+节流_.throttle(回调函数, 间隔时间), 防止函数频繁调用，只执行一次，间隔执行，
+-->
+<script>
+  let n = 1
+
+  function fn(d) {
+    d.innerText = n++
+  }
+  document.querySelector('.d1 p').addEventListener('mousemove', function () {fn(this)})
+  document.querySelector('.d2 p').addEventListener('mousemove', _.debounce(function () {
+    fn(this)
+  },500))
+  document.querySelector('.d3 p').addEventListener('mousemove', _.throttle(function () {
+    fn(this)
+  },500))
+</script>
+</body>
+</html>

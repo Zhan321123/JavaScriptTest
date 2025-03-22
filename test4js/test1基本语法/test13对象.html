@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Object</title>
+</head>
+<body>
+<script>
+  /**
+   * 定义对象
+   *   let obj = {x:y}
+   * 对象操作
+   *   增加 object.x = y
+   *   删除 delete object.x
+   *   修改 object.x = y
+   *   查看 object.x 或 object['x']，一定要加''号
+   *
+   */
+  let obj = {
+    name: 'zhan',
+    age: 18,
+    gender: 'female',
+    sing:function (){
+      console.log('sing a song')
+    }
+  }
+  console.log(obj)
+  console.log(typeof obj)
+
+  console.log(obj.age)
+
+  obj.age = 14
+  console.log(obj.age)
+
+  console.log(obj.high)//undefined
+  obj.high = 185
+  console.log(obj.high)
+
+  delete obj.gender
+  console.log(obj.gender)//undefined
+
+  obj.s = function () {
+    console.log('a method has been executed')
+  }
+  obj.s()
+
+  obj["age"] = 999
+  console.log(obj.age)
+  obj.sing()
+  console.log(obj.sing)
+</script>
+</body>
+</html>
