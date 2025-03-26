@@ -1,0 +1,123 @@
+[theme='dark-blue'] {
+  --border-color: #0d6efd;
+  --color: #6da7fc;
+  --background-color: #031633;
+  --body-color: #212529;
+  --active-color: #0d6efd;
+}
+
+[theme='dark-green'] {
+  --border-color: #1eac6a;
+  --color: #48ae78;
+  --background-color: #051b11;
+  --body-color: #212529;
+  --active-color: #76d8a4;
+}
+
+[theme='dark-purple'] {
+  --color: #b530c6;
+  --background-color: #2b0b3b;
+  --border-color: #6d1eac;
+  --body-color: #11021b;
+  --active-color: #8f4dcc;
+}
+
+[theme='dark-gold'] {
+  --border-color: #c66e00;
+  --color: #c6940b;
+  --background-color: #272727;
+  --body-color: #212529;
+  --icon-color: #eab579;
+  --active-color: #492d01;
+  --th-color: #eaaf5a;
+  --focus-color: #814f09;
+  --content-bg-color: #2e2e2e;
+  --content-color: #eab579;
+  --placeholder-color: #935a24;
+}
+
+.text-color {
+  color: var(--color) !important;
+}
+
+.icon-color {
+  color: var(--icon-color);
+}
+
+.border-color {
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+}
+
+.body {
+  background-color: var(--body-color);
+  color: var(--color);
+}
+
+.active {
+  background-color: var(--active-color) !important;
+}
+
+.table {
+}
+
+.table th,
+.table td {
+  background-color: var(--background-color);
+}
+
+.table thead th,
+.table tbody th {
+  color: var(--th-color);
+}
+
+.table tbody td {
+  color: var(--color);
+}
+
+.table-border {
+  border: 1px solid var(--border-color);
+}
+
+.input {
+  border: 1px solid var(--border-color);
+  color: var(--color);
+  background-color: var(--content-bg-color);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.input:focus {
+  background-color: var(--background-color);
+  box-shadow: 0 0 0 0.25rem var(--focus-color);
+  border-color: var(--focus-color);
+  color: var(--color);
+}
+
+.input::placeholder {
+  color: var(--placeholder-color);
+  opacity: 1;
+}
+
+.input::-webkit-file-upload-button {
+  color: var(--color);
+  background-color: var(--content-bg-color);
+}
+
+.input:hover:not(:disabled):not([readonly])::-webkit-file-upload-button {
+  background-color: var(--background-color);
+}
+
+.input:disabled {
+  background-color: var(--background-color);
+}
+
+.form-check-input {
+  background-color: var(--background-color);
+  border-color: var(--border-color);
+}
+.form-check-input:checked{
+  background-color: var(--active-color);
+}
+.form-check-input:checked[type=checkbox] {
+  color: var(--color);
+}

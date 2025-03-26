@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{Chart.js, Swiper, bootstrap, chart.js, d3.v7, font-awesome, jquery-3.2.1.slim, jsPlumb, mathjax, popper.js, swiper, xlsx}" />
+    <file url="PROJECT" libraries="{Swiper, bootstrap, chart.js, d3.v7, font-awesome, jquery-3.2.1.slim, jsPlumb, mathjax, popper.js, swiper, xlsx}" />
   </component>
 </project>
