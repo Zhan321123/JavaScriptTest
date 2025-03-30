@@ -1,0 +1,61 @@
+<!--
+html 注释1
+-->
+<!-- html注释2 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!--html 注释-->
+  <style>
+    .pink {
+      /* css注释 */
+      background-color: pink;
+    }
+  </style>
+  <!--页面创建前执行的js-->
+  <script src=""></script>
+</head>
+<body>
+<!--元素创建前执行的js-->
+<script src=""></script>
+
+<button class="pink">button1</button>
+<button>button2</button>
+<button>button3</button>
+<button>button4</button>
+<br>
+<hr>
+<div>
+  <button onclick="alert('you')">mc</button>
+</div>
+
+<!--页面创建后执行的js-->
+<script>
+  <!-- js注释1 -->
+  // js注释2
+  /*
+  js注释3
+   */
+  /**
+   * js注释4
+   */
+  let bts = document.querySelectorAll('button')
+  for (let i = 0; i < bts.length; i++) {
+    bts[i].addEventListener('click', function () {
+      document.querySelector('.pink').classList.remove('pink')
+      this.className = 'pink'
+    })
+  }
+</script>
+
+<!-- 外部js文件 -->
+<script src="">
+  // 这里代码不会执行
+</script>
+</body>
+
+</html>

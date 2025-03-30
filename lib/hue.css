@@ -29,13 +29,17 @@
   --body-color: #212529;
   --icon-color: #eab579;
   --active-color: #492d01;
-  --th-color: #eaaf5a;
   --focus-color: #814f09;
   --content-bg-color: #2e2e2e;
   --content-color: #eab579;
   --placeholder-color: #935a24;
+  --checked-color: #674416;
+  --title-color: #e8c298;
+  --alert-color: #ff5900;
+  --opacity-bg-color: var(--background-color) rgba(0, 0, 0, 0.5);
 }
 
+h1,h2,h3,h4,h5,h6,p,
 .text-color {
   color: var(--color) !important;
 }
@@ -68,7 +72,7 @@
 
 .table thead th,
 .table tbody th {
-  color: var(--th-color);
+  color: var(--title-color);
 }
 
 .table tbody td {
@@ -111,13 +115,195 @@
   background-color: var(--background-color);
 }
 
-.form-check-input {
+.switch {
   background-color: var(--background-color);
   border-color: var(--border-color);
 }
-.form-check-input:checked{
+
+.switch:focus {
+  border-color: var(--focus-color);
+  outline: 0;
+}
+
+.switch:checked {
+  background-color: var(--checked-color);
+  border: var(--border-color);
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 0.25%29'/%3e%3c/svg%3e");
+}
+
+.switch:checked[type=checkbox] {
+  color: var(--color);
+}
+
+.range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 1px var(--focus-color) 0 0 0 0.25rem var(--focus-color);
+}
+
+.range:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 1px var(--border-color), 0 0 0 0.25rem var(--focus-color);
+}
+
+.range::-webkit-slider-thumb {
+  background-color: var(--color);
+}
+
+.range::-webkit-slider-thumb:active {
+  background-color: var(--title-color);
+}
+
+.range::-webkit-slider-runnable-track {
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--border-color);
+}
+
+
+.select {
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--color);
+}
+
+.select:focus {
+  box-shadow: 0 0 0 0.25rem var(--focus-color);
+  border-color: var(--border-color);
+}
+
+.button {
+  color: var(--color);
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--border-color);
+}
+.button:hover{
+  color: var(--title-color);
+  border-color: var(--border-color);
   background-color: var(--active-color);
 }
-.form-check-input:checked[type=checkbox] {
+.btn-check + .btn:hover {
+  color: var(--title-color);
+  border-color: var(--border-color);
+  background-color: var(--active-color);
+}
+.btn-check:checked+.btn{
+  color: var(--checked-color);
+  background-color: var(--content-color);
+  border: 1px solid var(--content-bg-color);
+}
+.floating > .form-control:focus ~ label::after,
+.floating > .form-control:not(:placeholder-shown) ~ label::after,
+.floating > .form-control-plaintext ~ label::after,
+.floating > .form-select ~ label::after {
+  background-color: var(--background-color);
+  color: var(--border-color);
+}
+
+.floating > .form-control:not(:placeholder-shown) ~ label,
+.floating > .form-select:not(:placeholder-shown) ~ label {
   color: var(--color);
+}
+
+.floating > .form-control:not(:placeholder-shown) ~ label::after {
+  background-color: var(--background-color);
+}
+
+.text {
+  color: var(--color);
+  background-color: var(--content-bg-color);
+}
+
+.title {
+  color: var(--title-color);
+}
+
+.bg {
+  background-color: var(--background-color);
+}
+
+
+.accordion {
+  color: var(--color);
+  --bs-accordion-border-color: var(--border-color);
+  --bs-accordion-color: var(--color);
+  --bs-accordion-btn-color: var(--title-color);
+  --bs-accordion-bg: var(--background-color);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem var(--focus-color);
+}
+
+.accordion-button:focus {
+  border-color: var(--border-color);
+  border: 1px solid var(--border-color);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--background-color);
+  color: var(--active-color);
+}
+
+.badge {
+  color: var(--alert-color);
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.badge-redPoint {
+  background-color: var(--alert-color);
+  border: 1px solid var(--title-color);
+}
+
+.breadcrumb{
+  --bs-breadcrumb-divider: '>';
+  --bs-breadcrumb-divider-color: var(--color);
+}
+.breadcrumb-item.active *{
+  color: var(--title-color);
+}
+.breadcrumb-item.active{
+  background-color: var(--background-color)!important;
+}
+
+.anchor {
+  color: var(--color);
+}
+.anchor:hover {
+  --bs-link-color-rgb: var(--title-color);
+}
+
+.card{
+  background-color: var(--content-bg-color);
+  border: 1px solid var(--border-color);
+  color: var(--color);
+}
+.card > hr {
+  color: var(--border-color);
+  border-color: var(--border-color);
+}
+.card.active{
+  background-color: var(--background-color)!important;
+  border: 1px solid var(--border-color);
+}
+.card-header-tabs .nav-link.active {
+  color: var(--title-color);
+  border: 1px solid var(--border-color);
+  border-bottom-color: var(--content-color);
+}
+.card-header-tabs .nav-link.disabled{
+  color: var(--placeholder-color);
+}
+.card-title{
+  color: var(--title-color);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1em;
+}
+.card-text{
+  color: var(--color);
+  background-color: var(--opacity-bg-color);
+}
+.card-footer {
+  color: var(--placeholder-color);
+}
+
+.nav{
+  --bs-nav-link-hover-color: var(--title-color);
+}
+.nav-tabs {
+  --bs-nav-tabs-link-hover-border-color:var(--border-color)!important;
 }

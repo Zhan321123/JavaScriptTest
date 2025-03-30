@@ -2,5 +2,6 @@
 <project version="4">
   <component name="JavaScriptLibraryMappings">
     <file url="PROJECT" libraries="{Swiper, bootstrap, chart.js, d3.v7, font-awesome, jquery-3.2.1.slim, jsPlumb, mathjax, popper.js, swiper, xlsx}" />
+    <includedPredefinedLibrary name="Node.js Core" />
   </component>
 </project>

@@ -6,6 +6,20 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Input Label</title>
+  <style>
+    select {
+    }
+    option {
+      padding: 10px;
+      background-color: #ff0000;
+    }
+    option:checked {
+      background-color: #004dff;
+    }
+    option :hover {
+      background-color: #d8ff00;
+    }
+  </style>
 </head>
 <body>
 
@@ -33,5 +47,10 @@ placeholder参数：
 提示词placeholder：<input type="text" placeholder="这里有提示词"><br>
 多文件框file：<input type="file" multiple><br>
 <input type="checkbox" checked>我已阅读并同意<a href="#">《用户协议》</a>
+<select name="" id="">
+  <option value="">选项1</option>
+  <option value="">选项2</option>
+  <option value="">选项3</option>
+</select>
 </body>
 </html>
