@@ -1052,22 +1052,32 @@
         </div>
       </div>
     </div>
+
 <!--tooltip-->
     <h3>提示</h3>
     <div class="mb-3 border-color p-3">
-      <button type="button" class="btn btn-secondary"
-              data-bs-toggle="tooltip" data-bs-placement="top"
-              data-bs-custom-class="custom-tooltip"
-              data-bs-title="This top tooltip is themed via CSS variables.">
-        Custom tooltip
-      </button>
+      <div class="mb-3">
+        <button type="button" class="btn btn-secondary"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="This top tooltip is themed via CSS variables.">
+          Custom tooltip
+        </button>
+      </div>
+      <div>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+          Tooltip with HTML
+        </button>
+      </div>
     </div>
 
 
   </div>
 </div>
-<!--nav item 变换-->
 <script>
+  /**
+   * 启用侧边栏转换
+   */
   const navLinks = document.querySelectorAll('.theme');
   navLinks.forEach(nva => {
     nva.addEventListener('click', () => {
@@ -1088,10 +1098,16 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="./hue.js"></script>
 <script>
+  /**
+   * 启用提示框
+   */
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 </script>
 <script>
+  /**
+   * 启用消息框
+   */
   const toastTrigger = document.getElementById('liveToastBtn')
   const toastLiveExample = document.getElementById('liveToast')
   if (toastTrigger) {

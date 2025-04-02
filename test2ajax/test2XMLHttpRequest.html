@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div id="content1"></div>
+<div id="content2"></div>
+<div id="content3"></div>
+<script>
+  const content1 = document.getElementById('content1')
+  const xhr = new XMLHttpRequest()
+  xhr.open("GET","https://hmajax.itheima.net/api/province")
+  xhr.addEventListener('loadend',()=>{
+    console.log(xhr.responseText)
+    const data = JSON.parse(xhr.responseText)
+    content1.innerHTML = JSON.stringify(data)
+  })
+  xhr.send()
+</script>
+<script>
+  const content2 = document.getElementById('content2')
+  const xhr2 = new XMLHttpRequest()
+  xhr2.open("GET","https://hmajax.itheima.net/api/city?pname=河南省")
+  xhr2.addEventListener('loadend',()=>{
+    console.log(xhr2.responseText)
+    const data = JSON.parse(xhr2.responseText)
+    content2.innerHTML = JSON.stringify(data)
+  })
+  xhr2.send()
+</script>
+<script>
+  const content3 = document.getElementById('content3')
+  const xhr3 = new XMLHttpRequest()
+  xhr3.open("post","https://hmajax.itheima.net/api/register")
+  xhr3.addEventListener('loadend',()=>{
+    console.log(xhr3.responseText)
+    const data = JSON.parse(xhr2.responseText)
+    content2.innerHTML = JSON.stringify(data)
+  })
+  xhr3.setRequestHeader('Content-Type','application/json')
+  const user = {
+    username:"zhan114514",
+    password:"123456"
+  }
+  const data = JSON.stringify(user)
+  xhr3.send(data)
+</script>
+</body>
+</html>

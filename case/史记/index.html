@@ -47,6 +47,17 @@
       background-color: #007BFF;
     }
 
+    .tooltip-inner {
+      white-space: normal; /* 允许提示框内容换行 */
+      background-color: var(--bs-primary-bg-subtle);
+      max-width: 800px;
+      border: 1px solid var(--bs-primary);
+      padding: 1em;
+    }
+    .table{
+      --bs-table-bg: rgba(255, 255, 255, 0.53);
+    }
+
   </style>
 </head>
 <body data-bs-theme="light">
@@ -67,13 +78,13 @@
 </div>
 
 
-<img src="back.png" alt="" class="position-fixed w-100 opacity-25" style="z-index: -1000;">
+<img src="back2.png" alt="" class="position-fixed w-100" style="z-index: -1000;">
 <!--完整布局-->
 <div class="row w-100">
 
   <!--侧边栏-->
   <div class="d-flex flex-column flex-shrink-0 p-4 overflow-auto vh-100 position-fixed col-md-2"
-       style="color: black;background-color: #a0b8d6">
+       style="color: black;background-color: rgba(255,255,255,0.53)">
     <!--侧边栏标题-->
     <a href="" class="d-flex align-items-center mb-3 mb-md-0 mb-md-0 me-md-auto text-decoration-none text-dark">
       <img src="logo.png" alt="" style="width: 48px;">
@@ -132,55 +143,26 @@
 
     <!--章节-->
     <div id="introduce" class="section mb-3">
+      <br><br><br><br><br><br><br><br>
       <a href="#introduce" class="text-decoration-none">
         <div class="h2 mt-3 text-center">项目介绍</div>
       </a>
-      <hr>
-      <div class="rounded-2 px-5 border border-primary mx-5" style="background-color: rgb(204,206,213)">
-        <p class="lh-lg mb-3">
-          本项目通过划分“完全随机缺失（MCR）、随机缺失（MR）、非随机缺失（MNR）”三类场景，细分缺失率梯度（1%-30%），构建了更贴近真实水文气象数据的分类框架。
+      <div class="rounded-2 p-3 border border-primary mx-5">
+        <p class="lh-lg mb-3 h5">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          本项目针对水文气象数据填补中缺失场景复杂、模型效率低、工程应用适配性差等难题，构建“模型研发—测试验证—工程落地”的全链条技术体系。
         </p>
-        <p class="lh-lg mb-3">
-          系统在模型输入层增加缺失模式识别模块，自动分析缺失数据的分布规律，动态调整模型的输入特征权重，针对三种缺失类型分别训练子模型，通过加权集成策略进行结果融合，确保模型在不同场景下均能保持较高精度。
+        <p class="lh-lg mb-3 h5">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          首先，基于实际业务需求，将缺失类型划分为完全随机缺失（MCR）、随机缺失（MR）和非随机缺失（MNR）三类，结合1%-30%的五种缺失率构建精细化场景框架。设计能量谷优化算法（EVO），通过动态能量平衡机制提升模型训练效率。融合前馈神经网络（BPNN）、随机森林（RF）、支持向量机回归（SVR）、长短时记忆网络（LSTM）四种基础模型，构建新型多元线性回归（MLR）集成模型，实现权重分配与高缺失率场景下的稳定填补。
         </p>
-        <p class="lh-lg mb-3">
-          并创新性地结合能量谷优化算法（EVO）解决了传统优化方法在跨模型（如BPNN、L STM等）适配中的效率瓶颈，为多算法协同优化提供了新思路。
+        <p class="lh-lg mb-3 h5">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          其次，选取椒江流域历史数据生成多场景测试集，结合皮尔逊相关系数（PCC）、纳什效率系数（NSE）、百分比偏差（Pbias）指标量化模型精度，并通过浙江省气象中心的业务系统验证其对洪水预报、台风预警的支撑能力。
         </p>
-        <p class="lh-lg mb-3">
-          还结合了多元集成学习模型的构建（如结合AI模型与新型MLR方法），探索了不同算法优势互补的理论路径，丰富了数据填补领域的模型融合方法论。
-        </p>
-        <p class="lh-lg mb-3">
-          同时，项目提出的“事件—缺失”关联规则库和动态数据生成策略，突破了传统随机模拟的局限，为复杂环境下的数据建模提供了可复用的理论工具。
-        </p>
-        <p class="lh-lg mb-3">
-          且本项目采用“分阶段填补”方法，先利用低缺失率区域的数据训练模型，再逐步扩展到高缺失率区域，通过多次迭代优化填补结果。
-        </p>
-        <p class="lh-lg mb-3">
-          在水文数据高度缺失时，本项目引入邻近站点数据等外部信息，通过时空插值方法生成辅助特征。
-        </p>
-        <p class="lh-lg mb-3">
-          最后本项目对神经网络进行剪枝，移除冗余参数；对随机森林（RF）等模型限制树深度和数量，减少计算量；利用GPU并行计算能力加速模型推理，对轻量化后的模型进行硬件适配优化，以便实时性要求高的任务优先分配至高性能计算节点，历史数据填补任务分配至普通节点，通过动态资源分配提升整体效率。
-        </p>
-        <p class="lh-lg mb-3">
-          构建“模型研发—测试验证—工程部署”全链条架构，构建了一套覆盖数据分类、算法优化、集成建模、系统部署的水文气象缺失数据填补解决方案。
-        </p>
-        <p class="lh-lg mb-3">
-          水文气象数据，自古以来，民生所系，国脉所关。
-        </p>
-        <p class="lh-lg mb-3">
-          本团队深知，数据链的断裂即是风险研判的盲区，缺失值的迷雾不散，灾害预警便难溯其源。
-        </p>
-        <p class="lh-lg mb-3">
-          为此，我们以数字匠心浇筑“人工智能驱动的水文气象数据智能修复平台”，将机器学习技术与流域水循环机理深度融合，在破碎数据中重构天地呼吸的完整节律。
-        </p>
-        <p class="lh-lg mb-3">
-          平台不仅破解时空高维缺失的困局，更以“修复—校验—推演”三阶闭环打通预报模型的任督二脉，使散落的历史碎片重焕新生，让沉默的监测设备再度发声。
-        </p>
-        <p class="lh-lg mb-3">
-          我们笃信，每一字节的精准填补，都是筑牢智慧水利的基石；每一条时序的连贯重构，皆是架设防灾前哨的钢索。
-        </p>
-        <p class="lh-lg mb-3">
-          愿以此平台为钥，解天地无常之惑，织数字孪生之网，在数据洪流中守护万家灯火，于方寸屏幕间绘制海晏河清的盛世图景。
+        <p class="lh-lg mb-3 h5">
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          最后，搭建支持多源异构数据接入的自动化填补系统，开发面向业务场景的可视化交互系统，推动平台在气象、水利等企事业单位投入应用。技术研发、验证测试与工程部署形成闭环，兼顾理论创新与应用适配性，为气象水文数据治理提供可靠解决方案。
         </p>
       </div>
       <hr>
@@ -192,7 +174,7 @@
         <div class="text-center h2 mt-3">智能优化算法介绍</div>
       </a>
       <div class="mx-5">
-        <table class="table table-primary">
+        <table class="table">
           <thead>
           <tr style="border-top: 2px solid #000;">
             <th scope="col">算法名称</th>
@@ -264,7 +246,9 @@
       </div>
       <br><br><br><br><br><br><br><br><br>
 
-      <a href="#test" class="text-decoration-none"><div class="h2 text-center mt-3" id="test">智能优化算法检验</div></a>
+      <a href="#test" class="text-decoration-none">
+        <div class="h2 text-center mt-3" id="test">智能优化算法检验</div>
+      </a>
       <hr>
       <div class="col">
         <div class="row">
@@ -316,7 +300,9 @@
         </div>
         <br><br><br><br><br><br><br><br><br><br>
         <div class="row">
-          <a href="#optimal" class="text-decoration-none"><div class="h2 text-center mb-1" id="optimal">优化算法</div></a>
+          <a href="#optimal" class="text-decoration-none">
+            <div class="h2 text-center mb-1" id="optimal">优化算法</div>
+          </a>
           <hr>
           <div class="col col-md-5">
             <div class="ms-3">
@@ -327,7 +313,7 @@
               </div>
               <div class="row mb-3">
                 <div class="col-md-6">
-                  <div class="h4 text-center">反向传播神经网络（BPNN）</div>
+                  <div class="h4 text-center">反向传播神经网络 <br>（BPNN）</div>
                   <div class="col border border-primary rounded-2 p-2">
                     <div class="input-group mb-3">
                       <span class="input-group-text text-center" style="width: 115px">学习率</span>
@@ -342,7 +328,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="h4 text-center">随机森林（RF）</div>
+                  <div class="h4 text-center">随机森林 <br>（RF）</div>
                   <div class="col border border-primary rounded-2 p-2">
                     <div class="input-group mb-3">
                       <span class="input-group-text text-center" style="width: 115px">决策树数目</span>
@@ -359,7 +345,7 @@
               </div>
               <div class="row">
                 <div class="col-md-6">
-                  <div class="h4 text-center">支持向量机回归（SVR）</div>
+                  <div class="h4 text-center">支持向量机回归 <br>（SVR）</div>
                   <div class="col border border-primary rounded-2 p-2">
                     <div class="input-group mb-3">
                       <span class="input-group-text text-center" style="width: 115px">惩罚因子</span>
@@ -379,7 +365,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <div class="h4 text-center">长短时记忆网络（LSTM）</div>
+                  <div class="h4 text-center">长短时记忆网络 <br>（LSTM）</div>
                   <div class="col border border-primary rounded-2 p-2">
                     <div class="input-group mb-3">
                       <span class="input-group-text text-center" style="width: 115px">初始学习率</span>
@@ -475,23 +461,9 @@
           </div>
           <!-- 左下区域 -->
           <div class="">
-            <div class="float-end start-100 top-0">
-              <button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-              <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                  <div class="toast-header">
-                    <img src="" class="rounded me-2" alt="...">
-                    <strong class="me-auto">Bootstrap</strong>
-                    <small>11 mins ago</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                  </div>
-                  <div class="toast-body">
-                    Hello, world! This is a toast message.
-                  </div>
-                </div>
-              </div>
+
+            <div class="h4 text-center position-relative">计算结果
             </div>
-            <div class="h4 text-center">计算结果</div>
             <div class=" border border-primary" style="height: 156px">
               <table class="w-100 table dataTable" id="resultTable">
                 <tr class="text-center col">
@@ -503,7 +475,9 @@
                   <th class="col-md-2">MLR</th>
                 </tr>
                 <tr class="">
-                  <td>PCC</td>
+                  <td>
+                    <div class="small" style="height: 22px">皮尔逊相关系数(PCC)</div>
+                  </td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -511,7 +485,9 @@
                   <td></td>
                 </tr>
                 <tr class="">
-                  <td>NSE</td>
+                  <td>
+                    <div class="small" style="height: 22px">纳什效率系数(NSE)</div>
+                  </td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -519,7 +495,9 @@
                   <td></td>
                 </tr>
                 <tr class="">
-                  <td>Pbias (%)</td>
+                  <td>
+                    <div style="width: 150px;height: 22px" class="small">百分比偏差(Pbias-%)</div>
+                  </td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -537,9 +515,20 @@
                id="violinAndPoint" style="height: 544px">
         </div>
       </div>
+      <div class="d-flex justify-content-around mt-3 border border-primary p-2 align-items-center">
+        <div style="width: 37%">
+          <img src="./svgs/PCC.svg" alt="...">
+        </div>
+        <div class="h2">,</div>
+        <div style="width: 27%">
+          <img src="./svgs/NSE.svg" alt="...">
+        </div>
+        <div class="h2">,</div>
+        <div style="width: 30%">
+          <img src="./svgs/Pbias.svg" alt="...">
+        </div>
+      </div>
       <hr>
-
-
     </div>
     <br><br><br><br><br>
     <div id="fill" class="section mb-3">
@@ -1086,23 +1075,24 @@
 <!--指标评价计算按钮-->
 <script>
 
+  const evalue = ["纳什效率系数(NSE)", "百分比偏差(Pbias-%)", "皮尔逊相关系数(PCC)"]
   const data1 = [
     ["评估指标", "BPNN", "RF", "SVR", "LSTM", "MLR"],
-    ["PCC", 0.9205, 0.9296, 0.8925, 0.9373, 0.9472],
-    ["NSE", 0.8837, 0.8924, 0.8568, 0.8998, 0.9093],
-    ["Pbias (%)", -7.4057, -7.7397, -11.4293, -10.3531, -5.6525],]
+    ["皮尔逊相关系数(PCC)", 0.9205, 0.9296, 0.8925, 0.9373, 0.9472],
+    ["纳什效率系数(NSE)", 0.8837, 0.8924, 0.8568, 0.8998, 0.9093],
+    ["百分比偏差(Pbias-%)", -7.4057, -7.7397, -11.4293, -10.3531, -5.6525],]
 
   const data2 = [
     ["评估指标", "BPNN", "RF", "SVR", "LSTM", "MLR"],
-    ["PCC", 0.8906, 0.8883, 0.8648, 0.9150, 0.9194,],
-    ["NSE", 0.8550, 0.8528, 0.8302, 0.8784, 0.8826,],
-    ["Pbias (%)", 11.4680, 12.8801, 12.5511, 12.4695, 11.1567,],]
+    ["皮尔逊相关系数(PCC)", 0.8906, 0.8883, 0.8648, 0.9150, 0.9194,],
+    ["纳什效率系数(NSE)", 0.8550, 0.8528, 0.8302, 0.8784, 0.8826,],
+    ["百分比偏差(Pbias-%)", 11.4680, 12.8801, 12.5511, 12.4695, 11.1567,],]
 
   const data3 = [
     ["评估指标", "BPNN", "RF", "SVR", "LSTM", "MLR"],
-    ["PCC", 0.8466, 0.8629, 0.8449, 0.8607, 0.9329],
-    ["NSE", 0.8127, 0.8284, 0.8111, 0.8263, 0.8956],
-    ["Pbias (%)", -18.2202, -24.1533, -24.5757, -20.2649, -12.3834],]
+    ["皮尔逊相关系数(PCC)", 0.8466, 0.8629, 0.8449, 0.8607, 0.9329],
+    ["纳什效率系数(NSE)", 0.8127, 0.8284, 0.8111, 0.8263, 0.8956],
+    ["百分比偏差(Pbias-%)", -18.2202, -24.1533, -24.5757, -20.2649, -12.3834],]
 
   const evaluateButton = document.getElementById('evaluateButton');
   const resultTable = document.getElementById('resultTable');
@@ -1128,6 +1118,10 @@
         const cells = rows[i].cells;
         for (let j = 0; j < cells.length; j++) {
           cells[j].textContent = data[i][j];
+          if (evalue.includes(data[i][j])) {
+            cells[j].style.minWidth = "150px";
+            cells[j].classList.add("small")
+          }
         }
       }
     }, 1000);
@@ -1181,5 +1175,9 @@
 <!--<script src="/lib/study.js"></script>-->
 <script src="./lib/bootstrap.bundle.min.js"></script>
 <script src="lib/xlsx_0.18.5.js"></script>
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
 </body>
 </html>
