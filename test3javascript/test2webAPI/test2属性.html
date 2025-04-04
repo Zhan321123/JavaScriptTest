@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box1 {
+      background-color: #e69999;
+    }
+
+    .box2 {
+      background-color: #84bdca;
+    }
+  </style>
+</head>
+<body style="width: 80%; margin: 0 auto;">
+<h1 style="text-align: center">Attributes Modify</h1>
+<hr>
+<ol>
+  <li>
+    <hr>
+    <h4>element.style，标签样式</h4>
+    <h4>element.innerHTML，标签内容</h4>
+    <h4>element.innerText，标签内容，不包含标签</h4>
+    <pre>
+      const box = document.querySelector('#selector')
+      box.innerHTML += ', <strong>strong</strong>'
+      box.style.backgroundColor = 'red'
+      box.style.border = '2px solid black'
+    </pre>
+    <div style="border: 1px solid black; padding: 1em">
+      <div id="selector">div id=selector</div>
+    </div>
+
+  </li>
+  <li>
+    <hr>
+
+    <h4>element.className，获取class属性值，即"class1" or "class1 class2 ..."</h4>
+    <h4>element.classList，标签class列表</h4>
+    <pre>
+      console.log(box.className)
+      console.log(box.classList)
+    </pre>
+    <div style="border: 1px solid black; padding: 1em">
+      <div class="box2 box3" id="div2">div class="box2 box3"</div>
+    </div>
+
+  </li>
+  <li>
+    <hr>
+
+    <h4>element.classList.add(className)，添加class属性值</h4>
+    <h4>element.classList.remove(className)，删除class属性值</h4>
+    <h4>element.classList.toggle(className)，切换class属性值，如果有就删除，没有就添加</h4>
+    <pre>
+
+      const d = document.querySelector('#div3')
+
+      d.classList.add('box1')
+      d.classList.add('box2')
+      d.classList.remove('box2')
+
+      d.onclick = function () {
+        d.classList.toggle('box1')
+      }
+    </pre>
+    <div style="border: 1px solid black; padding: 1em">
+      <div id="div3">div</div>
+    </div>
+
+  </li>
+  <li>
+    <hr>
+
+    <h4>document.head.appendChild(document.createElement('style').innerHTML = "css样式")，写入css样式</h4>
+    <pre>
+      let style = document.createElement('style');
+      style.innerHTML=`#div4{background-color: #679839;}`
+      document.head.appendChild(style)
+    </pre>
+    <div style="border: 1px solid black; padding: 1em">
+      <div id="div4">div id=div4</div>
+    </div>
+
+  </li>
+  <li>
+    <hr>
+
+    <h4>自定义属性</h4>
+    <h4>定义属性：data-属性名="属性值"</h4>
+    <h4>获取属性：dataset.属性名</h4>
+    <pre>
+      console.log(d.dataset)
+      console.log(d.dataset.id)
+      console.log(d.dataset.icon)
+    </pre>
+    <div style="border: 1px solid black; padding: 1em">
+      <div data-id="1" id="div5" data-icon="icon-16px">div data-id="1" data-icon="icon-16px"></div>
+    </div>
+
+
+
+  </li>
+</ol>
+
+<script>
+  const box = document.querySelector('#selector')
+  console.dir(box)
+  // .innerHTML,获取标签中的内容
+  box.innerHTML += ', <strong>strong</strong>'
+  box.style.backgroundColor = 'red'
+  box.style.border = '2px solid black'
+  console.log(box.innerText)
+
+</script>
+<script>
+
+  const box1 = document.querySelector('#div2')
+  console.log(box1.className)
+  console.log(box1.classList)
+
+</script>
+<script>
+
+  // 通过.classList修改多css样式
+  const c = document.querySelector('#div3')
+
+  c.classList.add('box1')
+  c.classList.add('box2')
+  c.classList.remove('box2')
+
+  c.onclick = function () {
+    c.classList.toggle('box1')
+  }
+
+
+</script>
+<script>
+
+
+  let style = document.createElement('style');
+  style.innerHTML=`#div4{background-color: #679839;}`
+  document.head.appendChild(style)
+
+</script>
+<script>
+
+
+  const d = document.querySelector('#div5')
+  console.log(d.dataset)
+  console.log(d.dataset.id)
+  console.log(d.dataset.icon)
+
+</script>
+</body>
+</html>

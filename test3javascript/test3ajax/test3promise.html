@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.8.4/axios.min.js"
+        integrity="sha512-2A1+/TAny5loNGk3RBbk11FwoKXYOMfAK6R7r4CpQH7Luz4pezqEGcfphoNzB7SM4dixUoJsKkBsB6kg+dNE2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      // resolve('成功-1')
+      reject('失败-1')
+    }, 2000)
+  }).then((res) => {
+    console.log(res)
+  }).catch((err) => {
+    console.log(err)
+  })
+  console.log('pending')
+
+  const p1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('成功-2')
+    }, 1000)
+  })
+  const p2 = p1.then((res) => {
+    console.log(res)
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        reject('失败-3')
+      }, 3000)
+    })
+  })
+  p2.then((res) => {
+    console.log(res)
+  }).catch((err) => {
+    console.log(err)
+  })
+  console.log('-----------')
+</script>
+<script>
+  const url = 'https://hmajax.itheima.net/api/weather'
+
+  const pall = Promise.all([
+    axios({url: url, params: {city: '110100'}}),
+    axios({url: url, params: {city: '310100'}}),
+    axios({url: url, params: {city: '440100'}}),
+  ])
+  pall.then((res) => {
+    console.log(res)
+  }).catch((err) => {
+    console.log(err)
+  })
+
+</script>
+</body>
+</html>

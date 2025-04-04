@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body style="width: 80%; margin: 0 auto;">
+<h1 style="text-align: center">Get and Create Elements</h1>
+<hr>
+
+<ol>
+  <li>
+    <hr>
+
+
+    <h4>document.querySelector("css选择器"/"#id")，获取单个元素，不存在返回null，存在多个时返回第一个匹配的元素</h4>
+    <pre>
+      document.querySelector("code")
+      document.querySelector(".box")
+      document.querySelector("#head")
+      document.querySelector("input[type='text']")
+    </pre>
+    <div style="border: 1px solid #000;padding: 1em">
+      <code>code</code>
+      <p class="box">p class=box</p>
+      <button id="head">button id=head</button>
+      <br>
+      <input type="text">input type=text
+    </div>
+
+  </li>
+  <li>
+    <hr>
+
+
+    <h4>document.querySelectorAll("css选择器")，获取多个元素，返回一个NodeList列表对象</h4>
+    <pre>
+      document.querySelectorAll("a")
+    </pre>
+    <div style="border: 1px solid #000;padding: 1em">
+      <a href="">a</a>
+      <a href="">a</a>
+      <a href="">a</a>
+    </div>
+
+
+  </li>
+  <li>
+    <hr>
+
+
+    <h4>document.getElementById("id")，获取id元素</h4>
+    <h4>document.getElementsByClassName("class")，获取class元素</h4>
+    <h4>document.getElementsByTagName("tag")，获取tag元素</h4>
+    <h4>document.getElementsByName("name")，获取name元素</h4>
+    <h4>document.getElementsByTagNameNS()，获取tag元素</h4>
+    <pre>
+      document.getElementById("btn")
+      document.getElementsByClassName("box")
+      document.getElementsByTagName("code")
+      document.getElementsByName("password")
+      document.getElementsByTagNameNS(svgNS, 'circle');
+    </pre>
+    <div style="border: 1px solid #000;padding: 1em">
+      <button id="btn">button id=btn</button>
+      <p class="box">p class=box</p>
+      <code>code</code>
+      <br>
+      <input type="password" name="password">input name=password
+      <br>
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" style="border: 1px solid #000">
+        <circle cx="30" cy="30" r="15" fill="red" />
+      </svg>svg xmls="http://www.w3.org/2000/svg" fill="red"
+    </div>
+
+
+  </li>
+  <li>
+    <hr>
+
+
+    <h4>document.createElement("tag")，创建元素</h4>
+    <h4>可以附带属性，比如div.box</h4>
+    <pre>
+      const div2 = document.getElementById('div2')
+      const create = document.createElement('button')
+      create.innerText = 'create button'
+      div2.appendChild(create)
+    </pre>
+    <div style="border: 1px solid #000;padding: 1em">
+      <div id="div2">div </div>
+    </div>
+
+  </li>
+  <li>
+    <hr>
+
+
+    <h4>element.appendChild(元素)添加元素</h4>
+    <h4>element.insertBefore(添加的元素, element之前)</h4>
+    <h4>element.cloneNode(boolean)，复制元素，true时复制包括子孙元素，false只复制该标签，默认为false</h4>
+    <h4>element.removeChild(子元素)删除子元素</h4>
+    <pre>
+
+    </pre>
+    <div style="border: 1px solid #000;padding: 1em">
+
+    </div>
+
+
+  </li>
+</ol>
+
+
+<script>
+
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const circles = document.getElementsByTagNameNS(svgNS, 'circle');
+  console.log(circles)
+  circles[0].setAttribute('fill', 'blue')
+
+</script>
+<script>
+  const div2 = document.getElementById('div2')
+  const create = document.createElement('button')
+  create.innerText = 'create button'
+  div2.appendChild(create)
+
+</script>
+</body>
+</html>
