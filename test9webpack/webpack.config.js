@@ -3,7 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 module.exports = {
-  mode: 'production',
   entry: path.resolve(__dirname, './src/js/login.js'),
   output: {
     path: path.resolve(__dirname, './dist/zhan'),
@@ -22,6 +21,7 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [
+          // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader'
         ]
