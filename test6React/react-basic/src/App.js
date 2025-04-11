@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {createContext, useContext, useEffect, useRef, useState} from "react";
 import classNames from "classnames";
 import index from './index.css'
 
@@ -19,6 +19,68 @@ function Button(text, onClick, style = {}) {
   )
 }
 
+function Son(props){
+  // 不能修改props
+  return (
+    <div>
+      div-{props.name}-{props.sex}
+    </div>
+  )
+}
+function Son2(props){
+  return (
+    <div>
+      div-{props.children}
+    </div>
+  )
+}
+
+function Son3({onGetSonMessage}){
+  const message = 'this is son message'
+  return(
+    <div>
+      this is son
+      <button onClick={() => onGetSonMessage(message)}>{message}</button>
+    </div>
+  )
+}
+
+function Bro1({onGetBorMessage}){
+  const name = 'this is Bro'
+  return(
+    <div>
+      this is Bro
+      <button onClick={() => onGetBorMessage(name)}>send message</button>
+    </div>
+  )
+}
+function Bro2({id}){
+  return(
+    <div>
+      this is Bro2
+      {id}
+    </div>
+  )
+}
+
+const mesContext = createContext()
+
+function Cont1(){
+  return(
+    <div>
+      this is cont1
+      <Cont2></Cont2>
+    </div>
+  )
+}
+function Cont2(){
+  const message = useContext(mesContext)
+  return(
+    <div>
+      this is cont2, {message}
+    </div>
+  )
+}
 
 function App() {
 
@@ -46,7 +108,35 @@ function App() {
     style2:!bool
   })
 
+  const inputRef = useRef('')
+  const showDom = () => {
+    console.dir(inputRef.current)
+  }
+
+  const [message, setMessage] = useState('')
+  const getMessage = (message) => {
+    console.log(message)
+    setMessage(message)
+  }
+
   const [value, setValue] = useState('')
+
+  const [id, setId] = useState('')
+  const getId = (id) => {
+    setId(id)
+  }
+
+  const [l1, setList] = useState([])
+  const url = 'https://geek.itheima.net/v1_0/channels'
+  useEffect(() => {
+    async function getList() {
+      const res = await fetch(url)
+      const jsonRes = await res.json()
+      setList(jsonRes.data.channels.map((item) => item.id+' '+item.name))
+    }
+    getList()
+  }, []); //deps是依赖项，不填，每次render都执行一次effect，填[]，只执行一次effect，填[value]，value变化就会执行一次effect
+
   return (
     <div>
       // 文字、变量
@@ -98,7 +188,40 @@ function App() {
         <input type="text"
                onChange={(e) => setValue(e.target.value)}
                value={value}/>
-
+      </div>
+      // 获取dom
+      <div>
+        <input type="text" ref={inputRef}/>
+        <button onClick={showDom}>获取dom</button>
+      </div>
+      // 信息传递-父传子
+      <div>
+        <Son name={name} sex='female'></Son>
+        <Son2><span>span</span></Son2>
+      </div>
+      // 信息传递-子传父
+      <div>
+        this is div, {message}
+        <Son3 onGetSonMessage = {getMessage}></Son3>
+      </div>
+      // 信息传递-兄传弟
+      <div>
+        this is div
+        <Bro1 onGetBorMessage={getId}></Bro1>
+        <Bro2 id={id}></Bro2>
+      </div>
+      // 跨层通信
+      <div>
+        this is div
+        <mesContext.Provider value={name}>
+          this is mesContent.Provider
+          <Cont1></Cont1>
+        </mesContext.Provider>
+      </div>
+      // useEffect
+      <div>
+        this is div
+        {l1}
       </div>
     </div>
   );
