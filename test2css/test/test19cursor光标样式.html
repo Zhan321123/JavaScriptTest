@@ -13,47 +13,52 @@
   具体光标样式看body中内容
   -->
   <style>
-    .b {
-      display: flex;
-      width: 1200px;
-      height: 300px;
-      flex-wrap: wrap;
-
+    body {
+      margin: 0 auto;
+      width: 80%;
     }
 
-    div {
+    .b {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .b div {
       margin: 10px;
       width: 100px;
       height: 100px;
       text-align: center;
       line-height: 100px;
+      border: 1px solid #000;
     }
 
   </style>
 </head>
 <body>
+<h1 style="text-align: center">cursor 光标样式</h1>
+<hr>
 <div class="b">
-  <div style="background-color: red;cursor: pointer;">pointer</div>
-  <div style="background-color: blue;cursor: move;">move</div>
-  <div style="background-color: green;cursor: text;">text</div>
-  <div style="background-color: yellow;cursor: wait;">wait</div>
-  <div style="background-color: pink;cursor: help;">help</div>
-  <div style="background-color: purple;cursor: none;">none</div>
-  <div style="background-color: orange;cursor: crosshair;">crosshair</div>
-  <div style="background-color: brown;cursor: default;">default</div>
-  <div style="background-color: gray;cursor: progress;">progress</div>
-  <div style="background-color: #a9a9a9;cursor: not-allowed;">not-allowed</div>
-  <div style="background-color: cyan;cursor: no-drop;">no-drop</div>
-  <div style="background-color: magenta;cursor: all-scroll;">all-scroll</div>
-  <div style="background-color: lime;cursor: col-resize;">col-resize</div>
-  <div style="background-color: silver;cursor: row-resize;">row-resize</div>
-  <div style="background-color: olive;cursor: ew-resize;">ew-resize</div>
-  <div style="background-color: teal;cursor: ns-resize;">ns-resize</div>
-  <div style="background-color: indigo;cursor: nwse-resize;">nwse-resize</div>
-  <div style="background-color: maroon;cursor: nesw-resize;">nesw-resize</div>
-  <div style="background-color: navy;cursor: zoom-in;">zoom-in</div>
-  <div style="background-color: purple;cursor: zoom-out;">zoom-out</div>
-  <div style="background-color: pink;cursor: url('/file/image/10.png') auto;">url</div>
+  <div style="cursor: pointer;">pointer</div>
+  <div style="cursor: move;">move</div>
+  <div style="cursor: text;">text</div>
+  <div style="cursor: wait;">wait</div>
+  <div style="cursor: help;">help</div>
+  <div style="cursor: none;">none</div>
+  <div style="cursor: crosshair;">crosshair</div>
+  <div style="cursor: default;">default</div>
+  <div style="cursor: progress;">progress</div>
+  <div style="cursor: not-allowed;">not-allowed</div>
+  <div style="cursor: no-drop;">no-drop</div>
+  <div style="cursor: all-scroll;">all-scroll</div>
+  <div style="cursor: col-resize;">col-resize</div>
+  <div style="cursor: row-resize;">row-resize</div>
+  <div style="cursor: ew-resize;">ew-resize</div>
+  <div style="cursor: ns-resize;">ns-resize</div>
+  <div style="cursor: nwse-resize;">nwse-resize</div>
+  <div style="cursor: nesw-resize;">nesw-resize</div>
+  <div style="cursor: zoom-in;">zoom-in</div>
+  <div style="cursor: zoom-out;">zoom-out</div>
+  <div style="cursor: url('/file/image/10.png') auto;">url("image")</div>
 </div>
 </body>
 </html>

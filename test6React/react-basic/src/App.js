@@ -1,6 +1,5 @@
 import {createContext, useContext, useEffect, useRef, useState} from "react";
 import classNames from "classnames";
-import index from './index.css'
 
 const name = 'zhan'
 const list = ['zhan', 'wei', 'jin', 'yan']
@@ -14,72 +13,58 @@ function warn(info) {
 }
 
 function Button(text, onClick, style = {}) {
-  return (
-    <button onClick={onClick} style={style}>{text}</button>
-  )
+  return <button onClick={onClick} style={style}>{text}</button>
 }
 
-function Son(props){
+function Son(props) {
   // 不能修改props
-  return (
-    <div>
-      div-{props.name}-{props.sex}
-    </div>
-  )
-}
-function Son2(props){
-  return (
-    <div>
-      div-{props.children}
-    </div>
-  )
+  return <div>div-{props.name}-{props.sex}</div>
 }
 
-function Son3({onGetSonMessage}){
+function Son2(props) {
+  return <div>div-{props.children}</div>
+}
+
+function Son3({onGetSonMessage}) {
   const message = 'this is son message'
-  return(
-    <div>
-      this is son
-      <button onClick={() => onGetSonMessage(message)}>{message}</button>
-    </div>
-  )
+  return <div>this is son
+    <button onClick={() => onGetSonMessage(message)}>{message}</button>
+  </div>
 }
 
-function Bro1({onGetBorMessage}){
+function Bro1({onGetBorMessage}) {
   const name = 'this is Bro'
-  return(
-    <div>
-      this is Bro
-      <button onClick={() => onGetBorMessage(name)}>send message</button>
-    </div>
-  )
+  return <div>this is Bro
+    <button onClick={() => onGetBorMessage(name)}>send message</button>
+  </div>
 }
-function Bro2({id}){
-  return(
-    <div>
-      this is Bro2
-      {id}
-    </div>
-  )
+
+function Bro2({id}) {
+  return <div>this is Bro2{id}</div>
 }
 
 const mesContext = createContext()
 
-function Cont1(){
-  return(
-    <div>
-      this is cont1
-      <Cont2></Cont2>
-    </div>
-  )
+function Cont1() {
+  return <div>this is cont1<Cont2></Cont2></div>
 }
-function Cont2(){
+
+function Cont2() {
   const message = useContext(mesContext)
-  return(
-    <div>
-      this is cont2, {message}
-    </div>
-  )
+  return <div>this is cont2, {message}</div>
+}
+
+// 使用return()=>{}清楚useEffect的副作用
+function Test1() {
+  useEffect(() => {
+    const timer = setInterval(() => {
+      console.log('this is test1')
+    }, 1000)
+    return () => {
+      clearInterval(timer)
+    }
+  }, []);
+  return <div>this is test1</div>
 }
 
 function App() {
@@ -93,19 +78,23 @@ function App() {
   const [user, setUser] = useState({
     name: 'zhan',
   })
-  function changeUser(){
+
+  function changeUser() {
     setUser({
       ...user,
       name: 'wei',
     })
   }
+
   const [bool, setBool] = useState(false)
-  function changeToggle(){
+
+  function changeToggle() {
     setBool(!bool)
   }
+
   const toggleClass = classNames({
-    style1:bool,
-    style2:!bool
+    style1: bool,
+    style2: !bool
   })
 
   const inputRef = useRef('')
@@ -132,10 +121,16 @@ function App() {
     async function getList() {
       const res = await fetch(url)
       const jsonRes = await res.json()
-      setList(jsonRes.data.channels.map((item) => item.id+' '+item.name))
+      setList(jsonRes.data.channels.map((item) => item.id + ' ' + item.name))
     }
+
     getList()
   }, []); //deps是依赖项，不填，每次render都执行一次effect，填[]，只执行一次effect，填[value]，value变化就会执行一次effect
+
+  const [show, showTest1] = useState(true)
+  const [toggle,setToggle] = useState(true)
+  const [redux1, setRedux1] = useState(0)
+  const [redux2, setRedux2] = useState(0)
 
   return (
     <div>
@@ -202,7 +197,7 @@ function App() {
       // 信息传递-子传父
       <div>
         this is div, {message}
-        <Son3 onGetSonMessage = {getMessage}></Son3>
+        <Son3 onGetSonMessage={getMessage}></Son3>
       </div>
       // 信息传递-兄传弟
       <div>
@@ -219,9 +214,29 @@ function App() {
         </mesContext.Provider>
       </div>
       // useEffect
+      useEffect只能在组件顶层调用，并且不能在for、if之中
       <div>
         this is div
         {l1}
+        <br/>
+        {show && <Test1></Test1>}
+        <button onClick={() => showTest1(false)}>uninstall Test1</button>
+      </div>
+      // toggle
+      <div>
+        {toggle && 'this is div'}
+        <button onClick={() => setToggle(!toggle)}>toggle button</button>
+      </div>
+      // redux与纯函数对比
+      <div>
+        <div>
+          <button onClick={() => setRedux1(redux1 - 1)}>-</button>
+          {redux1}
+          <button onClick={() => setRedux1(redux1 + 1)}>+</button>
+        </div>
+        <div>
+
+        </div>
       </div>
     </div>
   );

@@ -15,62 +15,68 @@
     3、设置父div relative，子div absolute
   -->
   <style>
+    @keyframes rotating {
+      from {
+        transform: rotate3d(3, 6, 4, 0deg);
+      }
+      to {
+        transform: rotate3d(3, 6, 4, 360deg);
+      }
+    }
+
     .box {
       width: 200px;
       height: 200px;
       margin: 200px auto;
-      perspective: 800px;
+      /*perspective: 800px;*/
       position: relative;
       transform-style: preserve-3d;
-      transform: rotateX(30deg) rotateY(30deg);
-      transition: all 1s;
+      /*transform: rotateX(30deg) rotateY(30deg) rotateZ(30deg);*/
+      animation: rotating 2s linear infinite;
     }
 
     .box:hover {
-      transform: rotate3d(3, 6, 4, -60deg);
+      animation-play-state: paused;
     }
 
     .box div {
       width: 200px;
       height: 200px;
-      border: 1px solid #000;
+      border: 2px solid #000;
       position: absolute;
       line-height: 200px;
       text-align: center;
+      border-radius: 10px
     }
 
     .front {
       transform: translateZ(100px);
-      background-color: #4cc5de;
     }
 
     .back {
       transform: translateZ(-100px);
-      background-color: #ac6b79;
     }
 
     .left {
       transform: rotateY(-90deg) translateZ(100px);
-      background-color: #479a8b;
     }
 
     .right {
       transform: rotateY(90deg) translateZ(100px);
-      background-color: #e5d51d;
     }
 
     .top {
       transform: rotateX(90deg) translateZ(100px);
-      background-color: #ff7531;
     }
 
     .bottom {
       transform: rotateX(-90deg) translateZ(100px);
-      background-color: #1c9f20;
     }
   </style>
 </head>
 <body>
+<h1 style="text-align: center">立方体搭建</h1>
+<hr>
 <div class="box">
   <div class="front">front</div>
   <div class="back">back</div>

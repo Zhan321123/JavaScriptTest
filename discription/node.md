@@ -38,15 +38,21 @@
 1. 先cd到对应目录文件夹，新建环境
    `npm init -y`
 2. 项目环境安装一个包
-   `npm i [package-name]`
+   `npm install [package-name]`
 3. 删除一个包
-   `npm uni [package-name]`
+   `npm uninstall [package-name]`
 4. 开发环境安装一个包
-   `npm i [package-name] --save-dev`
+   `npm install [package-name] --save-dev`
 
 #### npm管理全局环境
 
 - 安装全局包
-  `npm i [package-name] -g`
+  `npm install [package-name] --global`
 
 <hr>
+
+#### npm缩写
+
+- `i`-`install`
+- `-D`-`--save-dev`
+- `-g`-`--global`
