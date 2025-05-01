@@ -1,0 +1,12 @@
+@use 'all';
+
+body {
+  padding: 1vw 10vw;
+}
+
+.link {
+  &:hover {
+    border-bottom: all.$gold-border;
+    color: all.$gold-title;
+  }
+}

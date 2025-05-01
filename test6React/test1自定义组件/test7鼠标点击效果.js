@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import styled from "styled-components";
 
 const language = ["JavaScript", "Java", "Python", "C++", "C", "C#", "PHP", "Ruby", "Go", "Swift", "Kotlin", "Rust", "Scala", "Perl", "Lua", "R", "Haskell", "Lisp", "Pascal", "Objective-C", "Assembly", "TypeScript", "SQL"]
 

@@ -121,7 +121,7 @@
      ```
 
    <fieldset>
-   如果没有设置主程序入口，`/src/index.js`作为主程序入口
+   如果没有设置主程序入口，`/src/index.ts`作为主程序入口
    如果没有设置打包文件出口，得到打包文件`/dist/main.js`
    </fieldset>
 

@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "ES6",          // 指定编译目标 ES 版本
+    "module": "esnext",          // 指定模块系统（如 ES6、CommonJS）
+    "lib": ["DOM", "ES6"],    // 指定需要包含的库文件
+    "outDir": "./dist",       // 编译输出目录
+    "rootDir": "./src",       // 源码根目录
+    "moduleResolution": "NodeNext", // 启用 Node.js 现代解析策略（TypeScript 4.7+）
+    "strict": false,           // 启用严格类型检查
+    "esModuleInterop": true ,  // 启用 ES6 模块与 CommonJS 的互操作性
+    "allowImportingTsExtensions": false, // 允许导入 .ts 文件
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ]
+    }
+  },
+  "include": ["src/**/*.ts",  "src/**/*.tsx"],  // 包含哪些文件
+  "exclude": ["node_modules", "dist", "build"],   // 排除哪些文件
+
+}

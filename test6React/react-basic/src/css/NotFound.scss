@@ -1,0 +1,12 @@
+@keyframes alternate {
+  from {
+    transform: translate(-100%, 0);
+  }
+  to {
+    transform: translate(100%, 0);
+  }
+}
+
+.alternate {
+  animation: alternate 2s linear alternate infinite;
+}

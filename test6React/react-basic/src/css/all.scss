@@ -1,0 +1,52 @@
+$gold-color: #c6940b;
+$gold-border: 1px solid #c66e00;
+$gold-bg: #272727;
+$gold-focus: #814f09;
+$gold-placeholder: #935a24;
+$gold-title: #e8c298;
+$gold-icon: #eab579;
+$gold-active: #492d01;
+$gold-alert: #ff5900;
+$gold-content-bg: #2e2e2e;
+
+html {
+  background-color: $gold-bg
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Times New Roman", serif; //times new roman
+  text-decoration: none;
+  color: $gold-color
+}
+
+h1, h2, h3, h4, h5, h6, p {
+}
+
+hr {
+  border-bottom: $gold-border;
+  border-top: none
+}
+
+.between{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img{
+  vertical-align: middle;
+}
+
+ul,ol{
+  list-style: none;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

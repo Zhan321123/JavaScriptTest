@@ -1,0 +1,70 @@
+import React, {useEffect, useRef} from "react";
+import '@/css/NotFound.scss'
+
+interface Pos {
+  x: number,
+  y: number
+}
+
+interface V {
+  vx: number,
+  vy: number
+}
+
+function Drift({startPos, startV, children}: { startPos: Pos, startV: V, children: React.ReactNode }) {
+
+  const ref = useRef(null)
+  const [position, setPosition] = React.useState(startPos);
+  const [v, setV] = React.useState(startV);
+  useEffect(() => {
+    const div = ref.current;
+    const width = div.offsetWidth;
+    const height = div.offsetHeight;
+    const timer = setInterval(() => {
+      let newX = position.x + v.vx;
+      let newY = position.y + v.vy;
+
+      if (newX > window.innerWidth - 10 - width || newX < 0) {
+        setV((prevV) => ({
+          vx: -prevV.vx,
+          vy: prevV.vy,
+        }));
+      }
+      if (newY > window.innerHeight - 10 - height || newY < 0) {
+        setV((prevV) => ({
+          vx: prevV.vx,
+          vy: -prevV.vy,
+        }));
+      }
+
+      setPosition({
+        x: newX,
+        y: newY,
+      })
+    }, 10);
+    return () => {
+      clearInterval(timer);
+    };
+  }, [position]);
+  return <div ref={ref} style={{
+    position: "absolute",
+    top: position.y,
+    left: position.x,
+  }}>
+    <h1 style={{fontSize: "80px"}}>{children}</h1>
+  </div>
+}
+
+export default function NotFound() {
+  return (<>
+    <Drift startPos={{x: 0, y: 0}} startV={{vx: 1, vy: 1}}>404</Drift>
+    <Drift startPos={{x: 200, y: 0}} startV={{vx: 2, vy: 1}}>Not</Drift>
+    <Drift startPos={{x: 0, y: 200}} startV={{vx: 1, vy: 2}}>Found</Drift>
+    <div className={"center between"} style={{
+      flexDirection: "column",
+    }}>
+      <h2>{document.documentURI}</h2>
+      <p>I have no this url.</p>
+    </div>
+  </>)
+};
