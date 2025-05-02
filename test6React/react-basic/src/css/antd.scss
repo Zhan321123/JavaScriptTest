@@ -1,0 +1,20 @@
+@use 'all';
+
+:where(.css-dev-only-do-not-override-1261szd).ant-menu-dark .ant-menu-item-selected, :where(.css-dev-only-do-not-override-1261szd).ant-menu-dark>.ant-menu .ant-menu-item-selected{
+  background-color: all.$gold-active;
+  *{
+    color: all.$gold-title;
+  }
+}
+
+:where(.css-dev-only-do-not-override-1261szd).ant-menu-dark.ant-menu-inline .ant-menu-sub.ant-menu-inline, :where(.css-dev-only-do-not-override-1261szd).ant-menu-dark>.ant-menu.ant-menu-inline .ant-menu-sub.ant-menu-inline{
+  background-color: all.$gold-content-bg;
+}
+
+:where(.css-dev-only-do-not-override-1261szd).ant-menu .ant-menu-submenu-arrow::before, :where(.css-dev-only-do-not-override-1261szd).ant-menu .ant-menu-submenu-arrow::after{
+  background-color: all.$gold-icon;
+}
+
+:where(.css-dev-only-do-not-override-1261szd).ant-menu-inline-collapsed >.ant-menu-item,:where(.css-dev-only-do-not-override-1261szd).ant-menu-inline-collapsed >.ant-menu-submenu>.ant-menu-submenu-title{
+  padding:0 10px
+}

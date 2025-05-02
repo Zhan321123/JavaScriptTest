@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { RouterProvider} from "react-router-dom";
 import router from "./router/router";
 import '@/css/all.scss'
+import '@/css/antd.scss'
+import '@/css/highlight.scss'
 
 // 渲染根组件
 const root = ReactDOM.createRoot(document.getElementById('root'));

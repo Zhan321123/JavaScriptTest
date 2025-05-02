@@ -9,4 +9,8 @@
 
 .alternate {
   animation: alternate 2s linear alternate infinite;
+  &:hover{
+    animation-play-state: paused;
+  }
+
 }

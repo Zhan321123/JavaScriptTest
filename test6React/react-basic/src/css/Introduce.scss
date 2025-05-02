@@ -1,0 +1,24 @@
+@use 'all';
+
+.left {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  border-right: all.$gold-border;
+  padding: 10px;
+}
+
+.right {
+  width: 256px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  border-left: all.$gold-border;
+}
+
+.menu {
+  background-color: all.$gold-bg;
+  color: all.$gold-color;
+}

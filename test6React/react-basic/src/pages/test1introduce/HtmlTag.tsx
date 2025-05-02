@@ -1,7 +1,7 @@
 import React from "react";
 import {useParams} from "react-router-dom";
 
-export default function HtmlElement() {
+export default function HtmlTag() {
   const params = useParams()
   const email = params.email
   const password = params.password

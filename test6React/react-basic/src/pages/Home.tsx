@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import '@/css/Home.scss'
 
 export default function Home() {
-  return (<div>
+  return (<div className={'container'}>
     <div className={'between'}>
       <div>
         <img width={64} src={require('@/assets/zhan.png')} alt="react"/>

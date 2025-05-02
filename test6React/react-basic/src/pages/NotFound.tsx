@@ -63,8 +63,8 @@ export default function NotFound() {
     <div className={"center between"} style={{
       flexDirection: "column",
     }}>
-      <h2>{document.documentURI}</h2>
-      <p>I have no this url.</p>
+      <h1 style={{fontSize: "30px",fontFamily:"console serif"}}>{document.documentURI}</h1>
+      <h2 className={"alternate"} style={{fontSize: "25px"}}>I have no this url.</h2>
     </div>
   </>)
 };
