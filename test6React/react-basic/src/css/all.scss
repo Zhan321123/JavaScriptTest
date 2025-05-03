@@ -1,5 +1,6 @@
 $gold-color: #c6940b;
-$gold-border: 1px solid #c66e00;
+$gold-border-color: #c66e00;
+$gold-border: 1px solid $gold-border-color;
 $gold-bg: #272727;
 $gold-focus: #814f09;
 $gold-placeholder: #935a24;
@@ -23,57 +24,60 @@ html {
   transition: all 0.6s;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-}
-
 hr {
   border-bottom: $gold-border;
   border-top: none
 }
 
-.between{
+.between {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
 }
 
-img{
+img {
   vertical-align: middle;
 }
 
-ul,ol{
+ul, ol {
   list-style: none;
 }
 
-.center{
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0.6em 0;
+}
+
+.center {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-svg{
+svg {
   fill: $gold-icon;
 }
 
-.border{
+.border {
   border: $gold-border;
   padding: 5px 5px;
 }
 
-.button{
+.button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
   background-color: $gold-bg;
   color: $gold-color;
-  &:hover{
+
+  &:hover {
     background-color: $gold-focus;
     color: $gold-bg;
   }
-  &:active{
+
+  &:active {
     background-color: $gold-active;
     color: $gold-bg;
   }
@@ -94,9 +98,51 @@ svg{
   border-radius: 5px;
 }
 
-.code{
+.code {
   font-family: "Consolas", serif;
-  *{
+
+  * {
     font-family: "Consolas", serif;
   }
+}
+
+.font-color {
+  color: $gold-color;
+
+  * a {
+    color: $gold-color;
+  }
+}
+
+.font-small {
+  font-size: 12px;
+
+  * {
+    font-size: 12px;
+  }
+}
+
+.nav-head-a {
+  margin-left: 0.5em;
+  opacity: 0.1;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.box{
+  div {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    line-height: 100px;
+    background-color: $gold-content-bg;
+    text-align: center;
+    border-radius: 10px;
+    border: $gold-border;
+  }
+}
+.text-center{
+  text-align: center;
 }

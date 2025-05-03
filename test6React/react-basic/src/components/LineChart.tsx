@@ -41,6 +41,9 @@ export function LineChart({xs, ys, smooth = false, width = 500, height = 400}: L
     const canvas = canvasRef.current;
     const myChart = echarts.init(canvas,'light');
     option && myChart.setOption(option);
+    return () => {
+      myChart.dispose();
+    }
   }, []);
   return (
     <div className={'border'}>

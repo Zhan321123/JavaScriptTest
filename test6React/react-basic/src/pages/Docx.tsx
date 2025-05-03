@@ -18,7 +18,13 @@ const items: MenuItem[] = [
       {key: '', label: 'Option 5'},
     ]
   },
-  {key: 'css', icon: <Svg name={'css'} style={{marginRight: 4}}/>, label: 'Css3'},
+  {
+    key: 'css', icon: <Svg name={'css'} style={{marginRight: 4}}/>, label: 'Css3',
+    children:[
+      {key: 'cube', icon: <Svg name={'cube'} style={{marginRight: 4}}/>, label: 'Cube'},
+      {key: 'cursor', icon: <Svg name={'cursor'} style={{marginRight: 4}}/>, label: 'Cursor'}
+    ]
+  },
   {key: 'javascript', icon: <Svg name={'js'} style={{marginRight: 4}}/>, label: 'JavaScript'},
   {
     key: 'react', label: 'React', icon: <Svg name={'react'} style={{marginRight: 4}}/>,
@@ -47,7 +53,7 @@ const items: MenuItem[] = [
   }, {
     key: 'echarts', label: 'Echarts', icon: <Svg name={'echarts'} style={{marginRight: 4}}/>,
     children: [
-      {key: '', label: 'Option 9'},
+      {key: 'echarts/blocks', label: 'Blocks'},
       {key: '', label: 'Option 10'},
     ],
   },{
@@ -63,6 +69,7 @@ const items: MenuItem[] = [
       {key: '', label: 'Option 10'},
     ],
   },
+  {key: 'test',icon: <Svg name={'test'} style={{marginRight: 4}}/>, label: 'Test'},
 ];
 
 export default function Docx() {
@@ -79,11 +86,10 @@ export default function Docx() {
     <Navbar collapsed={collapsed} toggleCollapsed={toggleCollapsed} onClick={onClick}/>
     <div style={{width: collapsed ? 100 : 256}}></div>
     {/*<Link to="/introduce/cursor">cursor frame</Link>*/}
-    <div style={{width: collapsed ? 'calc(100% - 100px)' : 'calc(100% - 256px)', padding: '10px'}}>
+    <div style={{width: collapsed ? 'calc(100% - 128px)' : 'calc(100% - 256px - 128px)', padding: '10px'}}>
       <Outlet/>
     </div>
-    <div className={'right'}>
-      right
+    <div style={{width:128}}>
     </div>
   </div>)
 };

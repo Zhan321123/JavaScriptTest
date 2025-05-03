@@ -3,15 +3,15 @@ import Svg from "@/utils/icons";
 import hljs from "highlight.js";
 import 'highlight.js/styles/github-dark-dimmed.css';
 
-export function Code({language=' ', code, fileName = ' '}) {
+export function Code({language=' ', fileName = ' ', children}) {
   /**
    * 代码块展示
    * @param language 语言类型
-   * @param code 代码
    * @param fileName 文件名
    */
   const [folded, setFolded] = React.useState(false)
   const codeRef = useRef(null);
+  children = children.trim()
 
   useEffect(() => {
     const codeElement = codeRef.current;
@@ -29,7 +29,7 @@ export function Code({language=' ', code, fileName = ' '}) {
       <hr/>
       <pre style={{overflow:'auto',padding: '10px',height: folded ? 80 : 'auto'}}>
         <code ref={codeRef} className={`code ${language}`}>
-          {code}
+          {children}
         </code></pre>
     </div>
   )

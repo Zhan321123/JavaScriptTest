@@ -41,7 +41,7 @@ function Drift({startPos, startV, children}: { startPos: Pos, startV: V, childre
         x: newX,
         y: newY,
       })
-    }, 10);
+    }, 40);
     return () => {
       clearInterval(timer);
     };
@@ -51,15 +51,17 @@ function Drift({startPos, startV, children}: { startPos: Pos, startV: V, childre
     top: position.y,
     left: position.x,
   }}>
-    <h1 style={{fontSize: "80px"}}>{children}</h1>
+    <code style={{fontSize: "80px",transition: "none",margin: 0,padding: 0,}}>{children}</code>
   </div>
 }
 
 export default function NotFound() {
   return (<>
-    <Drift startPos={{x: 0, y: 0}} startV={{vx: 1, vy: 1}}>404</Drift>
-    <Drift startPos={{x: 200, y: 0}} startV={{vx: 2, vy: 1}}>Not</Drift>
-    <Drift startPos={{x: 0, y: 200}} startV={{vx: 1, vy: 2}}>Found</Drift>
+    <div>
+      <Drift startPos={{x: 0, y: 0}} startV={{vx: 1, vy: 1}}>404</Drift>
+      <Drift startPos={{x: 200, y: 0}} startV={{vx: 2, vy: 1}}>Not</Drift>
+      <Drift startPos={{x: 0, y: 200}} startV={{vx: 1, vy: 2}}>Found</Drift>
+    </div>
     <div className={"center between"} style={{
       flexDirection: "column",
     }}>

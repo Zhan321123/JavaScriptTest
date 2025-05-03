@@ -28,7 +28,7 @@ export default function Introduce() {
   return (
     <>
       <h1>Introduce</h1>
-      <Code fileName={'./introduce.tsx'} language={'typescript'} code={code}></Code>
+      <Code fileName={'./introduce.tsx'} language={'typescript'}>{code}</Code>
       <LineChart xs={xData} ys={yData} smooth={true}></LineChart>
 
     </>

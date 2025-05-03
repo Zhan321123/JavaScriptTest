@@ -18,3 +18,15 @@
 :where(.css-dev-only-do-not-override-1261szd).ant-menu-inline-collapsed >.ant-menu-item,:where(.css-dev-only-do-not-override-1261szd).ant-menu-inline-collapsed >.ant-menu-submenu>.ant-menu-submenu-title{
   padding:0 10px
 }
+
+:where(.css-dev-only-do-not-override-1261szd).ant-anchor-wrapper .ant-anchor .ant-anchor-link-title{
+  color: all.$gold-color;
+}
+
+:where(.css-dev-only-do-not-override-1261szd).ant-anchor-wrapper .ant-anchor .ant-anchor-link-active>.ant-anchor-link-title{
+  color: all.$gold-title;
+}
+:where(.css-dev-only-do-not-override-1261szd).ant-anchor-wrapper:not(.ant-anchor-wrapper-horizontal) .ant-anchor .ant-anchor-ink{
+  background-color: all.$gold-border-color;
+  margin-left: 2px;
+}
