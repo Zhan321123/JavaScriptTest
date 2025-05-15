@@ -1,10 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
-import {Code} from "@/components/Code";
+import {Code, MultipleCodes} from "@/components/Code";
 import Content from "@/pages/test1introduce/Content";
 import useHeadingsToNavItems from "@/utils/navs";
 
 const codeRouter = `
-export default createHashRouter([
+export default createBrowserRouter([ //创建浏览器路由，显示路径url/login，需要后端支持
+// export default createHashRouter([ //创建hash路由，显示路径url/#/login，不需要后端支持
   {path: '/', element: <Home/>}, //顶级页面
   {path:'/loading', element: <Loading/>},
   {path: '/login', element: <Suspense fallback={<Loading/>}><Login/></Suspense>},
@@ -69,13 +70,21 @@ export default function Test1Router() {
         <Code fileName={'*.tsx'} language={'typescript'}>{codeSkip}</Code>
         <h2>跳转界面信息传递</h2>
         <h3>方式1</h3>
-        <Code fileName={'*.tsx'} language={'typescript'}>{'navi(`login/${email}/${password}`)'}</Code>
-        <Code fileName={'Login.tsx'} language={'typescript'}>{codeUseParams}</Code>
+        <MultipleCodes
+          codes={['navi(`login/${email}/${password}`)', codeUseParams]}
+          fileNames={['*.tsx', 'login.tsx']}
+          languages={['typescript', 'typescript']}
+        ></MultipleCodes>
         <h3>方式2</h3>
-        <Code fileName={'/src/router/router.tsx'} language={'typescript'}>{"path: '/login/:email/:password'"}</Code>
-        <Code fileName={'*.tsx'}
-              language={'typescript'}>{"navi(`../content?email=${email}&password=${password}`)"}</Code>
-        <Code fileName={'Login.tsx'} language={'typescript'}>{codeUseParams}</Code>
+        <MultipleCodes
+          codes={[
+            "path: '/login/:email/:password'",
+            "navi(`../content?email=${email}&password=${password}`)",
+            codeUseParams
+          ]}
+          fileNames={['/src/router/router.tsx', '*.tsx', 'Login.tsx']}
+          languages={['typescript', 'typescript', 'typescript']}
+        ></MultipleCodes>
       </div>
     </>
   )

@@ -9,8 +9,10 @@ import NotFound from "@/pages/NotFound";
 import Loading from "@/pages/Loading";
 import Introduce from "@/pages/test1introduce/Introduce";
 import Test1Router from "@/pages/test1introduce/test1Router";
-import Test1Blocks from "@/pages/test1introduce/test1Blocks";
-// import Test from "@/pages/test1introduce/Test";
+import Test from "@/pages/test1introduce/Test";
+
+// @ts-ignore
+const Test1Blocks = React.lazy(() => import('@/pages/test1introduce/test1Blocks'))
 // @ts-ignore
 const Login = React.lazy(() => import('@/pages/Login'))
 // @ts-ignore
@@ -28,8 +30,8 @@ export default createBrowserRouter([ //创建浏览器路由，显示路径url/l
       {path: "/introduce/cursor", element: <Cursor/>},
       {path: '/introduce/cube', element: <Cube/>},
       {path: '/introduce/router', element: <Test1Router/>},
-      {path:'/introduce/echarts/blocks',element: <Test1Blocks/>},
-      // {path:'/introduce/test',element:<Test></Test>}
+      {path:'/introduce/echarts/blocks',element: <Suspense fallback={<Loading/>}><Test1Blocks/></Suspense>},
+      {path:'/introduce/test',element:<Test></Test>}
     ]
   },
   {path: "/htmltag", element: <HtmlTag/>},

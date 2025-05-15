@@ -2,7 +2,9 @@
   "name": "react-basic",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@react-three/drei": "^10.0.7",
     "@react-three/fiber": "^9.1.2",
     "@reduxjs/toolkit": "^2.6.1",
@@ -15,6 +17,7 @@
     "classnames": "^2.5.1",
     "echarts": "^5.6.0",
     "echarts-gl": "^2.0.9",
+    "gsap": "^3.13.0",
     "highlight.js": "^11.11.1",
     "immer": "^10.1.1",
     "react": "^19.1.0",

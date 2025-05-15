@@ -2,12 +2,13 @@ import React, {useRef} from "react";
 import useHeadingsToNavItems from "@/utils/navs";
 import Content from "@/pages/test1introduce/Content";
 import {Code} from "@/components/Code";
+import {Divider} from "antd";
 
 export default function Cursor() {
   const ref = useRef(null)
   const navItems = useHeadingsToNavItems(ref)
   return (<>
-    <h1 className={'text-center'}>Cursor</h1>
+    <Divider plain><h1>Cursor</h1></Divider>
     <Content items={navItems}></Content>
     <div ref={ref}>
       <h2>光标样式</h2>

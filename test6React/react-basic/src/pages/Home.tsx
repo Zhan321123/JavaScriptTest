@@ -1,6 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import '@/css/Home.scss'
+import gsap from "gsap";
+import {useGSAP} from "@gsap/react";
 
 export default function Home() {
   return (<div className={'container'}>
@@ -29,8 +31,52 @@ export default function Home() {
     <br/>
 
     <div>
-      <h1>React Standard Project</h1>
-      <p>React Standard Project</p>
+      <FirstPage></FirstPage>
     </div>
   </div>)
 };
+
+function FirstPage() {
+  const {contextSafe} = useGSAP()
+  const onEnter = contextSafe(({currentTarget}) => {
+    gsap.to(currentTarget, {rotation: "+=360"})
+  })
+  return (<div>
+    <div>
+      <button onClick={onEnter}
+              className={'border'} style={{
+        fontSize: '128px',
+        cursor: 'pointer'
+      }}>React
+      </button>
+    </div>
+    <br/>
+    <div style={{textAlign: 'center'}}>
+      <button onClick={onEnter} className={'border'} style={{
+        fontSize: '128px',
+        cursor: 'pointer'
+      }}>Standard
+      </button>
+    </div>
+    <br/>
+    <div style={{textAlign: 'right', marginRight: '10vw'}}>
+      <button onClick={onEnter} className={'border'} style={{
+        fontSize: '128px',
+        cursor: 'pointer'
+      }}>Project
+      </button>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  </div>)
+}

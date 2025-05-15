@@ -46,7 +46,7 @@ export function LineChart({xs, ys, smooth = false, width = 500, height = 400}: L
     }
   }, []);
   return (
-    <div className={'border'}>
+    <div className={'border'} style={{textAlign: 'center'}}>
       <canvas width={width} height={height} ref={canvasRef}></canvas>
     </div>
   )
